@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="W01 Coding Assignment - JavaScript">
-    <meta name="keywords" content="WDD330, week , assignment, JavaScript">
+    <meta name="description" content="W01 Reading and Work Notes">
+    <meta name="keywords" content="WDD330, week 01, assignment, ">
     <meta name="author" content="A. Michael Sierra">
-    <title>W01 Coding Assignment</title>
+    <title>W01 Reading and Work Notes</title>
     
     <script src="../js/main.js"></script>
     
@@ -15,10 +15,55 @@
        Element Type Selectors
     */
         
-    /* applying styles on the author and description */
+    /* applying styles on the header, author, and description */
+    header {
+        padding: 10px;
+        text-align: center;
+        background-image: linear-gradient(red, yellow);
+        color: white;
+    }
+    h1 {
+        color:black;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 70px;
+        font-style: normal;
+        font-variant: small-caps;
+        font-stretch: extra-expanded;
+        text-shadow: 2px 2px gray;
+        padding: 10px 0 20px 0;
+        margin: 0px;
+        border: 0px;
+    }
+    h2 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-variant: small-caps;
+    }
+
+    /* Footer */
     footer {
+        padding: 20px;
+        text-align: center;
+        background: rgb(75, 75, 75);
+    }
+    #f_title {
+        color: darkkhaki;
+        font-weight: bold;
         font-style: italic;
-        color: gray;
+        font-size: 14px;
+    }
+    #f_name {
+        padding-left: 10px;
+        color: yellow;
+        font-weight: bold;
+        font-style: italic;
+        font-variant: small-caps;
+    }
+    #f_desc {
+        padding-left: 10px;
+        color: darkkhaki;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 14px;
     }
        
     /* ---------------------------
@@ -34,19 +79,23 @@
     </style>
 </head>
 <body>
-    <h1>Title</h1><hr>
-    <h2>Short Description</h2>
-    Text 01: <input type="text" id="text01"><br>
-    Text 02: <input type="text" id="text02"><br><br>
-    <button 
-        type="button" 
-        id="button01" 
-        onclick="myFunction()">Button 01</button><br><br>
-    <div id="divOutput">Output</div><br>
+    <h1>Week 01 Notes</h1><hr>
+    <h2>Reading and work notes for this week</h2><br><br>
+    <div id="divOutput">
+        <h3>Learnt / Completed:</h3>
+        <p>Need to review/re-learn how to use GitHub including how to publish pages.</p>
+        <p>Reused and combined some of my html templates from previous courses.</p>
+        <p>Keep in mind the need to create "mobile first" solution as per WD331.</p>
+        <p>Created folders and templates for week 01 up to week 14.</p>
+        <h3>To Do:</h3>
+        <p>Review Javascript arrays, loops, element population.</p>
+    </div><br>
     <hr>
+    <!-- Footer -->
     <footer>
-        <p id="author">Author: A. Michael Sierra</p>
-        <p id="description">Description: Assignment Week 01</p>
+        <span id="f_title">Author:</span> 
+        <span id="f_name">A. Michael Sierra</span> 
+        <span id="f_desc">(WDD 330 Reading and Work Notes - Week 01)</span>
     </footer>
 </body>
 </html>
