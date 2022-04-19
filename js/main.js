@@ -8,10 +8,22 @@
 
 function createMenu() {  
    var menuArrays = [
-      {
-         label:   "Week 01 Experience",
-         url:     "week01/index.html"
-      }
+      {label: "Week 01 Experience", url: "week01/index.html"}
+      ,
+      {label: "Week 01 Experience", url: "week01/index.html"},
+      {label: "Week 02 Experience", url: "week02/index.html"},
+      {label: "Week 03 Experience", url: "week03/index.html"},
+      {label: "Week 04 Experience", url: "week04/index.html"},
+      {label: "Week 05 Experience", url: "week05/index.html"},
+      {label: "Week 06 Experience", url: "week06/index.html"},
+      {label: "Week 07 Experience", url: "week07/index.html"},
+      {label: "Week 08 Experience", url: "week08/index.html"},
+      {label: "Week 09 Experience", url: "week09/index.html"},
+      {label: "Week 10 Experience", url: "week10/index.html"},
+      {label: "Week 11 Experience", url: "week11/index.html"},
+      {label: "Week 12 Experience", url: "week12/index.html"},
+      {label: "Week 13 Experience", url: "week13/index.html"},
+      {label: "Week 14 Experience", url: "week14/index.html"}
    ];
    var menuLinks = document.getElementById('ol');
 
