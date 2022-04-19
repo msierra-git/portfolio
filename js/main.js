@@ -9,12 +9,8 @@
 function createMenu() {  
    var menuArrays = [
       {
-         label:   "Week 01 Notes",
+         label:   "Week 01 Experience",
          url:     "week01/index.html"
-      },
-      {
-         label:   "Week 02 Notes",
-         url:     "week02/index.html"
       }
    ];
    var menuLinks = document.getElementById('ol');
