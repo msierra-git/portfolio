@@ -78,9 +78,11 @@ h3 {
    Class ID Selectors
 */
 
-/* .mainlink {
+.mainlink {
    text-align: center;   
-} */
+   font-variant: small-caps;
+   padding-top: 10px;
+}
 
 .myfooter {
    padding: 1rem;
