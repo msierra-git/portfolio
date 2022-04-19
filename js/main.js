@@ -1,9 +1,9 @@
-const assignLinks = [
-   {
-      label: "Week 01 -Notes",
-      url: "week01/index.html"
-   }
-]
+// const assignLinks = [
+//    {
+//       label: "Week 01 -Notes",
+//       url: "week01/index.html"
+//    }
+// ]
 
 var select = document.getElementById('ol');
 var array = ["html", "css", "js", "jquery", "Angularjs"];
