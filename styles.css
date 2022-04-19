@@ -3,7 +3,7 @@
 */
 
 /* applying styles on the header, author, and description */
-header {
+/* header {
    padding: 10px;
    text-align: center;
    background-image: linear-gradient(red, yellow);
@@ -36,7 +36,7 @@ h3 {
    font-weight: bold;
    font-style: italic;
    padding: 1rem;
-}
+} */
 
 footer {
    padding: 20px;
@@ -71,18 +71,18 @@ footer {
 }
 
 /* applying styles on the output of this program */
-#divOutput {
+/* #divOutput {
    color: rgb(67, 66, 66);
 }
 
 #divOutput p {
    padding: 0 0 1rem 2rem;
    font-family: Arial, Helvetica, sans-serif;
-}
+} */
 
 /* ---------------------------
    Class ID Selectors
 */
-.mainlink {
+/* .mainlink {
    text-align: center;   
-}
+} */
