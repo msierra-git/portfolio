@@ -38,13 +38,6 @@ h3 {
    padding: 1rem;
 } */
 
-footer {
-   padding: 1rem;
-   text-align: center;
-   /* background: rgb(75, 75, 75); */
-   background: linear-gradient(to right,rgb(5, 84, 136), rgb(3, 164, 115));
-}
-
 /* ---------------------------
    Individual ID Selectors
 */
@@ -84,6 +77,14 @@ footer {
 /* ---------------------------
    Class ID Selectors
 */
+
 /* .mainlink {
    text-align: center;   
 } */
+
+.myfooter {
+   padding: 1rem;
+   text-align: center;
+   /* background: rgb(75, 75, 75); */
+   background: linear-gradient(to right,rgb(5, 84, 136), rgb(3, 164, 115));
+}
