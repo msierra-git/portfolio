@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="W02 Team Activity">
+      <meta name="keywords" content="WDD330, week 02, team activity">
+      <meta name="author" content="WDD330 - Team 1">
+      <title>W02 - Team Activity</title>
+      <link rel="stylesheet" href="../styles.css" />
+
+      <script>
+         function readInput() {
+            const intUser1 = parseInt(document.getElementById('txtNumber1').value);
+            const intUser2 = parseInt(document.getElementById('txtNumber2').value);
+            
+            return [intUser1, intUser2];
+         }
+
+         function showOutput(intOutput) {
+            document.getElementById('divOutput').innerHTML = intOutput;
+         }
+
+         function computeTotal() {        
+            let total =0;
+            for (let i=1; i <= readInput()[0]; i++) {
+               total += i;
+            }
+            showOutput(total);
+         }
+
+         function addNumbers() {
+            // version 1
+            // const intUser1 = parseInt(document.getElementById('txtNumber1').value);
+            // const intUser2 = parseInt(document.getElementById('txtNumber2').value);
+
+            // let total = intUser1 + intUser2;
+            // document.getElementById('divOutput').innerHTML = total;
+
+            // version 2
+            // let total = readInput()[0] + readInput()[1];
+            // showOutput(total);
+
+            // version 3
+            showOutput(readInput()[0] + readInput()[1]);
+         }
+
+         // stretch functions
+         const subtractNumbers = function () {
+            showOutput(readInput()[0] - readInput()[1]);
+         }
+
+         const multiplyNumbers = () => {
+            showOutput(readInput()[0] * readInput()[1]);
+         }
+
+      </script>
+   </head>
+
+   <body>
+      <!-- Header -->
+      <header>
+         <h1>Week 02 - Team Activity</h1>
+      </header>      
+
+      <!-- Main -->
+      <div id="main">
+         Enter a number to sum all the numbers up to your input:
+         <input type="text" id="txtNumber1" style="width: 50px;">
+         <br><br>
+         Enter a second number then click on any button with math operators:
+         <input type="text" id="txtNumber2" style="width: 50px;">
+         <br><br>
+         <button type="button" id="btnCompute" onclick="computeTotal()">Calculate Total</button>
+         <button type="button" id="btnAdd" onclick="addNumbers()">+</button>
+         <button type="button" id="btnSubtract" onclick="subtractNumbers()">-</button>
+         <button type="button" id="btnMultiply" onclick="multiplyNumbers()">x</button>
+         <br><br>
+      </div>
+      <h2>Outcome</h2>
+      <div id="divOutput"></div>  
+      
+      <br><hr>
+      <!-- Footer -->
+      <footer class="myfooter">
+         <span id="f_title">Author:</span>
+         <span id="f_name">WDD 330 - Team 1</span><br>
+         <span id="f_desc">(Colt Fleming, Mario F. Encalada, Michaela Nell, A. Michael Sierra, Swenson M. Bailey)</span>
+      </footer>
+
+      <div class="mainlink">
+         <a href="index.html">[ BACK to WEEK 02 ACTIVITY ]</a>
+      </div>
+   </body>
+</html>

@@ -34,22 +34,23 @@ function subtractNumbers() {
    showOutput(userNumbers[0] - userNumbers[1]);
 }
 
-const subtractNumbers2 = function difference(){
-   const userNumbers = getUserValues();
-   showOutput(userNumbers[0] - userNumbers[1]);
-};
-
 function multiplyNumbers() {
    const userNumbers = getUserValues();
    showOutput(userNumbers[0] * userNumbers[1]);
 }
 
-const multiplyNumbers2 = () => {
-   const userNumbers = getUserValues();
-   showOutput(userNumbers[0] * userNumbers[1]);
-};
-
 function showOutput(outcome) {
    // Display the answer to the user. 
    document.getElementById('divOutput').innerHTML=outcome; 
 }
+
+// Stretch goals
+const subtractNumbers2 = function difference(){
+   const userNumbers = getUserValues();
+   showOutput(userNumbers[0] - userNumbers[1]);
+};
+
+const multiplyNumbers2 = () => {
+   const userNumbers = getUserValues();
+   showOutput(userNumbers[0] * userNumbers[1]);
+};
