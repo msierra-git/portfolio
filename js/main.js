@@ -12,8 +12,8 @@
 function createMenu2() {  
    var menuArrays2 = [
       ["Week 01 Experience - The Journey Begins!", "week01/index.html"],      
-      ["Week 02 Experience - Re-learning Javascripts Fundamentals", "week02/index.html"]
-      // ["Week 03 Experience", "week03/index.html"],
+      ["Week 02 Experience - Re-learning Javascripts Fundamentals", "week02/index.html"],
+      ["Week 03 Experience - Full-on with Emergencies", "week03/index.html"]
       // ["Week 04 Experience", "week04/index.html"],
       // ["Week 05 Experience", "week05/index.html"],
       // ["Week 06 Experience", "week06/index.html"],
