@@ -1,4 +1,4 @@
-document.forms.hero.heroName.focus();
+// document.forms.hero.heroName.focus();
 
 const form = document.forms['hero'];
 form.addEventListener('submit', makeHero, false);

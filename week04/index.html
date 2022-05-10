@@ -3,6 +3,7 @@ layout: default
 ---
 <!DOCTYPE HTML>
 <html lang="en-us">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,32 +11,69 @@ layout: default
     <meta name="keywords" content="WDD330, week 04, reading notes, report">
     <meta name="author" content="A. Michael Sierra">
     <title>W04 Reading Notes and Report</title>
-    
-    <!-- <script src="../js/main.js"></script> -->
+
     <!-- <link rel="stylesheet" href="../reset.css" /> -->
-    <link rel="stylesheet" href="../styles.css" /> 
+    <link rel="stylesheet" href="../styles.css" />
 </head>
+
 <body>
     <header>
         <h1>Week 04 Experience</h1>
     </header>
-    <h2>Reading notes and report for this week</h2><hr><br>
+    <h2>Reading notes and report for this week</h2>
+    <hr><br>
     <div id="divOutput">
-        <h3>Reading:</h3> 
+        <h3>Reading:</h3>
         <ul>
-            <li>Notes...</li>
-            <li>Questions...</li>
-        </ul>       
-
-        <h3>Exercises:</h3> 
-        <ul>
-            <li>Forms
-                <br>* View my <a href="exercises.html">reading code exercises</a>
-                <br>* View my <a href="hero/hero.html">"hero" code exercises</a>            
+            <li>This week's reading is very interesting and once again I learnt so much from it.
+                I liked the chapter about forms as I normally build a lot of different forms at work 
+                but using different technology. So in my reading this time, I decided to follow codes
+                and build the form, instead of highligthing and making notes. Below is the simple form
+                as presented in the book including a link to the "Hero" form. 
             </li>
-            <li></li>
-        </ul>       
+            <li>The materials on Object-Oriented Programming is great as I love this concept of programming. 
+                So in this reading I decided to do both which is to highlight definitions and also followed 
+                the codes from the book. Some of the items I highlighted are:
+                <br>Explanations and definitions of the three main concpets in OOP.
+                <br>Different ways in creating or initiating new objects
+                <br>Class declarations and its syntax.
+                <br>Prototype, its properties and usage.
+            </li>
+            <li>
+                <h4>Form Exercises:</h4>
+                <form name='search' action='/search'>
+                    <div>                        
+                        <input name='searchInput' hidden>
+                        <!-- using placeholder to show defaults  -->
+                        <input type='text' name='search-box' placeholder='Search Here'>
         
+                        <button type='submit'>Search</button>
+                        <button type='reset'>Reset</button>
+        
+                        <!-- different ways to show submit button and submit the form -->
+                        <!-- <button type='submit'>Submit</button> -->
+                        <!-- <input type='submit' value='Submit'> -->
+                        <!-- <input type='image' src='button.png'> -->
+                    </div>
+                    <div>
+                        <span>Click --&gt; <a href="hero/hero.html">here</a> &lt;--
+                            to see my <b>hero</b> form exercises.
+                        </span>
+                    </div>
+                </form>
+            </li>
+            <li>
+                <h4>Object-Oriented Programming (OOP) Exercises:</h4>
+                <div>
+                    <p><em>Psst: please have a look at the JavaScript Console</em> 💁</p>
+                    <p><em><b>or</b> click --&gt;
+                            <a href="https://github.com/msierra-git/portfolio/blob/main/week04/main.js"
+                                title="msierra w04 codes in github" target="_blank">here</a>
+                            &lt;-- to view my JavaScript codes in GitHub</em></p>
+                </div>
+            </li>
+        </ul>
+
         <h3>Report:</h3>
         <ol>
             <li>What did I do since the last meeting?</li>
@@ -46,12 +84,14 @@ layout: default
     <hr>
     <!-- Footer -->
     <footer class="myfooter">
-        <span id="f_title">Author:</span> 
-        <span id="f_name">A. Michael Sierra</span> 
+        <span id="f_title">Author:</span>
+        <span id="f_name">A. Michael Sierra</span>
         <span id="f_desc">(WDD 330 - Reading and Work Notes - Week 04)</span>
     </footer>
     <div class="mainlink">
         <a href="../index.html">[ BACK to TABLE of CONTENTS ]</a>
     </div>
+    <script src="main.js"></script>
 </body>
+
 </html>
