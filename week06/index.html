@@ -27,20 +27,23 @@ layout: default
     <h2>A Simple To Do Tracking Application</h2>
     <hr><br>
     <h3>Todos</h3>
-    <div id="toDoOutput">
-        <ul id="toDoList"></ul>
-    </div>
-    <div class="input-group">
-        <label class="lbl" id="toDoCount">Test</label>
-        <div class="btn-group mr-2">        
-            <button class="btn btn-light btn-sm" id="showAll">ALL</button>
-            <button class="btn btn-light btn-sm" id="showActive">Active</button>
-            <button class="btn btn-light btn-sm" id="showCompleted">Completed</button>
+    <div id="todoApp">
+        <div id="todoList">
+            <ul class="list-group" id="ulList"></ul>
         </div>
-    </div>
-    <div id="toDoEntry">
-        <input type="userEntry">
-        <button id="addEntry">+</button>
+        <div class="input-group-sm">
+            <label class="lbl" id="toDoCount">Test</label>
+            <div class="btn-group mr-2">
+                <button class="btn btn-light" type="button" id="showAll">ALL</button>
+                <button class="btn btn-light" type="button" id="showActive">Active</button>
+                <button class="btn btn-light" type="button" id="showCompleted">Completed</button>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        <div class="form-inline" id="toDoEntry">
+            <input type="text" class="form-control" placeholder="Enter to do item" id="userEntry">
+            <button class="btn btn-light" type="button" id="addEntry">+</button>
+        </div>
     </div>
     <br>
     <hr>
