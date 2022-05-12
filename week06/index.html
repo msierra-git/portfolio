@@ -33,20 +33,20 @@ layout: default
     <h3>Todos</h3>
     <div id="todoApp">
         <div id="todoList">
-            <ul class="list-group" id="ulList"></ul>
+            <ul class="list-group" id="listItems"></ul>
         </div>
-        <div class="input-group-sm">
-            <span class="badge" id="itemsTotal">0</span>
+        <div class="input-group-sm" id="todoFilter">
+            <span class="badge" id="countItems">0</span>
             <div class="btn-group mb-2">
-                <button class="btn btn-light" type="button" id="showAll">ALL</button>
-                <button class="btn btn-light" type="button" id="showActive">Active</button>
-                <button class="btn btn-light" type="button" id="showCompleted">Completed</button>
+                <button class="btn btn-light" type="button" id="allItems">ALL</button>
+                <button class="btn btn-light" type="button" id="activeItems">Active</button>
+                <button class="btn btn-light" type="button" id="completeItems">Completed</button>
             </div>
         </div>
         <p>&nbsp;</p>
-        <div class="form-inline" id="toDoEntry">
-            <input type="text" class="form-control mb-2" placeholder="Enter to do item" id="userEntry">
-            <button class="btn btn-light mb-2" type="button" id="addEntry">+</button>
+        <div class="form-inline" id="todoEntry">
+            <input type="text" class="form-control mb-2" placeholder="Enter to do item" id="entryItem">
+            <button class="btn btn-light mb-2" type="button" id="addItem">+</button>
         </div>
     </div>
     <br>
