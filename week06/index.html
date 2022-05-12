@@ -3,6 +3,7 @@ layout: default
 ---
 <!DOCTYPE HTML>
 <html lang="en-us">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,39 +11,48 @@ layout: default
     <meta name="keywords" content="WDD330, week 06, reading notes, report">
     <meta name="author" content="A. Michael Sierra">
     <title>W06 Reading Notes and Report</title>
-    
+
     <!-- <script src="../js/main.js"></script> -->
     <!-- <link rel="stylesheet" href="../reset.css" /> -->
-    <link rel="stylesheet" href="../styles.css" /> 
+    <link rel="stylesheet" href="../styles.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </head>
+
 <body>
     <header>
-        <h1>Week 06 Experience</h1>
+        <h1>Week 06 - To Do Application</h1>
     </header>
-    <h2>Reading notes and report for this week</h2><hr><br>
-    <div id="divOutput">
-        <h3>Reading:</h3> 
-        <ul>
-            <li>Notes...</li>
-            <li>Questions...</li>
-        </ul>       
-        
-        <h3>Report:</h3>
-        <ol>
-            <li>What did I do since the last meeting?</li>
-            <li>What am I going to do next?</li>
-            <li>What are my blockers?</li>
-        </ol>
-    </div><br>
+    <h2>A Simple To Do Tracking Application</h2>
+    <hr><br>
+    <h3>Todos</h3>
+    <div id="toDoOutput">
+        <ul id="toDoList"></ul>
+    </div>
+    <!-- <div class="btn-toolbar" role="toolbar" id="lettersToolbar"> -->
+    <label class="lbl" id="toDoCount">Test</label>
+    <div class="btn-group mr-2">        
+        <button class="btn btn-default" id="showAll">ALL</button>
+        <button class="btn btn-default" id="showActive">Active</button>
+        <button class="btn btn-default" id="showCompleted">Completed</button>
+    </div>
+    <!-- </div> -->
+    <div id="toDoEntry">
+        <input type="userEntry">
+        <button id="addEntry">+</button>
+    </div>
+    <br>
     <hr>
     <!-- Footer -->
     <footer class="myfooter">
-        <span id="f_title">Author:</span> 
-        <span id="f_name">A. Michael Sierra</span> 
-        <span id="f_desc">(WDD 330 - Reading and Work Notes - Week 06)</span>
+        <span id="f_title">Author:</span>
+        <span id="f_name">A. Michael Sierra</span>
+        <span id="f_desc">(WDD 330 - To Do Application - Week 06)</span>
     </footer>
     <div class="mainlink">
         <a href="../index.html">[ BACK to TABLE of CONTENTS ]</a>
     </div>
 </body>
+
 </html>

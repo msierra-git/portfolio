@@ -2,41 +2,7 @@
    Element Type Selectors
 */
 
-/* applying styles on the header, author, and description */
-/* header {
-   padding: 10px;
-   text-align: center;
-   background-image: linear-gradient(red, yellow);
-   color: white;
-}
 
-h1 {
-   color: black;
-   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-   font-size: 70px;
-   font-style: normal;
-   font-variant: small-caps;
-   font-stretch: extra-expanded;
-   text-shadow: 2px 2px gray;
-   padding: 10px 0 20px 0;
-   margin: 0px;
-   border: 0px;
-}
-
-h2 {
-   font-size: 2rem;
-   font-weight: bold;
-   font-family: Georgia, 'Times New Roman', Times, serif;
-   font-variant: small-caps;
-   padding: 1rem;
-}
-
-h3 {
-   font-size: 20px;
-   font-weight: bold;
-   font-style: italic;
-   padding: 1rem;
-} */
 
 /* ---------------------------
    Individual ID Selectors
@@ -64,16 +30,6 @@ h3 {
    font-size: 14px;
 }
 
-/* applying styles on the output of this program */
-/* #divOutput {
-   color: rgb(67, 66, 66);
-}
-
-#divOutput p {
-   padding: 0 0 1rem 2rem;
-   font-family: Arial, Helvetica, sans-serif;
-} */
-
 /* ---------------------------
    Class ID Selectors
 */
@@ -89,4 +45,24 @@ h3 {
    text-align: center;
    /* background: rgb(75, 75, 75); */
    background: linear-gradient(to right,rgb(5, 84, 136), rgb(3, 164, 115));
+}
+
+/* use this class to hide elements the space for the element will NOT be preserved */
+.hidden {
+   display: none;
+}
+
+/* use this class to make elements not visible the space for the element WILL be preserved */
+.invisible {
+   visibility: hidden;
+}
+
+/* use this class to make error background red */
+.error {
+   background-color: red;
+}
+
+/* Added this class to make success messages with green background */
+.success {
+   background-color: green;
 }
