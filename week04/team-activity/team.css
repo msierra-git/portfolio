@@ -5,7 +5,7 @@
    width: 300px;
    height: 300px;
    text-align: center;
-   font-size: 70px;
+   font-size: 60px;
 }
 
 #top1 {
@@ -55,19 +55,14 @@
 
 div>* {
    background-color: lightcyan;
-
-   padding-top: 10px;
-   /* border: 1px solid black; */
+   padding-top: 4px;
 }
 
-.top,
-.mid {
+.top, .mid {
    border-bottom: 3px solid darkblue;
 }
 
-.top,
-.mid,
-.bottom {
+.top, .mid, .bottom {
    border-right: 3px solid darkblue;
 }
 
