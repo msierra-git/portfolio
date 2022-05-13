@@ -1,21 +1,26 @@
-export function getLocalStorage(itemPK) {
-   const entry = localStorage.getItem(itemPK);
+export function getLocalStorage(recID) {
+   const entry = localStorage.getItem(recID);
    return JSON.parse(entry);
 }
 
 
-export function setLocalStorage(itemPK, itemData) {
-   const entry = JSON.stringify(itemData);
-   localStorage.setItem(itemPK, entry);
+export function setLocalStorage(recID, recValue) {
+   const entry = JSON.stringify(recValue);
+   localStorage.setItem(recID, entry);
 }
 
 
 export function showLocalStorage() {
-   let values = [],
-      keys = Object.keys(localStorage),
-      i = keys.length;
-   while (i--) {
-      values.push(localStorage.getItem(keys[i]));
+   let recValues = [],
+      recID = Object.keys(localStorage),
+      record = recID.length;
+   while (record--) {
+      recValues.push(localStorage.getItem(recID[record]));
    }
-   return values;
+   return recValues;
+}
+
+
+export function clearLocalStorage() {
+   (localStorage.length > 0 ? localStorage.clear() : console.log("localStorage is empty"));
 }

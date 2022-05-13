@@ -1,0 +1,76 @@
+#ticTac {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr;
+   width: 300px;
+   height: 300px;
+   text-align: center;
+   font-size: 70px;
+}
+
+#top1 {
+   grid-column: 1 span 1;
+   grid-row: 1 span 1;
+}
+
+#top2 {
+   grid-column: 2 span 1;
+   grid-row: 1 span 1;
+}
+
+#top3 {
+   grid-column: 3 span 1;
+   grid-row: 1 span 1;
+}
+
+#mid1 {
+   grid-column: 1 span 1;
+   grid-row: 2 span 1;
+}
+
+#mid2 {
+   grid-column: 2 span 1;
+   grid-row: 2 span 1;
+}
+
+#mid3 {
+   grid-column: 3 span 1;
+   grid-row: 2 span 1;
+}
+
+#bottom1 {
+   grid-column: 1 span 1;
+   grid-row: 3 span 1;
+}
+
+#bottom2 {
+   grid-column: 2 span 1;
+   grid-row: 3 span 1;
+}
+
+#bottom3 {
+   grid-column: 3 span 1;
+   grid-row: 3 span 1;
+}
+
+div>* {
+   background-color: lightcyan;
+
+   padding-top: 10px;
+   /* border: 1px solid black; */
+}
+
+.top,
+.mid {
+   border-bottom: 3px solid darkblue;
+}
+
+.top,
+.mid,
+.bottom {
+   border-right: 3px solid darkblue;
+}
+
+.right {
+   border-right: none;
+}
