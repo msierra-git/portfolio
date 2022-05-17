@@ -12,8 +12,8 @@ let board = document.querySelector("#ticTac");
 // }, false);
 
 
-board.addEventListener('touchend', handler, false);
 board.addEventListener('click', handler, false);
+// board.addEventListener('touchend', handler, false);
 
 
 function handler(event) {
