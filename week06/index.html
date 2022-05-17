@@ -17,11 +17,38 @@ layout: default
     <link rel="stylesheet" href="../styles.css" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="module" src="test.js"></script>
     <script type="module" src="ToDos.js"></script>
+    <!-- <script type="module" src="test.js"></script> -->
     <style>
-        .badge {
+        #spn_countItems.badge {
             vertical-align: top;
+        }
+        #ul_listItems li {
+            width: 293px;
+            background-color:lightgrey;
+            list-style-type: none;
+            border-bottom: 1px solid black; 
+            margin-left: -35px;  
+            padding-right: 0;
+        }
+        #ul_listItems li input {
+            width: 30px;
+        }
+        #ul_listItems li label {
+            width: 225px;
+        }
+        #txt_entryItem {
+            width: 260px;
+            margin: 3px;
+        }
+        .completed_item {
+            text-decoration: line-through;
+        }
+        .hide_item {
+            display: none;
+        }
+        .deleted_item {
+            display: none;
         }
     </style>
 </head>
@@ -33,20 +60,21 @@ layout: default
     <hr><br>
     <h3>Todos</h3>
     <div id="div_todoApp">
-        <div id="div_todoList">
-            <ul class="list-group" id="ul_listItems"></ul>
+        <div class="" id="div_todoList">
+            <ul class="" id="ul_listItems">
+            </ul>
         </div>
         <div class="input-group-sm" id="div_todoFilter">
             <span class="badge" id="spn_countItems">0</span>
             <div class="btn-group mb-2">
-                <button class="btn btn-light" type="button" id="btn_allItems">ALL</button>
-                <button class="btn btn-light" type="button" id="btn_activeItems">Active</button>
-                <button class="btn btn-light" type="button" id="btn_completeItems">Completed</button>
+                <button class="btn btn-light" type="button" id="btn_allItems" title="View ALL Task(s)">ALL</button>
+                <button class="btn btn-light" type="button" id="btn_activeItems" title="View ACTIVE Task(s) only">Active</button>
+                <button class="btn btn-light" type="button" id="btn_completeItems" title="View COMPLETED Task(s) only">Completed</button>
             </div>
         </div>
         <p>&nbsp;</p>
         <div class="form-inline" id="div_todoEntry">
-            <input type="text" class="form-control mb-2" placeholder="Enter to do item" id="txt_entryItem" value="trial">
+            <input type="text" class="form-control mb-2" placeholder="Enter to do item" id="txt_entryItem">
             <button class="btn btn-light mb-2" type="button" id="btn_addItem">+</button>
         </div>
     </div>
