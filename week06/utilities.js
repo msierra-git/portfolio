@@ -103,13 +103,21 @@ export function showCountForActiveTasks() {
 
 
 // bind listener to the botton where user input the new task
+// and to textbox when enter key is hit
 export function bindNewItemListener() {
    const addBtn = document.querySelector('#btn_addItem');
-
    addBtn.addEventListener('click', function (event) {
       event.preventDefault();
       const textbox = document.getElementById('txt_entryItem');
       addNewItem(textbox);
+   });
+
+   const addEnter = document.getElementById('txt_entryItem');
+   addEnter.addEventListener('keypress', function (event) {      
+      if (event.key === 'Enter') {
+         event.preventDefault();      
+         addNewItem(this);
+      }
    });
 }
 
