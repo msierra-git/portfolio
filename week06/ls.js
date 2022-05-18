@@ -1,3 +1,12 @@
+/*==========================================================
+ *   Course Code:     WDD330 - Web Frontend Development II *
+ *   Student Name:    A. Michael Sierra                    *
+ *   Filename:        ls.js                                *
+ *   Description:     functions accessing and manipulating *
+ *                    data inside localStorage             *
+ *   Date:            Week 06 - May 2022                   *
+ ==========================================================*/
+
 import {setToDoArray, showItem} from './utilities.js';
 
 

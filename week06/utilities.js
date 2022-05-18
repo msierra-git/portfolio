@@ -1,9 +1,20 @@
-import {
-   setLocalStorage,
-   updateLocalStorage,
-   removeLocalStorage,
-   showLocalStorage_toConsole
-} from './ls.js';
+/*==========================================================
+ *   Course Code:     WDD330 - Web Frontend Development II *
+ *   Student Name:    A. Michael Sierra                    *
+ *   Filename:        utilities.js                         *
+ *   Description:     utility functions to:                *
+ *                    > access and manipulate array        *
+ *                    > access and manipulate object       *
+ *                    > show list of tasks on webpage      *
+ *                    > manipulate tasks on webpage        *
+ *                    > bind eventlisteners to elements    *
+ *   Date:            Week 06 - May 2022                   *
+ ==========================================================*/
+
+
+import { setLocalStorage, updateLocalStorage, 
+         removeLocalStorage, showLocalStorage_toConsole } 
+from './ls.js';
 let toDoList = [];
 
 
@@ -67,7 +78,8 @@ export function showItem(todo) {
 }
 
 
-// sort object array by timestamp (oldest on top to newest entry)
+// sort object array by timestamp 
+// (from oldest to newest entries)
 export function sortToDoList() {
    toDoList.sort(function (a, b) {
       var idA = new Date(a.id);
@@ -80,22 +92,22 @@ export function sortToDoList() {
 }
 
 
-// put values to an array in the required format then return the array
+// put values to an array in the required format 
 export function setToDoArray(key, entry, status) {
-   const todo = {
-      id: key,
-      content: entry,
-      completed: status
-   };
+   const todo = 
+      { id: key, content: entry, completed: status };
    return todo;
 }
 
 
-// show the count of the ACTIVE tasks on webpage as required
+// show the count of the ACTIVE tasks on webpage
+// as per required in the project description
 export function showCountForActiveTasks() {
-   const activeToDoList = toDoList.filter((item) => !item.completed);
-   const activeCount    = activeToDoList.length;
+   // get all items that have 'false' value in completed
+   const actItems = toDoList.filter((item) => !item.completed);
+   const activeCount    = actItems.length;
 
+   // display result on the webpage
    document.querySelector('#spn_countItems').innerHTML =
       (activeCount < 0 ? 0 : activeCount) + 
       (activeCount > 1 ? " tasks left" : " task left");
@@ -108,9 +120,9 @@ export function bindNewItemListener() {
    const addBtn = document.querySelector('#btn_addItem');
    addBtn.addEventListener('click', function (event) {
       event.preventDefault();
-      const textbox = document.getElementById('txt_entryItem');
-      addNewItem(textbox);
-   });
+      const txtbox = document.getElementById('txt_entryItem');
+      addNewItem(txtbox);
+   }, false);
 
    const addEnter = document.getElementById('txt_entryItem');
    addEnter.addEventListener('keypress', function (event) {      
@@ -118,14 +130,18 @@ export function bindNewItemListener() {
          event.preventDefault();      
          addNewItem(this);
       }
-   });
+   }, false);
 }
 
 
+// add event listeners to the filter buttons on the page
 export function bindFilterButtonListener() {   
-   bindAllButtonListener();         // add click listener to "ALL" button
-   bindActiveButtonListener();      // add click listener to "Active" button
-   bindCompletedButtonListener();   // add click listener to "Completed" button
+   // add click listener to "ALL" button
+   bindAllButtonListener();      
+   // add click listener to "Active" button   
+   bindActiveButtonListener();  
+   // add click listener to "Completed" button    
+   bindCompletedButtonListener();   
 }
 
 
@@ -151,16 +167,22 @@ function addNewItem(item) {
    if (typeof entry === 'undefined') {
       console.log("User entry is " + entry);
    } else {
-      // format timestamp before uploading to local storage and object array
+      // format timestamp before uploading array  
+      // into localStorage and object
       let localID1 = JSON.stringify(getCustomTimeStamp(0));
       let localID2 = JSON.parse(localID1);
       let todo = setToDoArray(localID2, entry, false);
 
-      addItemToDoList(todo);              // add entry to the object array
-      setLocalStorage(todo.id, todo);     // add entry to the local storage
-      showItem(todo);                     // add entry to the bottom of the list
-      showCountForActiveTasks();          // refresh count on page
-      resetUserEntry(item);               // clear the textbox, ready for another entry
+      // add entry to the object array
+      addItemToDoList(todo);  
+      // add entry to the local storage            
+      setLocalStorage(todo.id, todo);  
+      // add entry to the bottom of the list   
+      showItem(todo);      
+      // refresh count on page               
+      showCountForActiveTasks();  
+      // clear the textbox, ready for another entry        
+      resetUserEntry(item);               
    }
 }
 
@@ -168,10 +190,12 @@ function addNewItem(item) {
 // mark item as completed or active
 function setItemStatus(item, status) {
    const itemID = item.querySelector('input[type=checkbox]').id;
-   // add or remove class to strike-out label for completed task
+   // add or remove class/strike-out on task based on status
    (status) ?
-      item.querySelector('label').classList.add("completed_item") :
-      item.querySelector('label').classList.remove("completed_item");
+      item.querySelector('label')
+         .classList.add("completed_item")   :
+      item.querySelector('label')
+         .classList.remove("completed_item");
    
    // update value completed key in toDoList object array
    updateToDOList(itemID, status);
@@ -194,8 +218,10 @@ function setItemDeleted(item) {
 
    if (confirmDelete) {
       // get checkbox id value
-      const itemID = myParent.querySelector('input[type=checkbox]').id;
-      // remove the item from the webpage... refreshing webpage will remove the item too
+      const itemID = 
+         myParent.querySelector('input[type=checkbox]').id;
+      // remove the item from the webpage... 
+      // refreshing webpage will remove the item too
       myParent.classList.add("deleted_item");
       // delete item from toDOList object
       removeItemToDoList(itemID);
@@ -222,8 +248,9 @@ function updateToDOList(itemID, status) {
    strID = JSON.parse(strID);
    let objIndex = toDoList.findIndex((obj => obj.id == strID));
 
-   objIndex > 0 ? toDoList[objIndex].completed = status :
-                  console.log(toDoList);
+   (objIndex > 0) ? 
+      toDoList[objIndex].completed = status :
+      console.log(toDoList);
    // console.log('Updating item from List');
    // console.log(toDoList[objIndex]);
 }
@@ -262,7 +289,11 @@ function filterShowActiveItems() {
    let liElem = ulElem.children;
    
    for (let i = 0; i < liElem.length; i++) {
-      if (liElem[i].querySelector('input[type=checkbox]').checked) {
+      // get current checkbox state 
+      let status = 
+         liElem[i].querySelector('input[type=checkbox]').checked;
+
+      if (status) {
          liElem[i].classList.add('hide_item');
       } else {
          liElem[i].classList.remove('hide_item');
@@ -280,7 +311,11 @@ function filterShowCompleteItems() {
    let liElem = ulElem.children;
    
    for (let i = 0; i < liElem.length; i++) {
-      if (!liElem[i].querySelector('input[type=checkbox]').checked) {
+      // get current checkbox state 
+      let status = 
+         liElem[i].querySelector('input[type=checkbox]').checked;
+
+      if (status) {
          liElem[i].classList.add('hide_item');
       } else {
          liElem[i].classList.remove('hide_item');
@@ -288,7 +323,8 @@ function filterShowCompleteItems() {
    }
    // refresh the count on webpage
    // setItemCount();
-   document.querySelector('#spn_countItems').innerHTML = "0 task left";
+   document.querySelector('#spn_countItems').innerHTML = 
+      "0 task left";
 }
 
 
@@ -309,45 +345,49 @@ function resetUserEntry(item) {
 // adding event listener to the item's checkbox
 function bindItemCheckboxListener(element) {
    element.addEventListener('change', function (event) {
-      // this.querySelector('input[type=checkbox]').checked ?
-      //    setItemCompleted(this) : setItemActive(this);
-      setItemStatus(this, this.querySelector('input[type=checkbox]').checked);
-   });
+      const status = 
+         this.querySelector('input[type=checkbox]').checked;
+      setItemStatus(this, status);
+   }, false);
 }
 
 
 // adding event listener to the item's delete button
 function bindItemButtonListener(element) {
-   element.querySelector('button').addEventListener('click', function (event) {
-      setItemDeleted(this);
-   });
+   element.querySelector('button')
+      .addEventListener('click', function (event) {
+         setItemDeleted(this);
+   }, false);
 }
 
 
 // adding event listener to the "ALL" filter button
 function bindAllButtonListener() {
-   document.getElementById('btn_allItems').addEventListener('click', function(event) {
-      event.preventDefault();
-      filterShowAllItems();
-   });
+   document.getElementById('btn_allItems')
+      .addEventListener('click', function(event) {
+         event.preventDefault();
+         filterShowAllItems();
+   }, false);
 }
 
 
 // adding event listener to the "Active" filter button
 function bindActiveButtonListener() {   
-   document.getElementById('btn_activeItems').addEventListener('click', function(event) {
-      event.preventDefault();
-      filterShowActiveItems();
-   });
+   document.getElementById('btn_activeItems')
+      .addEventListener('click', function(event) {
+         event.preventDefault();
+         filterShowActiveItems();
+   }, false);
 }
 
 
 // adding event listener to the "Completed" filter button
 function bindCompletedButtonListener() {
-   document.getElementById('btn_completeItems').addEventListener('click', function(event) {
-      event.preventDefault();
-      filterShowCompleteItems();
-   });   
+   document.getElementById('btn_completeItems')
+      .addEventListener('click', function(event) {
+         event.preventDefault();
+         filterShowCompleteItems();
+   }, false);   
 }
 
 
@@ -364,8 +404,9 @@ function bindCompletedButtonListener() {
 //             setItemCompleted(this) : setItemActive(this);
 //       });
 //
-//       li[i].querySelector('button').addEventListener('click', function (event) {
-//          setItemDeleted(this);
+//       li[i].querySelector('button')
+//          .addEventListener('click', function (event) {
+//             setItemDeleted(this);
 //       });
 //    }
 // }

@@ -1,8 +1,8 @@
 /*==========================================================
  *   Course Code:     WDD330 - Web Frontend Development II *
  *   Student Name:    A. Michael Sierra                    *
- *   Description:     Simple To Do Tracking Application    *
- *   Date:            Week 06 - 2022                       *
+ *   Project:         Simple To Do Tracking Application    *
+ *   Date:            Week 06 - May 2022                   *
  ==========================================================*/
 
 import {fromLocalStorage_toToDoList, showToDoList_toPage, 
@@ -21,10 +21,11 @@ showToDoList_toPage();
 // list the task(s) on the page based on entries of the local storage
 // showLocalStorage_toPage();
 
-// add listener to the textbox for new entries
+// add event listeners to the textbox and button for new entries
 bindNewItemListener();
+
+// add event listeners to the filter buttons as per scope
 bindFilterButtonListener();
 
-// set count of task in the page
-// setItemCount();
+// set count of task in the page as per scope of this project
 showCountForActiveTasks();

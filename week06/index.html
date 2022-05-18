@@ -19,53 +19,7 @@ layout: default
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="module" src="ToDos.js"></script>
     <!-- <script type="module" src="test.js"></script> -->
-    <style>
-        #spn_countItems.badge {
-            vertical-align: top;
-        }
-        #ul_listItems li:first-of-type {
-            border-top: 1px solid black;
-        }
-        #ul_listItems li {
-            width: 320px;
-            height: 40px;
-            background-color:#F2F2F2;
-            list-style-type: none;
-            border-bottom: 1px solid black; 
-            margin-left: -35px;  
-            /* padding-right: 0; */
-            /* vertical-align: top; */
-        }
-        /* #ul_listItems li:last-of-type {
-            border-bottom: 2px solid black;
-        } */
-
-        #ul_listItems li input {
-            width: 30px;
-        }
-        #ul_listItems li label {
-            width: 252px;
-        }
-        #txt_entryItem {
-            width: 280px;
-            margin: 3px;
-        }
-        .completed_item {
-            text-decoration: line-through;
-        }
-        .hide_item {
-            display: none;
-        }
-        .deleted_item {
-            display: none;
-        }
-        li>button.btn, #btn_addItem {
-            background-color: cadetblue;
-        }
-        li>button.btn:hover {
-            background-color: lightgrey;
-        }
-    </style>
+    <link rel="stylesheet" href="todo.css" />
 </head>
 
 <body>
@@ -76,8 +30,7 @@ layout: default
     <h3>Todos</h3>
     <div id="div_todoApp">
         <div class="" id="div_todoList">
-            <ul class="" id="ul_listItems">
-            </ul>
+            <ul class="" id="ul_listItems"></ul>
         </div>
         <div class="input-group-sm" id="div_todoFilter">
             <span class="badge" id="spn_countItems">0</span>
