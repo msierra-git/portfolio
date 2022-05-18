@@ -316,9 +316,9 @@ function filterShowCompleteItems() {
          liElem[i].querySelector('input[type=checkbox]').checked;
 
       if (status) {
-         liElem[i].classList.add('hide_item');
-      } else {
          liElem[i].classList.remove('hide_item');
+      } else {
+         liElem[i].classList.add('hide_item');
       }      
    }
    // refresh the count on webpage
