@@ -102,14 +102,18 @@ export function setToDoArray(key, entry, status) {
 
 // show the count of the ACTIVE tasks on webpage
 // as per required in the project description
-export function showCountForActiveTasks() {
+export function showCountForActiveTasks(caller) {
    // get all items that have 'false' value in completed
    const actItems = toDoList.filter((item) => !item.completed);
-   const activeCount    = actItems.length;
+   const activeCount = actItems.length;
 
    // display result on the webpage
+   const filterName 
+      = "<br><font color='gray'>(" + caller + ")</font>";
+
    document.querySelector('#spn_countItems').innerHTML =
-      (activeCount < 0 ? 0 : activeCount) + 
+      // (activeCount < 0 ? 0 : activeCount) + 
+      activeCount +
       (activeCount > 1 ? " tasks left" : " task left");
 }
 
@@ -248,8 +252,9 @@ function updateToDOList(itemID, status) {
    strID = JSON.parse(strID);
    let objIndex = toDoList.findIndex((obj => obj.id == strID));
 
-   (objIndex > 0) ? 
+   (objIndex > -1) ? 
       toDoList[objIndex].completed = status :
+      console.log("Error in updating To Do list");
       console.log(toDoList);
    // console.log('Updating item from List');
    // console.log(toDoList[objIndex]);
@@ -301,7 +306,7 @@ function filterShowActiveItems() {
    }
    // refresh the count on webpage
    // setItemCount();
-   showCountForActiveTasks();
+   showCountForActiveTasks('Active');
 }
 
 
@@ -323,8 +328,9 @@ function filterShowCompleteItems() {
    }
    // refresh the count on webpage
    // setItemCount();
+   const filterName = "<font color='gray'>(Completed)</font>";
    document.querySelector('#spn_countItems').innerHTML = 
-      "0 task left";
+      "0 task left" + "<br>";
 }
 
 
