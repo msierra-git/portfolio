@@ -47,6 +47,9 @@
 #hikes .description {
    grid-row: 2 span 1;
    grid-column: 2 span 1;
-   /* align-self: center; */
    justify-self: center;
+}
+
+#hikes #hikeDetails {
+   grid-column: 1 / 3;
 }
