@@ -48,9 +48,16 @@ const hikeList = [
  
  function renderHikeList(hikes, parent) {
    hikes.forEach(hike => {
-     parent.appendChild(renderOneHike(hike));
+     let liItem = renderOneHike(hike);
+      let resetButton = document.createElement('button');
+     parent.appendChild(liItem);
+     liItem.addEventListener('click', function() {
+        parent.innerHTML = "";
+        parent.appendChild(liItem);
+     })     
    });
  }
+
  function renderOneHike(hike) {
    const item = document.createElement("li");
  
