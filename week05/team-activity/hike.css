@@ -35,7 +35,8 @@
    grid-column: 1 / 3;
    text-align: center;
    font-size: xx-large;
-   background-color: lightblue;
+   background-color: rgb(18, 104, 132);
+   color: white;
 }
 
 #hikes .image {
