@@ -44,10 +44,11 @@
    grid-column: 1 span 1;
 }
 
-#hikes .description {
+#hikes .details {
    grid-row: 2 span 1;
    grid-column: 2 span 1;
-   justify-self: center;
+   /* justify-self: center; */
+   padding-left: 2em;
 }
 
 #hikes #hikeDetails {
