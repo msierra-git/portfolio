@@ -49,7 +49,8 @@ export function showItem(todo) {
    // create list elements with checkbox, label and button
    let todoItems  = document.getElementById('ul_listItems');
    let todoItem   = document.createElement('li');
-   // let todoDiv    = document.createElement('div');
+   // optional div container for 3 elements
+   // let todoDiv    = document.createElement('div'); 
    let todoCheck  = document.createElement('input');
    let todoLabel  = document.createElement('label');
    let todoButton = document.createElement('button');
@@ -65,9 +66,12 @@ export function showItem(todo) {
       todoLabel.setAttribute('class', 'completed_item');
    }
 
-   // organise and append elements together
-   // todoItem.appendChild(todoDiv);
+   // --> if using the optional div container
+   // todoItem.appendChild(todoDiv);      
    // todoDiv.appendChild(todoCheck);
+   // --> end of optional container
+   
+   // organise and append elements together
    todoItem.appendChild(todoCheck);
    todoCheck.after(todoLabel);
    todoLabel.after(todoButton);
