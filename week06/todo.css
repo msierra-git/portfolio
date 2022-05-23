@@ -25,13 +25,13 @@
    /* vertical-align: top; */
 }
 
-#ul_listItems li > div {
+/* #ul_listItems li > div {
    vertical-align: middle;
-}
+} */
 
 /* #ul_listItems li:last-of-type {
-         border-bottom: 2px solid black;
-     } */
+   border-bottom: 2px solid black;
+} */
 
 #ul_listItems li input {
    width: 30px;
@@ -58,11 +58,15 @@
    display: none;
 }
 
-li>div>button.btn,
+li button.btn,
 #btn_addItem {
    background-color: cadetblue;
 }
 
-li>button.btn:hover {
+li button.btn:hover {
    background-color: #CDCDCD;
+}
+
+.btn {
+   margin-bottom: 0rem;
 }
