@@ -15,6 +15,11 @@
 import { setLocalStorage, updateLocalStorage, 
          removeLocalStorage, showLocalStorage_toConsole } 
 from './ls.js';
+
+
+// global variables within this file only
+const maxNumOfChars = 30;
+const txtEntry = document.getElementById('txt_entryItem');
 let toDoList = [];
 
 
@@ -70,7 +75,7 @@ export function showItem(todo) {
    // todoItem.appendChild(todoDiv);      
    // todoDiv.appendChild(todoCheck);
    // --> end of optional container
-   
+
    // organise and append elements together
    todoItem.appendChild(todoCheck);
    todoCheck.after(todoLabel);
@@ -131,17 +136,21 @@ export function bindNewItemListener() {
    const addBtn = document.querySelector('#btn_addItem');
    addBtn.addEventListener('click', function (event) {
       event.preventDefault();
-      const txtbox = document.getElementById('txt_entryItem');
-      addNewItem(txtbox);
+      // const txtbox = document.getElementById('txt_entryItem');
+      addNewItem(txtEntry);
    }, false);
 
-   const addEnter = document.getElementById('txt_entryItem');
-   addEnter.addEventListener('keypress', function (event) {      
+   // const addEnter = document.getElementById('txt_entryItem');
+   txtEntry.addEventListener('keypress', function (event) {      
       if (event.key === 'Enter') {
          event.preventDefault();      
          addNewItem(this);
       }
    }, false);
+
+   txtEntry.addEventListener('input', function() {
+      countInputCharacters('count');
+   }, false); 
 }
 
 
@@ -216,7 +225,6 @@ function setItemStatus(item, status) {
    // setItemCount();
    showCountForActiveTasks();
 }
-
 
 
 // remove item from the list
@@ -343,7 +351,8 @@ function filterShowCompleteItems() {
 
 // get the user's entry from the input textbox
 function getUserEntry(item) {
-   return (item.value.length != 0 ? item.value :
+   return (item.value.length != 0 ? 
+      item.value.substring(0, maxNumOfChars) :
       alert("Input text field is empty!"));
 }
 
@@ -352,6 +361,7 @@ function getUserEntry(item) {
 function resetUserEntry(item) {   
    item.value = '';
    item.focus();
+   countInputCharacters('reset');
 }
 
 
@@ -403,6 +413,26 @@ function bindCompletedButtonListener() {
    }, false);   
 }
 
+
+// additional feature to limit and count the number of 
+// characters on NEW to do item/task
+function countInputCharacters(action) {
+   // let textInput = document.getElementById("txt_entryItem");
+   let charCounter = document.getElementById("char_count");
+   let numOfEnteredChars = txtEntry.value.length;
+   let counter = 0;
+   (action === 'reset') ? 
+      counter = 30 : counter = maxNumOfChars - numOfEnteredChars;
+      charCounter.textContent = counter + " characters left";
+   
+   if (counter < 0) {
+      charCounter.style.color = "red";
+   } else if (counter < 10) {
+      charCounter.style.color = "orange";
+   } else {
+      charCounter.style.color = "lightgray";
+   }
+};
 
 
 

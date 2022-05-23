@@ -5,12 +5,20 @@
  *   Date:            Week 06 - May 2022                   *
  ==========================================================*/
 
-import {fromLocalStorage_toToDoList, showToDoList_toPage, 
-        bindNewItemListener, bindFilterButtonListener, showCountForActiveTasks} 
-        from './utilities.js';
-import {showLocalStorage_toPage, clearLocalStorage} from './ls.js'; 
+import {
+        fromLocalStorage_toToDoList,
+        showToDoList_toPage,
+        bindNewItemListener,
+        bindFilterButtonListener,
+        showCountForActiveTasks
+}
+from './utilities.js';
+import {
+        showLocalStorage_toPage,
+        clearLocalStorage
+} from './ls.js';
 
-// clearLocalStorage(); // initialise localStorage
+// clearLocalStorage(); // initialise localStorage and to reset ls
 
 // copy local storage (ls) to toDoList object if ls is not empty
 fromLocalStorage_toToDoList();
@@ -29,3 +37,6 @@ bindFilterButtonListener();
 
 // set count of task in the page as per scope of this project
 showCountForActiveTasks();
+
+
+

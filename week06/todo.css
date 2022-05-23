@@ -23,7 +23,6 @@
 }
 
 #ul_listItems  {
-
    border-top: 1px solid black;
    width: 320px;
    margin-left: 5px;
@@ -69,4 +68,13 @@ li button.btn:hover {
 
 .btn {
    margin-bottom: 0rem;
+}
+
+.form-inline {
+   margin-bottom: -8px;
+}
+#char_count{
+   font-size: 12px;
+   font-style: italic;
+   margin-left: 15px;
 }
