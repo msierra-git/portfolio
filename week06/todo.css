@@ -58,7 +58,7 @@
    display: none;
 }
 
-li>button.btn,
+li>div>button.btn,
 #btn_addItem {
    background-color: cadetblue;
 }

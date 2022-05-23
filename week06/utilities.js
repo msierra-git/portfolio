@@ -67,7 +67,7 @@ export function showItem(todo) {
 
    // organise and append elements together
    todoItem.appendChild(todoDiv);
-   todoDiv.after(todoCheck);
+   todoDiv.appendChild(todoCheck);
    todoCheck.after(todoLabel);
    todoLabel.after(todoButton);
    todoItems.appendChild(todoItem);
