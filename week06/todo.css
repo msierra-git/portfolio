@@ -16,13 +16,17 @@
 
 #ul_listItems li {
    width: 320px;
-   height: 40px;
+   /* height: 60px; */
    background-color: #F2F2F2;
    list-style-type: none;
    border-bottom: 1px solid black;
    margin-left: -35px;
    /* padding-right: 0; */
    /* vertical-align: top; */
+}
+
+#ul_listItems li > div {
+   vertical-align: middle;
 }
 
 /* #ul_listItems li:last-of-type {

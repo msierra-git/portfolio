@@ -47,10 +47,11 @@ export function showToDoList_toPage() {
 // show current array to webpage and bind listeners
 export function showItem(todo) {
    // create list elements with checkbox, label and button
-   let todoItems = document.getElementById('ul_listItems');
-   let todoItem = document.createElement('li');
-   let todoCheck = document.createElement('input');
-   let todoLabel = document.createElement('label');
+   let todoItems  = document.getElementById('ul_listItems');
+   let todoItem   = document.createElement('li');
+   let todoDiv    = document.createElement('div');
+   let todoCheck  = document.createElement('input');
+   let todoLabel  = document.createElement('label');
    let todoButton = document.createElement('button');
 
    // assign attributes and values to element
@@ -65,7 +66,8 @@ export function showItem(todo) {
    }
 
    // organise and append elements together
-   todoItem.appendChild(todoCheck);
+   todoItem.appendChild(todoDiv);
+   todoDiv.after(todoCheck);
    todoCheck.after(todoLabel);
    todoLabel.after(todoButton);
    todoItems.appendChild(todoItem);
