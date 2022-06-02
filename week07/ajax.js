@@ -2,7 +2,7 @@ const textButton = document.getElementById('number');
 const apiButton = document.getElementById('chuck');
 const outputDiv = document.getElementById('output');
 
-const textURL = 'http://numbersapi.com/random';
+const textURL = 'http://numbersapi.com/random'; // http or non-secure site is not being run in GitHub
 const apiURL = 'https://api.chucknorris.io/jokes/random';
  
 textButton.addEventListener('click', () => {
@@ -16,7 +16,7 @@ textButton.addEventListener('click', () => {
     })
     .then( response => response.text() )
     .then( text => outputDiv.innerText = text )
-    .catch( error => console.log('There was an error:', error))
+    .catch( error => outputDiv.innerText = 'There was an error: ' +  error )
 },false);
 
 apiButton.addEventListener('click', () => {
