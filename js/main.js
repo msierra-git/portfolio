@@ -16,8 +16,8 @@ function createMenu2() {
       ["Week 03 Experience - Full-on with Emergencies", "week03/index.html"],
       ["Week 04 Experience - Early and Distributed Readings", "week04/index.html"],
       ["Week 05 Experience - Learning Testing and Debugging", "week05/index.html"],
-      ["Week 06 Experience - Midterm Checkin - ToDo Application - Project", "week06/index.html"]
-      // ["Week 07 Experience", "week07/index.html"],
+      ["Week 06 Experience - Midterm Checkin - ToDo Application - Project", "week06/index.html"],
+      ["Week 07 Experience - More Functions and AJAX", "week07/index.html"]
       // ["Week 08 Experience", "week08/index.html"],
       // ["Week 09 Experience", "week09/index.html"],
       // ["Week 10 Experience", "week10/index.html"],
