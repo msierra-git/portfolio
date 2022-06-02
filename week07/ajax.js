@@ -17,8 +17,8 @@ textButton.addEventListener('click', () => {
     .then( response => response.text() )
     .then( text => outputDiv.innerText = text )
     .catch( error => outputDiv.innerText = 
-            'There was an error: <font color="red">' 
-            +  error + ".</font>")
+            'There was an error: <span id="error">' 
+            +  error + ".</span>")
 },false);
 
 apiButton.addEventListener('click', () => {
