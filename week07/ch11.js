@@ -3,7 +3,7 @@ let allOutput = '';
 let spacer    = '<br>&nbsp;&nbsp;* ';
 
 // Function Properties and Methods
-let test1 = '<br><br><b><i><< Function Properties and Methods >></i></b>';
+let test1 = '<span id="topic"><< Function Properties and Methods >></span>';
 function square(x) {
     return x*x;
 };
@@ -21,12 +21,12 @@ let code5 = square.call(null, 4);
 let code6 = square.apply(null, [4]);
 
 // Custom Properties
-let test2 = '<br><br><b><i><< Custom Properties >></i></b>';
+let test2 = '<span id="topic"><< Custom Properties >></span>';
 square.description= 'Squares a number that is provided as an argument';
 let code7 = square.description;
 
 // Memorization
-let test3 = '<br><br><b><i><< Memorization >></i></b>';
+let test3 = '<span id="topic"><< Memorization >></span>';
 function square(x){
     square.cache = square.cache || {};
     if (!square.cache[x]) {
@@ -39,14 +39,14 @@ square(-11);
 let code8 = square.cache;
 
 // Immediately Invoked Function Expression
-let test4 = '<br><br><b><i><< Immediately Invoked Function Expression >></i></b>';
+let test4 = '<span id="topic"><< Immediately Invoked Function Expression >></span>';
 (function(){
     const temp = 'World';
     console.log(`Hello ${temp}`);
 })();
 
 // Temporary Variables
-let test5 = '<br><br><b><i><< Temporary Variables >></i></b>';
+let test5 = '<span id="topic"><< Temporary Variables >></span>';
 let a = 1;
 let b = 2;
 
@@ -63,7 +63,7 @@ let code11 = 'Error: "temp is not defined"';
 
 
 // Initialization Code
-let test6 = '<br><br><b><i><< Initialization Code >></i></b>';
+let test6 = '<span id="topic"><< Initialization Code >></span>';
 (function() {
     const name = 'Peter Parker'; // This might be obtained from a cookie in reality
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday', 'Friday','Saturday'];
@@ -81,7 +81,7 @@ let test6 = '<br><br><b><i><< Initialization Code >></i></b>';
 }
 
 // Creating Self-contained Code Blocks
-let test7 = '<br><br><b><i><< Creating Self-contained Code Blocks >></i></b>';
+let test7 = '<span id="topic"><< Creating Self-contained Code Blocks >></span>';
 (function() {
     // block A
     const name = 'Block A';
@@ -95,7 +95,7 @@ let test7 = '<br><br><b><i><< Creating Self-contained Code Blocks >></i></b>';
 }());
 
 // Functions that Define and Rewrite Themselves
-let test8 = '<br><br><b><i><< Functions that Define and Rewrite Themselves >></i></b>';
+let test8 = '<span id="topic"><< Functions that Define and Rewrite Themselves >></span>';
 function party(){
     console.log('Wow this is amazing!');
     party = function(){
@@ -107,7 +107,7 @@ beachParty();
 party();
 
 // Init-Time Branching
-let test9 = '<br><br><b><i><< Init-Time Branching >></i></b>';
+let test9 = '<span id="topic"><< Init-Time Branching >></span>';
 function ride(){
     if (window.unicorn) { 
         ride = function(){
@@ -125,7 +125,7 @@ function ride(){
 let code12 = ride();
 
 // Recursive Functions
-let test10 = '<br><br><b><i><< Recursive Functions >></i></b>';
+let test10 = '<span id="topic"><< Recursive Functions >></span>';
 function factorial(n) {
     if (n === 0) {
         return 1;
@@ -136,7 +136,7 @@ function factorial(n) {
 let code13 = factorial(4);
 
 // Callbacks
-let test11 = '<br><br><b><i><< Callbacks >></i></b>';
+let test11 = '<span id="topic"><< Callbacks >></span>';
 function wait(message, callback, seconds){
     setTimeout(callback,seconds * 1000);
     console.log(message);
@@ -149,7 +149,7 @@ console.log('Hmmm, should I accept this mission or not ... ?');
 
 
 // Promises
-let test12 = '<br><br><b><i><< Promises >></i></b>';
+let test12 = '<span id="topic"><< Promises >></span>';
 // Syntax...
 // const promise = new Promise( (resolve, reject) => {
 //     // initialization code goes here
@@ -179,7 +179,7 @@ roll.then(result => console.log(`I rolled a ${result}`) )
 console.log('After the roll');
 
 // Generalized Functions
-let test13 = '<br><br><b><i><< Generalized Functions >></i></b>';
+let test13 = '<span id="topic"><< Generalized Functions >></span>';
 function random(a,b=1) {
     // if only 1 argument is provided, we need to swap the values of a and b
     if (b === 1) {
@@ -201,7 +201,7 @@ let code15 = random(11,15);
 let code16 = random(1,5,square());
 
 // Closures
-let test14 = '<br><br><b><i><< Closures >></i></b>';
+let test14 = '<span id="topic"><< Closures >></span>';
 function outer() {
     const outside = 'Outside!';
     function inner() {
@@ -221,7 +221,7 @@ const toFahrenheit = closure();
 let code17 = toFahrenheit(30);
 
 // Generators
-let test15 = '<br><br><b><i><< Generators >></i></b>';
+let test15 = '<span id="topic"><< Generators >></span>';
 function* fibonacci(a,b) {
     let [ prev,current ] = [ a,b ];
     while(true) {
