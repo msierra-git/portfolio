@@ -3,6 +3,7 @@ layout: default
 ---
 <!DOCTYPE HTML>
 <html lang="en-us">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,23 +11,61 @@ layout: default
     <meta name="keywords" content="WDD330, week 08, reading notes, report">
     <meta name="author" content="A. Michael Sierra">
     <title>W08 Reading Notes and Report</title>
-    
-    <!-- <script src="../js/main.js"></script> -->
+
+    <!-- <script src="./swapi-lib/swapi.js"></script> -->
     <!-- <link rel="stylesheet" href="../reset.css" /> -->
-    <link rel="stylesheet" href="../styles.css" /> 
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="reading.css" />
 </head>
+
 <body>
     <header>
         <h1>Week 08 Experience</h1>
     </header>
-    <h2>Reading notes and report for this week</h2><hr><br>
+    <h2>Reading notes and report for this week</h2>
+    <hr><br>
     <div id="divOutput">
-        <h3>Reading:</h3> 
+        <h3>Reading:</h3>
         <ul>
-            <li>Notes...</li>
-            <li>Questions...</li>
-        </ul>       
-        
+            <li>SVG shapes example in HTML<br>
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="60" cy="60" r="50" fill="red" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <desc>Drawing a rectangle</desc>
+                    <rect x="10" y="10" width="100" height="100" fill="blue" stroke="yellow" stroke-width="3" />
+                </svg>
+            </li>
+            <li>SVG shape using CSS<br>
+                <div class="leaf-box">
+                    <div class="leaf"></div>
+                </div>
+            </li>
+            <li>Canvas with gradient using JS<br>
+                <canvas id="myCanvas" class="myCanvas" width="200" height="200">
+                    Sorry! Your browser doesn’t support Canvas.
+                </canvas>
+            </li>
+            <li>Animation example<br>
+                <div class="container container-animate">
+                    <div class="beating-heart"></div>
+                </div>
+            </li>
+            <li>Drag and Drop each Mouse on the Cat
+                <h4 id="catHeading">Cat Reactions!</h4>
+                <img src="pngfind.com-black-cat-png-987841.png" width="90" id="cat" alt="Black Cat">
+                <div class="content">
+                    <p id="mouseContainer" class="mc">
+                        <img src="ftmouse.svg" width="30" alt="mouse treat" id="mouse1" draggable="true">1
+                        <img src="ftmouse.svg" width="30" alt="mouse treat" id="mouse2" draggable="true">2
+                        <img src="ftmouse.svg" width="30" alt="mouse treat" id="mouse3" draggable="true">3
+                    </p>
+                </div>
+            </li>
+        </ul>
+
+            
+
         <h3>Report:</h3>
         <ol>
             <li>What did I do since the last meeting?</li>
@@ -37,12 +76,17 @@ layout: default
     <hr>
     <!-- Footer -->
     <footer class="myfooter">
-        <span id="f_title">Author:</span> 
-        <span id="f_name">A. Michael Sierra</span> 
+        <span id="f_title">Author:</span>
+        <span id="f_name">A. Michael Sierra</span>
         <span id="f_desc">(WDD 330 - Reading and Work Notes - Week 08)</span>
     </footer>
     <div class="mainlink">
         <a href="../index.html">[ BACK to TABLE of CONTENTS ]</a>
     </div>
+
+
+    <script src="reading.js"></script>
+    
 </body>
+
 </html>

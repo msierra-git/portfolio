@@ -1,0 +1,104 @@
+.draganddrop .mc {
+   text-align: center; 
+}
+
+.myCanvas {
+   border: dotted 2px black;
+   margin-bottom: 20px;
+}
+
+/* My leaf drawing */
+.leaf-box {
+   width: 140px;
+   height: 90px;
+   padding: 20px;
+   margin-bottom: 20px;
+   background: #ffffe0;
+}
+
+.leaf {
+   width: 80px;
+   height: 130px;
+   background: green;
+   border-radius: 0 100px / 0 120px;
+   -webkit-transform: rotate(-75deg);
+   -moz-transform: rotate(-75deg);
+   -ms-transform: rotate(-75deg);
+   -o-transform: rotate(-75deg);
+   transform: rotate(-75deg);
+   -webkit-transform-origin: 50% 25%;
+   -moz-transform-origin: 50% 25%;
+   -ms-transform-origin: 50% 25%;
+   -o-transform-origin: 50% 25%;
+   transform-origin: 50% 25%;
+}
+
+/* My heart beating automation */
+.container {
+   height: 150px;
+   width: 150px;
+   background-color: #f5f59c;
+   margin-bottom: 20px;
+}
+
+.container-animate {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.beating-heart {
+   position: relative;
+   width: 100px;
+   height: 80px;
+   animation: beat-twice 1s infinite;
+}
+
+.beating-heart:before,
+.beating-heart:after {
+   position: absolute;
+   content: "";
+   left: 50px;
+   top: 0;
+   width: 50px;
+   height: 80px;
+   background: red;
+   -moz-border-radius: 50px 50px 0 0;
+   border-radius: 50px 50px 0 0;
+   -webkit-transform: rotate(-45deg);
+   -moz-transform: rotate(-45deg);
+   -ms-transform: rotate(-45deg);
+   -o-transform: rotate(-45deg);
+   transform: rotate(-45deg);
+   -webkit-transform-origin: 0 100%;
+   -moz-transform-origin: 0 100%;
+   -ms-transform-origin: 0 100%;
+   -o-transform-origin: 0 100%;
+   transform-origin: 0 100%;
+}
+
+.beating-heart:after {
+   left: 0;
+   -webkit-transform: rotate(45deg);
+   -moz-transform: rotate(45deg);
+   -ms-transform: rotate(45deg);
+   -o-transform: rotate(45deg);
+   transform: rotate(45deg);
+   -webkit-transform-origin: 100% 100%;
+   -moz-transform-origin: 100% 100%;
+   -ms-transform-origin: 100% 100%;
+   transform-origin: 100% 100%;
+}
+
+@keyframes beat-twice {
+   0% {transform: scale(1)}
+   5% {transform: scale(1)}
+   10% {transform: scale(1)}
+   30% {transform: scale(1)}
+   40% {transform: scale(1.2)}
+   50% {transform: scale(1)}
+   80% {transform: scale(1.2)}
+   90% {transform: scale(1)}
+   95% {transform: scale(1)}
+   100% {transform: scale(1)}
+}
