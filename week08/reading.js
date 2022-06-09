@@ -52,3 +52,7 @@ cat.addEventListener("drop", function(event) {
 }, false);
 
 
+document.getElementById("reset").addEventListener("click",
+	function(){
+		document.location.reload(true);
+});
