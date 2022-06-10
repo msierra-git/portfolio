@@ -1,13 +1,14 @@
-/* body{
+body {
     width:75%;
     margin:auto;
-} */
+    /* text-align: center; */
+}
 
-ul {
+/* ul {
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
-}
+} */
 
 th {
     text-align: left;
@@ -18,7 +19,7 @@ th {
 }
 
 #personDetails {
-    width: 500px;
+    width: 400px;
 }
 
 #personDetails li {
