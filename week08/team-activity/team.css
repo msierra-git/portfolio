@@ -3,12 +3,26 @@
     margin:auto;
 } */
 
+ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
 th {
     text-align: left;
 }
 
 #nav, #personDetails {
     margin-top: 20px;
+}
+
+#personDetails {
+    width: 500px;
+}
+
+#personDetails li {
+    margin-bottom: 10px;
 }
 
 .hidden {

@@ -110,11 +110,18 @@ function renderPersonDetails(personData) {
     let li = document.createElement('li');
     let spField = document.createElement('span');
     let spValue = document.createElement('span');
+    // console.log(personData[key]);
+    // console.log(JSON.stringify(personData[key]));
+    let strTemp = personData[key];
+    let strValue = "";
 
+    (key === 'films' || key === 'starships') ? 
+      strValue = (String(strTemp)).replace(/[ ]*,[ ]*|[ ]+/g, ', ') : 
+      strValue = strTemp;
+    
     spField.textContent = toTitleCase(key) + ": ";
-    spValue.textContent = personData[key];
     spField.setAttribute("class", "personFieldName");
-
+    spValue.textContent = strValue;
     li.appendChild(spField);
     spField.after(spValue);
     ul.appendChild(li);
