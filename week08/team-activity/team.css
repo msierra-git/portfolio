@@ -7,7 +7,7 @@ th {
     text-align: left;
 }
 
-#nav {
+#nav, #personDetails {
     margin-top: 20px;
 }
 
