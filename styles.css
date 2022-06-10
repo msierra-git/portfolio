@@ -2,7 +2,9 @@
    Element Type Selectors
 */
 
-
+ol > li {
+   margin-bottom: 20px;
+}
 
 /* ---------------------------
    Individual ID Selectors
@@ -30,6 +32,10 @@
    font-size: 14px;
 }
 
+#divOutput {
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
 /* ---------------------------
    Class ID Selectors
 */
