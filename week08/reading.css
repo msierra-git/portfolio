@@ -2,9 +2,13 @@
    text-align: center; 
 }
 
+.content, .myCanvas, .container  {
+   /*  spacing after li elements */
+   margin-bottom: 20px;
+}
+
 .myCanvas {
    border: dotted 2px black;
-   margin-bottom: 20px;
 }
 
 /* My leaf drawing */
@@ -38,7 +42,6 @@
    height: 150px;
    width: 150px;
    background-color: #f5f59c;
-   margin-bottom: 20px;
 }
 
 .container-animate {

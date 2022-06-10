@@ -76,3 +76,13 @@ var swapiModule = (function () {
     getVehicles: pluralRequestGenerator("vehicles"),
   };
 })();
+
+const outputDiv = document.getElementById('outputFetch');
+document.getElementById("fetchApi").addEventListener(
+  "click", () => {
+    console.log(swapiModule.getPerson(1));
+    outputDiv.innerText = swapiModule.getPerson(1);
+    
+    // outputDiv.innerHTML = (swapiModule.getPerson(1));
+  }
+)
