@@ -1,3 +1,5 @@
+showPeople();
+
 function getJSON(url) {
   return fetch(url)
     .then(function (response) {
@@ -44,8 +46,8 @@ function renderPeopleList(peoples, peopleListElement) {
 
 function showPeople(url = "https://swapi.dev/api/people") {
   getPeople(url).then(function (data) {
-    // console.log(data);
     const results = data.results;
+    formatPageNav(data.previous, data.next);
 
     const peopleListElement = document.getElementById("peoplelist");
     renderPeopleList(results, peopleListElement);
@@ -56,7 +58,7 @@ function showPeople(url = "https://swapi.dev/api/people") {
       // normally we would prefer the addEventListener method of adding a listener. Using something like 'element.onEvent = event_function' has the limitation of only being able to hold one listener of the type we choose. In this case that is a good thing however. Because we are not re-creating the buttons each time we load a new batch of data we could end up with several listeners attached to each button by the last page. We won't have that issue here.
       next.onclick = () => {
         // notice to show the next page we just re-call the showShips function with a new URL
-        showPeople(data.next);
+        showPeople(data.next);        
       };
     }
     if (data.previous) {
@@ -69,17 +71,65 @@ function showPeople(url = "https://swapi.dev/api/people") {
   });
 }
 
+const listPersonDiv = document.getElementById('personDetails');
+
+function formatPageNav(prev, next) {
+  let prevButton = document.getElementById("prevB");
+  let nextButton = document.getElementById("nextB");
+
+  (!prev) ? prevButton.classList.add("hidden"): prevButton.classList.remove("hidden");
+  (!next) ? nextButton.classList.add("hidden"): nextButton.classList.remove("hidden");
+  resetPersonDetails();
+}
+
 function getPersonDetails(url) {
   //call getJSON functions for the provided url
   getPeople(url).then(function (data) {
+    resetPersonDetails();
     renderPersonDetails(data);
-    //with the results populate the elements in the #detailsbox
   });
 }
 
-// need to write the code to render the details to HTML
-function renderPersonDetails(personData) {
-  console.log(personData);
+function resetPersonDetails() {
+  listPersonDiv.innerHTML = "";
 }
 
-showPeople();
+function renderPersonDetails(personData) {  
+  let line1 = document.createElement('hr');
+  let line2 = document.createElement('hr');
+  let ul = document.createElement('ul');
+  let hd4 = document.createElement('h4');
+  
+  hd4.textContent = "Details of " + personData["name"];
+  listPersonDiv.appendChild(line1);
+  line1.after(hd4);
+  hd4.after(ul);
+  
+  for ( let key in personData){
+
+    let li = document.createElement('li');
+    let spField = document.createElement('span');
+    let spValue = document.createElement('span');
+
+    spField.textContent = toTitleCase(key) + ": ";
+    spValue.textContent = personData[key];
+    spField.setAttribute("class", "personFieldName");
+
+    li.appendChild(spField);
+    spField.after(spValue);
+    ul.appendChild(li);
+  }
+  
+ul.after(line2);
+}
+
+
+
+function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g,
+    function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
+  );
+}

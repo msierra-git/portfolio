@@ -7,7 +7,7 @@ layout: default
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Great Hikes (dynamic DOM example)</title>
+  <title>Working with a remote API (SWAPI)</title>
   <link rel="stylesheet" href="../../styles.css" />
   <link rel="stylesheet" href="team.css" />
 </head>
@@ -30,9 +30,12 @@ layout: default
 
       <tbody></tbody>
     </table>
+    <div id="personDetails">
+    </div>
     <div id="nav">
-      <a id="prev" href="#" class=""><button type="button">&lt; Prev</button></a> 
-      <a id="next" href="#" class=""><button type="button">Next &gt;</button></a>
+      <a id="prev" href="#" class=""><button id="prevB" type="button">&lt; Prev</button></a>
+      <span id="recCount"></span>
+      <a id="next" href="#" class=""><button id="nextB" type="button">Next &gt;</button></a>
     </div>
   </div>
 
