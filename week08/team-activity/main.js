@@ -71,6 +71,7 @@ function showPeople(url = "https://swapi.dev/api/people") {
   });
 }
 
+// Additional Codes for stretch challenge
 const listPersonDiv = document.getElementById('personDetails');
 
 function formatPageNav(prev, next) {
@@ -105,8 +106,7 @@ function renderPersonDetails(personData) {
   line1.after(hd4);
   hd4.after(ul);
   
-  for ( let key in personData){
-
+  for ( let key in personData) {
     let li = document.createElement('li');
     let spField = document.createElement('span');
     let spValue = document.createElement('span');
@@ -122,8 +122,6 @@ function renderPersonDetails(personData) {
   
 ul.after(line2);
 }
-
-
 
 function toTitleCase(str) {
   return str.replace(
