@@ -94,14 +94,7 @@ spCmd14.setAttribute('class', 'cmd');
 spCmd14.textContent = "window.screen.colorDepth >> ";
 spVal14.textContent = window.screen.colorDepth;
 
-let spCmd15 = document.createElement('span');
-let spVal15 = document.createElement('span');
-spCmd15.setAttribute('class', 'cmd');
-spCmd15.textContent = "Cookies... >> ";
-spVal15.textContent = "please see JS Console for output";
-
 let popup = '';
-
 function openPopup() {
    popup = window.open('https://sitepoint.com', 'SitePoint',
       'width=400,height=400,resizable=yes', '_blank');
@@ -163,9 +156,6 @@ read1.appendChild(spVal13);
 read1.appendChild(document.createElement("br"));
 read1.appendChild(spCmd14);
 read1.appendChild(spVal14);
-read1.appendChild(document.createElement("br"));
-read1.appendChild(spCmd15);
-read1.appendChild(spVal15);
 read1.appendChild(document.createElement("br"));
 
 
