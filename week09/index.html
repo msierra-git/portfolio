@@ -3,6 +3,7 @@ layout: default
 ---
 <!DOCTYPE HTML>
 <html lang="en-us">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,23 +11,53 @@ layout: default
     <meta name="keywords" content="WDD330, week 09, reading notes, report">
     <meta name="author" content="A. Michael Sierra">
     <title>W09 Reading Notes and Report</title>
-    
-    <!-- <script src="../js/main.js"></script> -->
+
+
     <!-- <link rel="stylesheet" href="../reset.css" /> -->
-    <link rel="stylesheet" href="../styles.css" /> 
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="reading.css" />
 </head>
+
 <body>
     <header>
         <h1>Week 09 Experience</h1>
     </header>
-    <h2>Reading notes and report for this week</h2><hr><br>
+    <h2>Reading notes and report for this week</h2>
+    <hr><br>
     <div id="divOutput">
-        <h3>Reading:</h3> 
+        <h3>Reading:</h3>
         <ul>
-            <li>Notes...</li>
-            <li>Questions...</li>
-        </ul>       
-        
+            <li>Window Object - Exercise Codes
+                <div id="reading1"></div>
+            </li>
+            <li>Window Navigation (history)
+                <div id="reading2">
+                    <button onclick="window.history.go(-1);">Previous Window</button>
+                    <button onclick="window.history.go(0);">Reload Window</button>
+                    <button onclick="window.history.go(1);">Next Window</button>
+                </div>
+            </li>
+            </li>
+            <li>Cookies
+                <div><em>Psst: please have a look at the Console for the code output
+                        <br> or at the "Sources" to see the entire code.</em> 💁
+                </div>
+            <li>Window Popup
+                <div id="reading4">
+                    <button onclick="openPopup();">Open Popup</button>
+                    <button onclick="closePopup();">Close Popup</button>
+                </div>
+            </li>
+            <li>Animation
+                <div id="reading5">
+                    <button onclick="startRotate();">(re)Start</button>
+                    <button onclick="cancelRotate();">Stop</button>
+                    <div id="square"></div>
+                </div>
+            </li>
+            <script src="reading.js"></script>
+        </ul>
+
         <h3>Report:</h3>
         <ol>
             <li>What did I do since the last meeting?</li>
@@ -37,12 +68,13 @@ layout: default
     <hr>
     <!-- Footer -->
     <footer class="myfooter">
-        <span id="f_title">Author:</span> 
-        <span id="f_name">A. Michael Sierra</span> 
+        <span id="f_title">Author:</span>
+        <span id="f_name">A. Michael Sierra</span>
         <span id="f_desc">(WDD 330 - Reading and Work Notes - Week 09)</span>
     </footer>
     <div class="mainlink">
         <a href="../index.html">[ BACK to TABLE of CONTENTS ]</a>
     </div>
 </body>
+
 </html>

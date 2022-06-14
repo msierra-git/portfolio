@@ -1,0 +1,14 @@
+.cmd {
+   font-family: 'Courier New', Courier, monospace;
+   color: #303030;
+}
+#reading1, #reading2 {
+   margin-bottom: 20px;
+}
+
+#square {
+   margin: 40px;
+   width: 100px;
+   height: 100px;
+   background: #d16;
+}

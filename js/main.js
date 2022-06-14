@@ -18,8 +18,8 @@ function createMenu2() {
       ["Week 05 Experience - Learning Testing and Debugging", "week05/index.html"],
       ["Week 06 Experience - Midterm Checkin - ToDo Application - Project", "week06/index.html"],
       ["Week 07 Experience - More Functions and AJAX", "week07/index.html"],
-      ["Week 08 Experience - Revisiting and Learning more HTML5 and CSS3", "week08/index.html"]
-      // ["Week 09 Experience", "week09/index.html"],
+      ["Week 08 Experience - Revisiting and Learning more HTML5 and CSS3", "week08/index.html"],
+      ["Week 09 Experience - Window and API", "week09/index.html"]
       // ["Week 10 Experience", "week10/index.html"],
       // ["Week 11 Experience", "week11/index.html"],
       // ["Week 12 Experience", "week12/index.html"],
