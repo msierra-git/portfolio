@@ -1,13 +1,24 @@
+---
+layout: default
+---
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="../../styles.css" />
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <header>
+    <h1>Week 09 - Team Activity</h1>
+  </header>
+  <h2>JS Drum Kit</h2>
+  <hr><br>
+  <main>
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -57,11 +68,22 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-  <script>
+  <script src="sound.js"></script>
+  </main>
 
-  </script>
 
+  <br>
+  <hr>
+  <!-- Footer -->
+  <footer class="myfooter">
+    <span id="f_title">Author:</span>
+    <span id="f_name">WDD 330 - Team 1</span><br>
+    <span id="f_desc">(Colt Fleming, Mario F. Encalada, Michaela Nell, A. Michael Sierra, Swenson M. Bailey)</span>
+  </footer>
 
+  <div class="mainlink">
+    <a href="../index.html">[ BACK to WEEK 09 ACTIVITY ]</a>
+  </div>
 </body>
 
 </html>

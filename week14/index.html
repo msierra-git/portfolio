@@ -3,46 +3,61 @@ layout: default
 ---
 <!DOCTYPE HTML>
 <html lang="en-us">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="W14 Reading Notes and Report">
-    <meta name="keywords" content="WDD330, week 14, reading notes, report">
+    <meta name="description" content="W06 To Do Application">
+    <meta name="keywords" content="WDD330, week 14, church meeting program tool, application">
     <meta name="author" content="A. Michael Sierra">
-    <title>W14 Reading Notes and Report</title>
+    <title>W14 Project</title>
+
     
-    <!-- <script src="../js/main.js"></script> -->
     <!-- <link rel="stylesheet" href="../reset.css" /> -->
-    <link rel="stylesheet" href="../styles.css" /> 
+    <link rel="stylesheet" href="../styles.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="module" src="cmpt.js"></script>
+    <!-- <script type="module" src="initialDev.js"></script> -->
+    <link rel="stylesheet" href="cmpt.css" />
 </head>
+
 <body>
     <header>
-        <h1>Week 14 Experience</h1>
+        <h1>Week 14 - Church Meeting Program Tool - Project</h1>
     </header>
-    <h2>Reading notes and report for this week</h2><hr><br>
-    <div id="divOutput">
-        <h3>Reading:</h3> 
-        <ul>
-            <li>Notes...</li>
-            <li>Questions...</li>
-        </ul>       
-        
-        <h3>Report:</h3>
-        <ol>
-            <li>What did I do since the last meeting?</li>
-            <li>What am I going to do next?</li>
-            <li>What are my blockers?</li>
-        </ol>
-    </div><br>
+    <hr><br>
+    <h3>List of Programs</h3>
+    <div id="div_cmptApp">
+        <div class="" id="div_cmptList">
+            <ul class="" id="ul_listItems"></ul>
+        </div>
+        <div class="input-group-sm" id="div_cmptFilter">
+            <span class="badge" id="spn_countItems">0</span>
+            <div class="btn-group mb-2">
+                <button class="btn btn-light" type="button" id="btn_allItems" title="View ALL Program(s)">ALL</button>
+                <button class="btn btn-light" type="button" id="btn_pastItems" title="View PAST Program(s) only">Past</button>
+                <button class="btn btn-light" type="button" id="btn_futureItems" title="View FUTURE Program(s) only">Future</button>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        <div class="form-inline" id="div_cmptEntry">
+            <input type="text" class="form-control mb-2" placeholder="Enter to do item" id="txt_entryItem">
+            <button class="btn btn-light mb-2" type="button" id="btn_addItem">+</button>            
+        </div>
+        <span id="char_count"></span>
+    </div>
+    <br>
     <hr>
     <!-- Footer -->
     <footer class="myfooter">
-        <span id="f_title">Author:</span> 
-        <span id="f_name">A. Michael Sierra</span> 
-        <span id="f_desc">(WDD 330 - Reading and Work Notes - Week 14)</span>
+        <span id="f_title">Author:</span>
+        <span id="f_name">A. Michael Sierra</span>
+        <span id="f_desc">(WDD 330 - Church Meeting Program Tool - Project - Week 14)</span>
     </footer>
     <div class="mainlink">
         <a href="../index.html">[ BACK to TABLE of CONTENTS ]</a>
     </div>
 </body>
+
 </html>

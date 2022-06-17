@@ -1,0 +1,81 @@
+/*==========================================================
+ *   Course Code:     WDD330 - Web Frontend Development II *
+ *   Student Name:    A. Michael Sierra                    *
+ *   Description:     Custom CSS format for CMPT list      *
+ *                    to work with GitHub theme & bootstrap*
+ *   Date:            Week 14 - July 2022                  *
+ ==========================================================*/
+
+#spn_countItems.badge {
+   vertical-align: top;
+}
+
+/* #ul_listItems li:first-of-type {
+   border-top: 1px solid black;
+} */
+
+#ul_listItems li {
+   width: 320px;
+   background-color: #F2F2F2;
+   list-style-type: none;
+   border-bottom: 1px solid black;
+   margin-left: -40px;
+   margin-bottom: 0;
+}
+
+#ul_listItems  {
+   border-top: 1px solid black;
+   width: 320px;
+   margin-left: 5px;
+}
+
+/* #ul_listItems li:last-of-type {
+   border-bottom: 2px solid black;
+} */
+
+#ul_listItems li input {
+   width: 30px;
+}
+
+#ul_listItems li label {
+   width: 252px;
+}
+
+#txt_entryItem {
+   width: 280px;
+   margin: 3px;
+}
+
+.past_item {
+   text-decoration: line-through;
+}
+
+.hide_item {
+   display: none;
+}
+
+.deleted_item {
+   display: none;
+   border-bottom: 0;
+}
+
+li button.btn, #btn_addItem {
+   background-color: cadetblue;
+}
+
+li button.btn:hover {
+   background-color: #CDCDCD;
+}
+
+.btn {
+   margin-bottom: 0rem;
+}
+
+.form-inline {
+   margin-bottom: -8px;
+}
+#char_count{
+   font-size: 12px;
+   font-style: italic;
+   margin-left: 15px;
+}
