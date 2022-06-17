@@ -179,7 +179,7 @@ for (crumb of cookies) {
 const expiryDate = new Date();
 const tomorrow = expiryDate.getTime() + 1000 * 60 * 60 * 24;
 expiryDate.setTime(tomorrow);
-document.cookie = `name=Batman; expires=${ expiryDate.toUTCString()}`;
+document.cookie = `name=Batman; expires=${expiryDate.toUTCString()}`;
 
 // secure cookies
 document.cookie = 'name=Batman; secure';
