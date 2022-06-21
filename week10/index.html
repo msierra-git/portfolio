@@ -3,46 +3,134 @@ layout: default
 ---
 <!DOCTYPE HTML>
 <html lang="en-us">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="W10 Reading Notes and Report">
-    <meta name="keywords" content="WDD330, week 10, reading notes, report">
+    <meta name="keywords" content="WDD330, week 09, reading notes, report">
     <meta name="author" content="A. Michael Sierra">
     <title>W10 Reading Notes and Report</title>
-    
-    <!-- <script src="../js/main.js"></script> -->
+
+
     <!-- <link rel="stylesheet" href="../reset.css" /> -->
-    <link rel="stylesheet" href="../styles.css" /> 
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="reading.css" />
 </head>
+
 <body>
     <header>
         <h1>Week 10 Experience</h1>
     </header>
-    <h2>Reading notes and report for this week</h2><hr><br>
+    <h2>Reading notes and report for this week</h2>
+    <hr><br>
     <div id="divOutput">
-        <h3>Reading:</h3> 
+        <h3>Reading:</h3>
         <ul>
-            <li>Notes...</li>
-            <li>Questions...</li>
-        </ul>       
+            <li><span id="li-title">Using Built-in Form Validation</span>
+                <form id="reading1">
+                    <p>
+                        <fieldset>
+                          <legend>Do you have a driver's license?<abbr title="This field is mandatory" aria-label="required">*</abbr></legend>
+                          <!-- While only one radio button in a same-named group can be selected at a time,
+                               and therefore only one radio button in a same-named group having the "required"
+                               attribute suffices in making a selection a requirement -->
+                          <input type="radio" required name="driver" id="r1" value="yes"><label for="r1">Yes</label>
+                          <input type="radio" required name="driver" id="r2" value="no"><label for="r2">No</label>
+                        </fieldset>
+                      </p>
+                      <p>
+                        <label for="n1">How old are you?</label>
+                        <!-- The pattern attribute can act as a fallback for browsers which
+                             don't implement the number input type but support the pattern attribute.
+                             Please note that browsers that support the pattern attribute will make it
+                             fail silently when used with a number field.
+                             Its usage here acts only as a fallback -->
+                        <input type="number" min="12" max="120" step="1" id="n1" name="age"
+                               pattern="\d+">
+                      </p>
+                      <p>
+                        <label for="t1">What's your favorite fruit?<abbr title="This field is mandatory" aria-label="required">*</abbr></label>
+                        <input type="text" id="t1" name="fruit" list="l1" required
+                               pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range">
+                        <datalist id="l1">
+                          <option>Banana</option>
+                          <option>Cherry</option>
+                          <option>Apple</option>
+                          <option>Strawberry</option>
+                          <option>Lemon</option>
+                          <option>Orange</option>
+                        </datalist>
+                      </p>
+                      <p>
+                        <label for="t2">What's your e-mail address?</label>
+                        <input type="email" id="t2" name="email">
+                      </p>
+                      <p>
+                        <label for="t3">Leave a short message</label>
+                        <textarea id="t3" name="msg" maxlength="140" rows="5"></textarea>
+                      </p>
+                      <p>
+                        <button>Submit Form 1</button>
+                      </p>
+                </form>
+            </li><hr>
+            <li><span id="li-title">Using Javascript Form Validation</span>
+                <form id="reading2" novalidate>  
+                    <p>
+                      <label for="mail2">
+                        <span>Please enter an email address:</span>
+                        <input type="email" id="mail2" name="mail2" required minlength="8">
+                        <span class="error" aria-live="polite"></span>
+                      </label>
+                    </p>
+                    <button>Submit Form 2</button>
+                </form>
+            </li><hr>
+            <li><span id="li-title">Validating Form without a built-in API</span>
+                <form id="reading3">
+                    <p>
+                        <label for="mail3">
+                            <span>Please enter an email address:</span>
+                            <input type="text" id="mail3" name="mail3">
+                            <span class="error" aria-live="polite"></span>
+                        </label>
+                    </p>
+                    <!-- Some legacy browsers need to have the `type` attribute
+                        explicitly set to `submit` on the `button`element -->
+                    <button type="submit" id="submit3">Submit Form 3</button>
+                </form>
+            </li><hr>
+
+            
+            <script src="reading.js"></script>
+        </ul>
         
         <h3>Report:</h3>
-        <ol>
-            <li>What did I do since the last meeting?</li>
-            <li>What am I going to do next?</li>
-            <li>What are my blockers?</li>
+        <ol id="report-section">
+            <li>What did I do since the last meeting?
+                <br>Since the last meeting, I read the required chapters and followed the example codes then make
+                    necessary adjustment to display them on this page.
+                <br>Team Activity - <a href="">Coming soon this week...</a>
+            </li>
+            <li>What am I going to do next?
+                <br>...
+            </li>
+            <li>What are my blockers?
+                <br>This week's blocker would be getting a bit tired and loosing some momentum.
+            </li>
         </ol>
     </div><br>
     <hr>
     <!-- Footer -->
     <footer class="myfooter">
-        <span id="f_title">Author:</span> 
-        <span id="f_name">A. Michael Sierra</span> 
+        <span id="f_title">Author:</span>
+        <span id="f_name">A. Michael Sierra</span>
         <span id="f_desc">(WDD 330 - Reading and Work Notes - Week 10)</span>
     </footer>
     <div class="mainlink">
         <a href="../index.html">[ BACK to TABLE of CONTENTS ]</a>
     </div>
 </body>
+
 </html>

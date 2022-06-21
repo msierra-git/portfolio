@@ -1,0 +1,126 @@
+#li-title {
+   font-weight: bold;
+   color: rgb(10, 10, 204);
+}
+
+#reading1 {
+   font: 1em sans-serif;
+   max-width: 320px;
+ }
+ 
+ #reading1 p > label {
+   display: block;
+ }
+ 
+ #reading1 input[type="text"],
+ #reading1 input[type="email"],
+ #reading1 input[type="number"],
+ #reading1 textarea,
+ #reading1 fieldset {
+   width : 100%;
+   border: 1px solid #333;
+   box-sizing: border-box;
+ }
+ 
+ #reading1 input:invalid {
+   box-shadow: 0 0 5px 1px red;
+ }
+ 
+ #reading1 input:focus:invalid {
+   box-shadow: none;
+ }
+
+/*  */
+#reading2 {font: 1em sans-serif;
+   width: 200px;
+   padding: 0;
+   /* margin : 0 auto; */
+ }
+
+ #reading2 p * {
+   display: block;
+ }
+
+ #reading2 input[type=email]{
+   -webkit-appearance: none;
+   appearance: none;
+ 
+   width: 100%;
+   border: 1px solid #333;
+   margin: 0;
+ 
+   font-family: inherit;
+   font-size: 90%;
+ 
+   box-sizing: border-box;
+ }
+ 
+ /* This is our style for the invalid fields */
+ #reading2 input:invalid{
+   border-color: #900;
+   background-color: #FDD;
+ }
+ 
+ #reading2 input:focus:invalid {
+   outline: none;
+ }
+ 
+ 
+ /*  */
+ #reading3 {
+   font: 1em sans-serif;
+   width: 200px;
+   padding: 0;
+   /* margin : 0 auto; */
+ }
+ 
+ #reading3 form {
+   max-width: 200px;
+ }
+ 
+ #reading3 p * {
+   display: block;
+ }
+ 
+ #reading3 input[type=email] {
+   -webkit-appearance: none;
+ 
+   width: 100%;
+   border: 1px solid #333;
+   margin: 0;
+ 
+   font-family: inherit;
+   font-size: 90%;
+ 
+   box-sizing: border-box;
+ }
+ 
+ /* This is our style for the invalid fields */
+ #reading3 input.invalid{
+   border-color: #900;
+   background-color: #FDD;
+ }
+ 
+ #reading3 input:focus.invalid {
+   outline: none;
+ }
+ 
+
+ 
+ /* This is the style of our error messages */
+ .error {
+   width  : 100%;
+   padding: 0;
+ 
+   font-size: 80%;
+   color: white;
+   background-color: #900;
+   border-radius: 0 0 5px 5px;
+ 
+   box-sizing: border-box;
+ }
+ 
+ .error.active {
+   padding: 0.3em;
+ }
+ 
