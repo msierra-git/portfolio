@@ -2,6 +2,7 @@ import QuakesController from './QuakesController.js';
 
 document.getElementById("btnLocation").addEventListener("click", function() {   
    console.log("process started...");
-   let qc = new QuakesController("#quakeList", null, 2000);
+   let qRadius = document.getElementById("quakeRadius").value;
+   let qc = new QuakesController("#quakeList", null, qRadius);
    qc.init();
 }, false);

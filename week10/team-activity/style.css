@@ -1,0 +1,51 @@
+#quakeList li {
+   width: 400px;
+   background-color: #F2F2F2;
+   list-style-type: none;
+   border-bottom: 1px solid black;
+   margin-left: -40px;
+   margin-bottom: 0;
+   padding: 10px;
+}
+.listBorderTop {
+   border-top: 2px solid black;
+}
+
+#quakeList  {
+   width: 380px;
+   margin-left: 5px;
+}
+
+/* #ul_listItems li:last-of-type {
+   border-bottom: 2px solid black;
+} */
+
+.hide_item {
+   display: none;
+}
+
+.deleted_item {
+   display: none;
+   border-bottom: 0;
+}
+
+li button.btn, #btn_addItem {
+   background-color: cadetblue;
+}
+
+li button.btn:hover {
+   background-color: #CDCDCD;
+}
+
+.btn {
+   margin-bottom: 0rem;
+}
+
+.form-inline {
+   margin-bottom: -8px;
+}
+#char_count{
+   font-size: 12px;
+   font-style: italic;
+   margin-left: 15px;
+}

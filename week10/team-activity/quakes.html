@@ -1,20 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-    <meta charset="utf-8" />
-        <title>Local Quakes</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </head>
+---
+layout: default
+---
+<!DOCTYPE HTML>
+<html lang="en-us">
 
-    <body>
-        <main>
-            <h1>Quake List</h1>
-            <ul id="quakeList">
-               <button id="btnLocation">Start Fetch</button>
-            </ul>
-            <button onclick="window.history.go(0);">Refresh</button>
-        </main>
 
-        <script type="module" src="./index.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local Quakes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../styles.css" />
+</head>
+
+
+<body>
+    <header>
+        <h1>Quake List</h1>
+    </header>
+    <h2>A simple Earthquake app which gets JSON data of earthquakes within the given radius.</h2>
+    <hr><br>
+
+    <button onclick="window.history.go(0);" class="hide_item" id="refreshPage">Back to Main</button>
+    <ul id="quakeList">
+        <input id="quakeRadius" type="number" title="Enter Radius in KM (ie. 1000)" placeholder="Enter Radius in KM">
+        <button id="btnLocation">Start Fetch</button>
+    </ul>
+
+    <script type="module" src="./index.js"></script>
+    <br>
+    <hr>
+    <!-- Footer -->
+    <footer class="myfooter">
+        <span id="f_title">Author:</span>
+        <span id="f_name">A. Michael Sierra</span>
+        <span id="f_desc">(Own version of Team Activity)</span>
+    </footer>
+
+    <div class="mainlink">
+        <a href="../index.html">[ BACK to WEEK 10 ACTIVITY ]</a>
+    </div>
+</body>
+
 </html>
