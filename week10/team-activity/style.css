@@ -8,6 +8,7 @@
 #quakeList,
 #quakeDetails {
    width: 50%;
+   height: 100%;
    /* margin: auto; */
    /* align-items: center; */
 }
@@ -19,8 +20,7 @@
 
 #quakeList li,
 #quakeDetails li {
-   /* width: 500px; */
-   height: auto;
+   /* width: 500px; */   
    background-color: #F2F2F2;
    list-style-type: none;
    border-bottom: 1px solid black;
