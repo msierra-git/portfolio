@@ -6,3 +6,5 @@ document.getElementById("btnLocation").addEventListener("click", function() {
    let qc = new QuakesController("#quakeList", null, qRadius);
    qc.init();
 }, false);
+
+

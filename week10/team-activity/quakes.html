@@ -21,7 +21,13 @@ layout: default
     <h2>A simple Earthquake app which gets JSON data of earthquakes within the given radius.</h2>
     <hr><br>
     <div class="row">
-        <div class="column">
+        <div id="slideDiv" class="column slideDiv">
+            <span></span>
+            <div class="quakeDiv">
+                <ul id="quakeDetails"></ul>
+            </div>
+        </div>
+        <div class="column staticDiv">
             <button onclick="window.history.go(0);" class="hide_item" id="refreshPage">Back to Main</button>
             <ul id="quakeList">
                 <input id="quakeRadius" type="number" title="Enter Radius in KM (ie. 1000)"
@@ -29,12 +35,16 @@ layout: default
                 <button id="btnLocation">Start Fetch</button>
             </ul>
         </div>
-        <div class="column">
-            <ul id="quakeDetails"></ul>
-        </div>
+        
     </div>
 
     <script type="module" src="./index.js"></script>
+    <script>
+        function toggleView() {
+            let updateElement = document.getElementById('slideDiv');
+            updateElement.classList.toggle('open');
+        } 
+    </script>
     <br>
     <hr>
     <!-- Footer -->

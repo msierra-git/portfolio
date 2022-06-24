@@ -28,18 +28,39 @@ export default class QuakesView {
 
       newElement.innerHTML = '';
       // newElement.classList.add('listBorderTop');
-      let hd = document.createElement('h4');
-      hd.textContent = 'DETAILS';
-      newElement.appendChild(hd);
+      // let hd = document.createElement('h4');
+      let btn = document.createElement('button');
+      let liTitle = document.createElement('li'); 
+      let slideDiv = document.getElementById('slideDiv');
+
+      // hd.textContent = 'DETAILS';
+      btn.textContent = "Back to List";
+      btn.setAttribute('id','toggleView');
+      btn.setAttribute('onclick','toggleView();');
+
+      newElement.appendChild(btn);
+      // newElement.appendChild(hd);
+   
+      // console.log('this is quakeProperties');
+      // console.log(quakeProperties);
+      // console.log(quakeProperties[25][1]);
+
+      liTitle.textContent = quakeProperties[25][1];
+      liTitle.classList.add('title_bold');
+      newElement.appendChild(liTitle); 
+
       for (const [key, value] of quakeProperties) {
          if (value) {
-            let li = document.createElement('li');
             let newValue = 
                ((key === 'time' || key === 'updated') 
-               ? new Date(value) : value);                  
+               ? new Date(value) : value);    
+               
+            let li = document.createElement('li');              
             li.textContent = `${key}: ${newValue}`;
             newElement.appendChild(li); 
          }
-      }
+      }                  
+      slideDiv.classList.toggle('open');
    }
 }
+
