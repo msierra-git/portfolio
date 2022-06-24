@@ -1,16 +1,30 @@
+.outputDiv {
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   align-items: center;
+}
+
+#quakeList, #quakeDetails {
+   width: 50%;
+   /* margin: auto; */
+   /* align-items: center; */
+}
+#quakeDetails {
+   width: 70%;
+   align-items: center;
+}
+
 #quakeList li,
 #quakeDetails li {
-   width: 500px;
+   /* width: 500px; */
+   height: auto;
    background-color: #F2F2F2;
    list-style-type: none;
    border-bottom: 1px solid black;
-   margin-left: -40px;
+   /* margin-left: -40px; */
    margin-bottom: 0;
    padding: 10px;
-}
-
-#quakeDetails li {
-   width: 400px;
 }
 
 .listBorderTop {
@@ -27,20 +41,15 @@
    border-bottom: 2px solid black;
 }
 
-#quakeList {
-   width: 500px;
-   margin-left: 5px;
-}
-
-#quakeDetails {
-   width: 400px;
-   margin-left: 5px;
-}
-
 #refreshPage, #toggleView {
    margin-bottom: 10px;
-   width: 200px;
+   width: 200px;   
 }
+
+/* #toggleView {
+   margin-left: -40px;
+} */
+
 .title_bold {
    font-size: 1.2em;
    font-weight: bold;
@@ -52,55 +61,21 @@
    display: none;
 }
 
-/* .row {
-   display: flex;
-}
-
-.column {
-   flex: 50%;
-} */
-
-
-.row {
-   width: 100%;
-   height: 100%;
-   overflow: hidden;
+.quakeDiv {  
+   visibility: hidden;
 }
 
 .slideDiv {
    transition: all 1.0s linear;
-   /* settings for open menu */
    display: flex;
    flex-direction: column;
    background: white;
-   float: left;
-   position: relative;
+   /* float: left; */
+   position: absolute;
+   /* position: relative; */
    width: 100%;
    height: 100%;
-}
-/* 
-.slideDiv:hover span,
-.slideDiv:hover span::before,
-.slideDiv:hover span::after {
-     background: gray;
-}
-
-.slideDiv span {
-   transition: transform 0.4s linear 0.1s;
-   transform: rotate(0deg);
-}
-
-
-.slideDiv span::before {  
-     transform: rotate(0deg);
-   }
-   .slideDiv span::after {
-     transform: rotate(0deg);
-   } */
- 
-
-.quakeDiv {  
-   visibility: hidden;
+   /* align-items: center; */
 }
 
 .staticDiv {
@@ -110,26 +85,27 @@
    z-index: 1;
    width: 100%;
    height: 100%;
+   align-items: center;
 }
 
 
-.open {  
-   /* // animation for showing the hidden menu */
-   transition: width 1.0s linear;
-   /* // settings for the menu */
+.open {     
+   transition: all 1.0s linear;
    display: flex;  
    flex-direction: column; 
    background: lightblue;
    float: left; 
-   position: relative; 
+   /* position: relative;  */
    width: 100%; 
    height: 100%; 
    z-index: 2; 
-   top: 0;
-   left: 0;
+   /* top: 0;
+   left: 0; */   
+   align-items: center;
 }
 
 .open .quakeDiv {
-   display: block;
+   /* display: block;    */
    visibility: visible; 
+   align-items: center;
 }

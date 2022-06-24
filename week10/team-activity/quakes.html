@@ -20,14 +20,14 @@ layout: default
     </header>
     <h2>A simple Earthquake app which gets JSON data of earthquakes within the given radius.</h2>
     <hr><br>
-    <div class="row">
-        <div id="slideDiv" class="column slideDiv">
+    <div class="outputDiv"> 
+        <div id="slideDiv" class="slideDiv">
             <span></span>
             <div class="quakeDiv">
                 <ul id="quakeDetails"></ul>
             </div>
         </div>
-        <div class="column staticDiv">
+        <div class="staticDiv">
             <button onclick="window.history.go(0);" class="hide_item" id="refreshPage">Back to Main</button>
             <ul id="quakeList">
                 <input id="quakeRadius" type="number" title="Enter Radius in KM (ie. 1000)"
