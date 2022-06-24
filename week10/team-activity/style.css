@@ -7,14 +7,14 @@
 
 #quakeList,
 #quakeDetails {
-   width: 400px;
+   width: 500px;
    height: 100%;
    /* margin: auto; */
    /* align-items: center; */
 }
 
 #quakeDetails {
-   width: 500px;
+   width: 600px;
    /* align-items: center; */
 }
 
