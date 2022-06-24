@@ -16,6 +16,7 @@ export default class QuakesView {
    }
 
    renderQuake(quake, element) {
+      let newElement = document.getElementById('quakeDetails');
       const quakeProperties = Object.entries(quake.properties);
       // console.log('renderQuake: ' + element);
       // console.log(quake.properties);
@@ -25,14 +26,20 @@ export default class QuakesView {
       // Then append the list to the provided element. Notice the first line of this method. 
       // Object.entries() is a slick way to turn an object into an array so that we can iterate over it easier! 
 
-      element.innerHTML = '';
+      newElement.innerHTML = '';
+      // newElement.classList.add('listBorderTop');
+      let hd = document.createElement('h4');
+      hd.textContent = 'DETAILS';
+      newElement.appendChild(hd);
       for (const [key, value] of quakeProperties) {
-         let li = document.createElement('li');
-         li.setAttribute('data-id', quake.id);
-         let newValue = ((key === 'time' || key === 'updated') ? new Date(value) : value);
-                  
-         li.textContent = `${key}: ${newValue}`;
-         element.appendChild(li);
+         if (value) {
+            let li = document.createElement('li');
+            let newValue = 
+               ((key === 'time' || key === 'updated') 
+               ? new Date(value) : value);                  
+            li.textContent = `${key}: ${newValue}`;
+            newElement.appendChild(li); 
+         }
       }
    }
 }

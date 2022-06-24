@@ -1,4 +1,4 @@
-#quakeList li {
+#quakeList li, #quakeDetails li {
    width: 500px;
    background-color: #F2F2F2;
    list-style-type: none;
@@ -7,11 +7,16 @@
    margin-bottom: 0;
    padding: 10px;
 }
+
 .listBorderTop {
    border-top: 2px solid black;
 }
 
-#quakeList  {
+#quakeDetails li:first-of-type {   
+   border-top: 2px solid black;
+}
+
+#quakeList, #quakeDetails  {
    width: 500px;
    margin-left: 5px;
 }
@@ -24,28 +29,20 @@
    display: none;
 }
 
-.deleted_item {
-   display: none;
-   border-bottom: 0;
-}
+/* .column {
+   float: left;
+   width: 50%;
+ }
+ .row:after {
+   content: "";
+   display: table;
+   clear: both;
+ } */
 
-li button.btn, #btn_addItem {
-   background-color: cadetblue;
-}
-
-li button.btn:hover {
-   background-color: #CDCDCD;
-}
-
-.btn {
-   margin-bottom: 0rem;
-}
-
-.form-inline {
-   margin-bottom: -8px;
-}
-#char_count{
-   font-size: 12px;
-   font-style: italic;
-   margin-left: 15px;
-}
+ .row {
+   display: flex;
+ }
+ 
+ .column {
+   flex: 50%;
+ }
