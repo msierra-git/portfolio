@@ -5,11 +5,13 @@
    align-items: center;
 }
 
-#quakeList, #quakeDetails {
+#quakeList,
+#quakeDetails {
    width: 50%;
    /* margin: auto; */
    /* align-items: center; */
 }
+
 #quakeDetails {
    width: 70%;
    align-items: center;
@@ -41,9 +43,10 @@
    border-bottom: 2px solid black;
 }
 
-#refreshPage, #toggleView {
+#refreshPage,
+#toggleView {
    margin-bottom: 10px;
-   width: 200px;   
+   width: 200px;
 }
 
 /* #toggleView {
@@ -61,19 +64,20 @@
    display: none;
 }
 
-.quakeDiv {  
+.quakeDiv {
    visibility: hidden;
 }
 
 .slideDiv {
-   transition: all 1.0s linear;
+   transition: width 1.0s;
+   transition-timing-function: linear;
    display: flex;
    flex-direction: column;
    background: white;
    /* float: left; */
    position: absolute;
    /* position: relative; */
-   width: 100%;
+   width: 0%;
    height: 100%;
    /* align-items: center; */
 }
@@ -89,23 +93,25 @@
 }
 
 
-.open {     
-   transition: all 1.0s linear;
-   display: flex;  
-   flex-direction: column; 
+.open {
+   /* transition: all 1.0 ease-in-out; */
+   transition: width 0.2s;
+   transition-timing-function: linear;
+   display: flex;
+   flex-direction: column;
    background: lightblue;
-   float: left; 
+   float: left;
    /* position: relative;  */
-   width: 100%; 
-   height: 100%; 
-   z-index: 2; 
+   width: 100%;
+   height: 100%;
+   z-index: 2;
    /* top: 0;
-   left: 0; */   
+   left: 0; */
    align-items: center;
 }
 
 .open .quakeDiv {
    /* display: block;    */
-   visibility: visible; 
+   visibility: visible;
    align-items: center;
 }
