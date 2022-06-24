@@ -90,7 +90,7 @@
    /* align-items: center; */
 }
 
-.staticDiv {
+.staticDiv1 {
    transition: height 1.0s;
    transition-timing-function: linear;
    display: flex;
@@ -99,10 +99,12 @@
    position: absolute;   
    z-index: 1;
    width: 100%;
+}
+
+.staticDiv2 {
    height: 500px;
    /* background-color: azure; */
-   overflow: auto;
-   
+   overflow-y: scroll;   
 }
 
 

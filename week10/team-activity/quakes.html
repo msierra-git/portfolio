@@ -20,21 +20,22 @@ layout: default
     </header>
     <h2>A simple Earthquake app which gets JSON data of earthquakes within the given radius.</h2>
     <hr><br>
-    <div class="outputDiv"> 
+    <div class="outputDiv">
         <div id="slideDiv" class="slideDiv">
-            <span></span>
             <div class="quakeDiv">
                 <ul id="quakeDetails"></ul>
             </div>
         </div>
-        <div class="staticDiv">
+        <div class="staticDiv1">
             <button onclick="window.history.go(0);" class="hide_item" id="refreshPage">Back to Main</button>
-            <ul id="quakeList">
-                <input id="quakeRadius" type="number" title="Enter Radius in KM (ie. 1000)"
-                    placeholder="Enter Radius in KM">
-                <button id="btnLocation">Start Fetch</button>
-            </ul>
-        </div>        
+            <div class="staticDiv2">                
+                <ul id="quakeList">
+                    <input id="quakeRadius" type="number" title="Enter Radius in KM (ie. 1000)"
+                        placeholder="Enter Radius in KM">
+                    <button id="btnLocation">Start Fetch</button>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script type="module" src="./index.js"></script>
@@ -42,7 +43,7 @@ layout: default
         function toggleView() {
             let updateElement = document.getElementById('slideDiv');
             updateElement.classList.toggle('open');
-        } 
+        }
     </script>
     <br>
     <hr>
