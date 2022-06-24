@@ -95,6 +95,7 @@
    transition-timing-function: linear;
    display: flex;
    flex-direction: column;
+   float: left;
    position: absolute;   
    z-index: 1;
    width: 100%;
