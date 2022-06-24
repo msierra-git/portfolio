@@ -5,7 +5,7 @@ export default class QuakesView {
       // You should also add the id of the quake record as a data- property to the li. ie. <li data-id="">
       
       listElement.innerHTML = '';
-      listElement.classList.add('listBorderTop');
+      // listElement.classList.add('listBorderTop');
       document.getElementById('refreshPage').classList.remove('hide_item');
       quakeList.features.forEach(function (quake) {
          let li = document.createElement('li');
