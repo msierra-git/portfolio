@@ -13,6 +13,7 @@ export default class QuakesView {
          li.textContent = quake.properties.title + ' - [Date] ' + new Date(quake.properties.time);
          listElement.appendChild(li);
       });
+      listElement.classList.add('full_height');
    }
 
    renderQuake(quake, element) {

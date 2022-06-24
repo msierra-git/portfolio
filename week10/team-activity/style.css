@@ -8,9 +8,12 @@
 #quakeList,
 #quakeDetails {
    width: 500px;
-   height: 100%;
    /* margin: auto; */
    /* align-items: center; */
+}
+
+.full_height {
+   height: 100%;
 }
 
 #quakeDetails {
@@ -47,6 +50,10 @@
 #toggleView {
    margin-bottom: 10px;
    width: 200px;
+}
+
+#refreshPage {
+   margin-left: 40px;
 }
 
 /* #toggleView {
@@ -112,7 +119,7 @@
 }
 
 .open .quakeDiv {
-   /* display: block;    */
+   display: block;   
    visibility: visible;
    /* align-items: center; */
 }
