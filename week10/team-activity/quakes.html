@@ -1,6 +1,3 @@
----
-layout: default
----
 <!DOCTYPE HTML>
 <html lang="en-us">
 
@@ -15,44 +12,58 @@ layout: default
 
 
 <body>
-    <header>
+    <header class="projHeader">
         <h1>Quake List</h1>
+        <h2 class="headDesc">
+            WDD 330 Portfolio of Work
+        </h2>
+        <a href="https://github.com/msierra-git/portfolio" class="btn">View on GitHub</a>
     </header>
-    <h2>A simple Earthquake app which gets JSON data of earthquakes within the given radius.</h2>
-    <hr><br>
-    <div class="outputDiv">
-        <div id="slideDiv" class="slideDiv">
-            <div class="quakeDiv">
-                <ul id="quakeDetails"></ul>
-            </div>
-        </div>
-        <div class="staticDiv1">
-            <button onclick="window.history.go(0);" class="hide_item" id="refreshPage">Back to Main</button>
-            <div class="staticDiv2">                
-                <ul id="quakeList">
+    <main>
+        <h2 class="pageDesc">A simple Earthquake app which gets JSON data of earthquakes within the given radius.</h2>
+        <hr><br>
+        <div class="outputDiv">
+            <div class="staticDiv">
+                <div class="navDiv">
+                    <button onclick="window.history.go(0);" class="hide_item" id="refreshPage">Reset Page</button>
+                    <label for="quakeRadius">Enter Radius in KM</label>
                     <input id="quakeRadius" type="number" title="Enter Radius in KM (ie. 1000)"
-                        placeholder="Enter Radius in KM">
-                    <button id="btnLocation">Start Fetch</button>
-                </ul>
+                        placeholder="Radius in KM">
+                    <button id="btnFetch">Get List</button>
+                </div>
+                <div class="listDiv">
+                    <ul id="quakeList"></ul>
+                </div>
+            </div>
+            <div id="slideDiv" class="slideDiv">
+                <div class="detailDiv">
+                    <ul id="quakeDetails"></ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script type="module" src="./index.js"></script>
-    <script>
-        function toggleView() {
-            let updateElement = document.getElementById('slideDiv');
-            updateElement.classList.toggle('open');
-        }
-    </script>
-    <br>
-    <hr>
-    <!-- Footer -->
-    <footer class="myfooter">
-        <span id="f_title">Author:</span>
-        <span id="f_name">A. Michael Sierra</span>
-        <span id="f_desc">(Own version of Team Activity)</span>
-    </footer>
+        <script type="module" src="./index.js"></script>
+        <script>
+            function toggleView() {
+                // Back to List Button
+                let qlist = document.getElementById('quakeList');
+                let qdetails = document.getElementById('quakeDetails');
+                let slDiv = document.getElementById('slideDiv');
+                slDiv.classList.remove('open');
+                slDiv.classList.add('hide_item');
+                qdetails.classList.add('hide_item');
+                qlist.classList.remove('hide_item');                
+            }
+        </script>
+        <br>
+        <hr>
+        <!-- Footer -->
+        <footer class="myfooter">
+            <span id="f_title">Author:</span>
+            <span id="f_name">A. Michael Sierra</span>
+            <span id="f_desc">(Own version of Team Activity)</span>
+        </footer>
+    </main>
 
     <div class="mainlink">
         <a href="../index.html">[ BACK to WEEK 10 ACTIVITY ]</a>

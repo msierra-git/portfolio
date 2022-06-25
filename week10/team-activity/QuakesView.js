@@ -61,7 +61,10 @@ export default class QuakesView {
             newElement.appendChild(li); 
          }
       }                  
-      slideDiv.classList.toggle('open');
+      slideDiv.classList.add('open');
+      slideDiv.classList.remove('hide_item');
+      newElement.classList.remove('hide_item');
+      element.classList.add('hide_item');
    }
 }
 
