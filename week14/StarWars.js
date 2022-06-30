@@ -12,7 +12,7 @@ export default class StarWars {
 
    async getStarWarsAllInfo() {
       const query = this.baseUrl + '/all.json';
-      console.log(query);
+      // console.log(query);
       // use the getJSON function and the position provided to build out the correct URL to get the data we need.  
       // Store it into variable, then return it
 
@@ -65,8 +65,13 @@ export default class StarWars {
             i = i - 1;
          }
       }      
-
-      console.log(newTeam);
+      // console.log(newTeam);
       return newTeam;
+   }
+
+   getMemberById(id) {
+      // filter this._all for the record identified by id and return it
+      // console.log(`id: ${id}`);      
+      return this._all.filter(item => item.id == id)[0];
    }
 }

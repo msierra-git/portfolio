@@ -1,11 +1,11 @@
 import DataController from './DataController.js';
-let swData = '';
+let swData = "";
 let teamIndex = 0;
 const itemsOnPage = 5;
 
 document.getElementById("btnFetch").addEventListener("click", function() {   
    console.log("process started...");
-   swData = new DataController("#swList");
+   swData = new DataController("#swList","#teamDetails","#memberDetails");
    swData.init();
    swData.setItemsOnPage(itemsOnPage);
 }, false);

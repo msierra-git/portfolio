@@ -1,10 +1,12 @@
+import { toTitleCase } from './utilities.js';
+
 // Quake View handler
 export default class StarWarsView {
    // renderSWList(swList, listElement) {      
    //    listElement.innerHTML = '';
    //    // listElement.classList.add('listBorderTop');
    //    document.getElementById('refreshPage').classList.remove('hide_item');
-      
+
    //    swList.forEach(function (swChar) {
    //       let li = document.createElement('li');
    //       li.textContent = swChar.affiliations;
@@ -13,10 +15,12 @@ export default class StarWarsView {
    //    listElement.classList.add('full_height');
    // }
 
-   renderSWTeams(swList, listElement, curIndex, items) {      
+   renderSWTeams(swList, listElement, curIndex, items) {
       // show 10 elements of the team list at a time
-      if (!curIndex) { curIndex = 0; };
-      let showList = swList.slice(curIndex, curIndex + items);      
+      if (!curIndex) {
+         curIndex = 0;
+      };
+      let showList = swList.slice(curIndex, curIndex + items);
       // console.log(showList);
 
       listElement.innerHTML = '';
@@ -30,7 +34,7 @@ export default class StarWarsView {
          listElement.appendChild(li);
       });
 
-      document.getElementById('refreshPage').classList.remove('hide_item'); 
+      document.getElementById('refreshPage').classList.remove('hide_item');
       document.getElementById('teamNavButtons').classList.remove('hide_item');
       document.getElementById('btnFetch').classList.add('hide_item');
 
@@ -48,32 +52,35 @@ export default class StarWarsView {
 
       // hide next button if page is at the end of the array
       // otherwise show next button for navigation of list
-      if ((curIndex+items+1) > swList.length) {
+      if ((curIndex + items + 1) > swList.length) {
          document.getElementById('btnNext').classList.add('hide_item');
       } else {
          document.getElementById('btnNext').classList.remove('hide_item');
       };
    }
-   
+
 
    renderSWTeamMembers(memList, listElement, teamName) {
-      console.log(memList);
-      let teamDetailsEl = document.getElementById(listElement);
+      // console.log(memList);
+      // let teamDetailsEl = document.getElementById(listElement);
+      let teamDetailsEl = listElement;
       let h4 = document.createElement('h4');
-      
+
       teamDetailsEl.innerHTML = '';
       h4.textContent = `${memList.length} Members of ${teamName}`;
       h4.setAttribute('class', 'listTitle');
       teamDetailsEl.appendChild(h4);
-      
+
       // iterate on the array of unique teams/affiliations
       memList.forEach(function (swMember) {
          let li = document.createElement('li');
          // let div = document.createElement('div');
          let img = document.createElement('img');
          let spn = document.createElement('span');
-         
-         li.setAttribute('data-id',  swMember.id);
+
+         li.setAttribute('data-id', swMember.id);
+         img.setAttribute('data-id', swMember.id);
+         spn.setAttribute('data-id', swMember.id);
          img.setAttribute('src', swMember.image);
          img.setAttribute('alt', 'Image of ' + swMember.name);
          img.setAttribute('class', 'listImage');
@@ -90,13 +97,70 @@ export default class StarWarsView {
 
    }
 
+
+   renderSWMemberDetails(infoList, listElement, teamElement) {
+      listElement.innerHTML = '';
+      let newArray = Object.entries(infoList);
+      let memDiv   = listElement.parentNode;
+      let slideDiv = memDiv.parentNode;
+      let liTitle = document.createElement('li'); 
+      let memImg = document.createElement('img'); 
+      let spanT = document.createElement('span'); 
+      let btn = document.createElement('button');
+
+      btn.textContent = "Back to List";
+      btn.setAttribute('id','closeDetails');   
+      memImg.setAttribute('src', infoList.image);
+      memImg.setAttribute('alt', 'Image of ' + infoList.name);
+      memImg.setAttribute('class', 'memberImage');   
+      spanT.textContent = `Details of ${infoList.name}`;
+      spanT.classList.add('memberTitle');
+
+      listElement.appendChild(btn);
+      // listElement.appendChild(memImg);
+      listElement.appendChild(liTitle);
+      liTitle.appendChild(memImg);
+      liTitle.appendChild(spanT);
+
+      for (const [key, value] of newArray) {
+         if (value === true || (key !== 'id' && key !== 'image' && key !== 'name')) {
+            let newValue =
+               ((typeof value === 'string' || value instanceof String) ?
+                  toTitleCase(value) : value);
+
+            let li = document.createElement('li');
+            li.textContent = `${toTitleCase(key)}: ${newValue}`;
+            listElement.appendChild(li);            
+         }
+      }
+
+      teamElement.classList.add('hide_item');
+      listElement.classList.remove('hide_item');
+      slideDiv.classList.add('open');
+      slideDiv.classList.remove('hide_item');
+   }
+
+   hideSWMemberDetails(membersElement, teamElement) {
+      let memDetails = membersElement;
+      let memDiv = memDetails.parentNode;
+      let slideDiv = memDiv.parentNode;
+      slideDiv.classList.remove('open');
+      slideDiv.classList.add('hide_item');
+      memDetails.classList.add('hide_item');
+      teamElement.classList.remove('hide_item');
+      
+      // let mlist = document.getElementById('quakeList');
+      // mlist.classList.remove('hide_item');
+   }
+
+
    // renderQuake(quake, element) {
    //    let newElement = document.getElementById('quakeDetails');
    //    const quakeProperties = Object.entries(quake.properties);
    //    // console.log('renderQuake: ' + element);
    //    // console.log(quake.properties);
    //    // console.log(quakeProperties);
-      
+
    //    // for the provided quake make a list of each of the properties associated with it. 
    //    // Then append the list to the provided element. Notice the first line of this method. 
    //    // Object.entries() is a slick way to turn an object into an array so that we can iterate over it easier! 
@@ -115,7 +179,7 @@ export default class StarWarsView {
 
    //    newElement.appendChild(btn);
    //    // newElement.appendChild(hd);
-   
+
    //    // console.log('this is quakeProperties');
    //    // console.log(quakeProperties);
    //    // console.log(quakeProperties[25][1]);
@@ -129,7 +193,7 @@ export default class StarWarsView {
    //          let newValue = 
    //             ((key === 'time' || key === 'updated') 
    //             ? new Date(value) : value);    
-               
+
    //          let li = document.createElement('li');              
    //          li.textContent = `${key}: ${newValue}`;
    //          newElement.appendChild(li); 
@@ -141,4 +205,3 @@ export default class StarWarsView {
    //    element.classList.add('hide_item');
    // }
 }
-
