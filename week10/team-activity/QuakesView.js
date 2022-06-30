@@ -7,6 +7,7 @@ export default class QuakesView {
       listElement.innerHTML = '';
       // listElement.classList.add('listBorderTop');
       document.getElementById('refreshPage').classList.remove('hide_item');
+      console.log(quakeList);
       quakeList.features.forEach(function (quake) {
          let li = document.createElement('li');
          li.setAttribute('data-id', quake.id);

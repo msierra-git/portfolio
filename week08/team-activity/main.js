@@ -47,6 +47,7 @@ function renderPeopleList(peoples, peopleListElement) {
 function showPeople(url = "https://swapi.dev/api/people") {
   getPeople(url).then(function (data) {
     const results = data.results;
+    console.log(data);
     formatPageNav(data.previous, data.next);
 
     const peopleListElement = document.getElementById("peoplelist");

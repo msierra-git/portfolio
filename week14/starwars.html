@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Star Wars Teams</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+
+<body>
+    <header class="projHeader">
+        <h1>Star Wars Teams</h1>
+        <a href="https://github.com/msierra-git/portfolio" class="btn">View on GitHub</a>
+    </header>
+    <main>
+        <h2 class="pageDesc">Application which shows Star Wars Teams from API and any custom teams created by the user.
+        </h2>
+        <hr><br>
+        <div class="outputDiv row">
+            <div class="staticDiv column">
+                <div id="teamNavButtons" class="hide_item">
+                    <h4 class="listTitle">Teams from API</h4>
+                    <button id="btnPrev">&lt;&lt; Previous</button>
+                    <span id="itemCount">of</span>
+                    <button id="btnNext">Next &gt;&gt;</button>
+                </div>
+                <div class="listDiv">
+                    <ul id="swList"></ul>
+                </div>
+                <div class="navDiv">
+                    <button onclick="window.history.go(0);" class="hide_item" id="refreshPage">Reset Page</button>
+                    <button id="btnFetch">GET - API Teams</button>
+                </div>
+            </div>
+            <div id="teamDiv" class="column">
+                <div class="teamDiv">                    
+                    <ul id="teamDetails"></ul>
+                </div>
+            </div>
+            <div id="slideDiv" class="slideDiv">
+                <div class="memberDiv">
+                    <ul id="memberDetails"></ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="./index.js"></script>
+        <!-- <script>
+            function toggleView() {
+                // Back to List Button
+                // let qlist = document.getElementById('quakeList');
+                // let qdetails = document.getElementById('quakeDetails');
+                // let slDiv = document.getElementById('slideDiv');
+                // slDiv.classList.remove('open');
+                // slDiv.classList.add('hide_item');
+                // qdetails.classList.add('hide_item');
+                // qlist.classList.remove('hide_item');
+            }
+        </script> -->
+        <br>
+        <hr>
+        <!-- Footer -->
+        <footer class="myfooter">
+            <span id="f_title">Author:</span>
+            <span id="f_name">A. Michael Sierra</span>
+            <span id="f_desc">(WDD 330 Portfolio of Work)</span>
+        </footer>
+    </main>
+
+    <div class="mainlink">
+        <a href="../index.html">[ BACK to TABLE of CONTENTS ]</a>
+    </div>
+</body>
+
+</html>
