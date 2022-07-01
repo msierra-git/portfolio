@@ -52,6 +52,7 @@ main {
    padding: 0.75rem 1rem;
    text-decoration: none;
    font-size: 0.7em;
+   box-shadow: 2px 2px black;
 }
 
 .btn:hover {
@@ -92,7 +93,8 @@ main {
    padding: 0.75rem 1rem;
    text-decoration: none;
    font-size: 1.0em;
-   width: 1fr;
+   width: 280px;
+   box-shadow: 2px 2px black;
 }
 
 .listButton:hover {
@@ -103,7 +105,7 @@ main {
 }
 /* --> end of link to GitHub Button */
 
-#refreshPage,
+.wikiLink, #refreshPage,
 #closeDetails, #btnFetch,
 #btnPrev, #btnNext {
    margin-top: 10px;
@@ -124,6 +126,27 @@ main {
    margin: 10px 10px 0 40px;
    background-color: brown;
 }
+
+.wikiLink {
+   font-size: 0.8em;
+   padding: 0.25em 1.5em;
+   text-decoration: none;
+   text-transform: uppercase;
+   box-shadow: 2px 2px black;
+   /* box-shadow: -2px -2px gray; */
+ }
+/*  
+ .wikiLink:hover {
+   background-color: #555;
+ }
+ 
+ .wikiLink:active {
+   background-color: black;
+ }
+ 
+ .wikiLink:visited {
+   background-color: #ccc;
+ } */
 /* end of buttons */
 
 .teamDiv {
@@ -209,18 +232,18 @@ main {
 }
 
 .slideDiv {
-   transition: width 1.0s;
+   transition: width 2.0s;
    transition-timing-function: linear;
    display: flex;
    flex-direction: column;
    background: white;
    float: left;
    position: relative;
-   width: 0%;
+   width: 0;
 }
 
 .open {
-   transition: width 0.2s;
+   transition: width 1.0s;
    transition-timing-function: linear;
    display: flex;
    flex-direction: column;
