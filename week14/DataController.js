@@ -1,21 +1,39 @@
+/*==========================================================
+ *   Course Code:     WDD330 - Web Frontend Development II *
+ *   Student Name:    A. Michael Sierra                    *
+ *   Description:     Project 2 - Star Wars Team App       *
+ *   Date:            June - July 2022                     *
+ ==========================================================*/
+
+ 
 import StarWars from './StarWars.js';
 import StarWarsView from './StarWarsView.js';
 
-// Quake controller
+
+// Star Wars controller
 export default class DataController {
    constructor(parent, team, members) {
+      // refers to elements from html where data will be rendered
       this.parent = parent;
       this.parentElement = null;
       this.team = team;
       this.teamElement = null;
       this.members = members;
       this.membersElement = null;
+
+      // instantiate two classes needed to connect model and view
       this.swData = new StarWars();
       this.swDataView = new StarWarsView();
-      this.itemsOnPage = 0;
+
+      // arrays where data are stored
       this._all = [];
       this._team = [];
+
+      // other properties to control data and page rendering
+      this.itemsOnPage = 0;
+      this.teamCutoff = 0;
    }
+
 
    async init() {
       // use this as a place to grab the element identified by this.parent, 
@@ -24,24 +42,24 @@ export default class DataController {
       this.teamElement = document.querySelector(this.team);
       this.membersElement = document.querySelector(this.members);
       await this.getStarWarsInfo();
-      // this._team = await this.getUniqueTeams();
-      // this._team.sort();
-      // this.getSetTeam(0); 
    }
+
 
    async getStarWarsInfo() {
       // this method provides the glue between the model and view. 
-      // Notice it first goes out and requests the appropriate data from the model, 
+      // it first goes out and requests the appropriate data from the model, 
       // then it passes it to the view to be rendered.
 
       // set loading message
       this.parentElement.innerHTML = 'Loading...';
+
       // get the list of all star wars characters
       this._all = await this.swData.getStarWarsAllInfo();
+
       // get list of star wars teams
       await this.swData.getStarWarsTeams();
-      this._team = this.swData.getTeamWithMoreMembers();
-      // this._team = this.swData.getTeamWithMoreMembers();
+      this._team = this.swData.getTeamWithMoreMembers(this.teamCutoff);
+
       // render list to html
       this.getSetOfTeams(0);
 
@@ -55,44 +73,37 @@ export default class DataController {
       this.swDataView.renderSWTeams(this._team, this.parentElement, curIndex, this.itemsOnPage);
    }
 
-   setItemsOnPage(items) {
-      this.itemsOnPage = items;
-   }
-
-   getTeam() {
-      return this._team;
-   }
 
    async getTeamMembers(teamID) {
       let teamMembers = this.swData.getMembersByTeam(this._team[teamID]);
-
+      this.swDataView.renderSWTeamMembers(teamMembers, this.teamElement, this._team[teamID]);
       // console.log(this._team[teamID]);
       // console.log(teamMembers)
-      this.swDataView.renderSWTeamMembers(teamMembers, this.teamElement, this._team[teamID]);
 
+      // event on clicking a member from the list
       this.teamElement.addEventListener('click', e => {
-         // console.log(e.target.dataset.id);
          this.getMemberDetails(e.target.dataset.id);
       });
    }
 
+
    async getMemberDetails(memID) {
       const member = this.swData.getMemberById(memID);
-      console.log(member);
       this.swDataView.renderSWMemberDetails(member, this.membersElement, this.teamElement);
+      // console.log(member);
 
-      // close button for member's details
+      // event on close button on member details page
       document.getElementById('closeDetails').addEventListener('click', () => {
-         this.swDataView.hideSWMemberDetails(this.membersElement, this.teamElement);                  
+         this.swDataView.hideSWMemberDetails(this.membersElement, this.teamElement);   
       }, false);
    }
 
-   async getQuakeDetails(quakeId) {
-      // get the details for the quakeId provided from the model, 
-      // then send them to the view to be displayed
-      console.log('getQuakeDetails: ' + quakeId);
-      // const quake = this.quakes.getQuakeById(quakeId);
-      // console.log(quake);
-      // this.quakesView.renderQuake(quake, this.parentElement);
-   }
+
+   // class getter and setters
+   getTeam() { return this._team; }
+
+   setItemsOnPage(items) { this.itemsOnPage = items; }
+
+   setTeamCutOff(numOfMembers) { this.teamCutoff = numOfMembers; }
+
 }

@@ -1,31 +1,34 @@
+/*==========================================================
+ *   Course Code:     WDD330 - Web Frontend Development II *
+ *   Student Name:    A. Michael Sierra                    *
+ *   Description:     Project 2 - Star Wars Team App       *
+ *   Date:            June - July 2022                     *
+ ==========================================================*/
+
+ 
 import { toTitleCase } from './utilities.js';
 
-// Quake View handler
-export default class StarWarsView {
-   // renderSWList(swList, listElement) {      
-   //    listElement.innerHTML = '';
-   //    // listElement.classList.add('listBorderTop');
-   //    document.getElementById('refreshPage').classList.remove('hide_item');
 
-   //    swList.forEach(function (swChar) {
-   //       let li = document.createElement('li');
-   //       li.textContent = swChar.affiliations;
-   //       listElement.appendChild(li);
-   //    });
-   //    listElement.classList.add('full_height');
-   // }
+// Star Wars View handler
+export default class StarWarsView {
 
    renderSWTeams(swList, listElement, curIndex, items) {
-      // show 10 elements of the team list at a time
-      if (!curIndex) {
-         curIndex = 0;
-      };
+      // build a list of teams on the page from an array of unique teams. 
+      // this will add the id of the record as a data- property to the li. 
+      // ie. <li data-id="">      
+
+      // beginning of the array
+      if (!curIndex) { curIndex = 0; };
+
+      // get nemuber of records from the list based on the value of "items" variable.
       let showList = swList.slice(curIndex, curIndex + items);
       // console.log(showList);
 
+      // reset the div where the list of teams will be shown
       listElement.innerHTML = '';
 
       // iterate on the array of unique teams/affiliations
+      // and show as a button by adding the "listButton" class
       showList.forEach(function (swTeam, index) {
          let li = document.createElement('li');
          li.setAttribute('data-id', curIndex + index);
@@ -34,6 +37,8 @@ export default class StarWarsView {
          listElement.appendChild(li);
       });
 
+      // show navigation, record count, and refresh page buttons
+      // then hide the fetch button
       document.getElementById('refreshPage').classList.remove('hide_item');
       document.getElementById('teamNavButtons').classList.remove('hide_item');
       document.getElementById('btnFetch').classList.add('hide_item');
@@ -61,10 +66,13 @@ export default class StarWarsView {
 
 
    renderSWTeamMembers(memList, listElement, teamName) {
+      // build a list of team members including the name and image as found on API.
+      // will add the id of the person/character record as a data- property to the li. 
       // console.log(memList);
       let teamDetailsEl = listElement;
       let h4 = document.createElement('h4');
 
+      // reset the div where the list of team members will be shown
       teamDetailsEl.innerHTML = '';
 
       // creating title of the list
@@ -101,6 +109,9 @@ export default class StarWarsView {
 
 
    renderSWMemberDetails(infoList, listElement, teamElement) {
+      // build a list of all the member's attributes found from API 
+
+      // reset the div where the details of the member will be shown
       listElement.innerHTML = '';
       let newArray = Object.entries(infoList);
       let memDiv   = listElement.parentNode;
@@ -118,10 +129,11 @@ export default class StarWarsView {
       memImg.setAttribute('src', infoList.image);
       memImg.setAttribute('alt', 'Image of ' + infoList.name);
       memImg.setAttribute('class', 'memberImage');   
-
+      
       // creating title of the list
       spanT.textContent = `Details of ${infoList.name}`;
       spanT.classList.add('memberTitle');
+      liTitle.setAttribute('style', 'white-space: nowrap;');   
 
       // constructing the top html elements of the list
       listElement.appendChild(btn);
@@ -138,9 +150,21 @@ export default class StarWarsView {
                ((typeof value === 'string' || value instanceof String) ?
                   toTitleCase(value) : value);
 
-            let li = document.createElement('li');
-            li.textContent = `${toTitleCase(key)}: ${newValue}`;
-            listElement.appendChild(li);            
+            // create li element and add to the parent el
+            let li = document.createElement('li');                
+            listElement.appendChild(li);  
+
+            // create a span for the "key" data
+            let spnKey = document.createElement('span');
+            spnKey.setAttribute('class', 'listKey');
+            spnKey.textContent = `${toTitleCase(key)}: `;
+            li.appendChild(spnKey);       
+
+            // create a span for the "value" data
+            let spnVal = document.createElement('span');
+            spnVal.setAttribute('class', 'listValue');
+            spnVal.textContent = newValue;
+            li.appendChild(spnVal);          
          }
       }
 
@@ -163,76 +187,46 @@ export default class StarWarsView {
 
       // show sliding div with details of member
       listElement.classList.remove('hide_item');
-      slideDiv.classList.remove('hide_item');
+      // slideDiv.classList.remove('hide_item');
 
-      slideDiv.classList.add('slideDiv');
+      // slideDiv.classList.add('slideDiv');
       slideDiv.classList.add('open');
    }
 
+
    hideSWMemberDetails(membersElement, teamElement) {
+      // hide back the sliding div of member's details
       let memDetails = membersElement;
       let memDiv = memDetails.parentNode;
       let slideDiv = memDiv.parentNode;
 
+      // remove all elements under <ul> 
+      memDetails.innerHTML = '';
+
       // hide sliding div with details of member
       slideDiv.classList.remove('open');
       slideDiv.classList.remove('slideDiv');
-      slideDiv.classList.add('hide_item');
       memDetails.classList.add('hide_item');
+      
+      // reset the div to initial state so transition will run again
+      slideDiv.classList.add('slideDiv');  
 
       // show list of team members on right column
       teamElement.classList.remove('hide_item');
    }
 
 
-   // renderQuake(quake, element) {
-   //    let newElement = document.getElementById('quakeDetails');
-   //    const quakeProperties = Object.entries(quake.properties);
-   //    // console.log('renderQuake: ' + element);
-   //    // console.log(quake.properties);
-   //    // console.log(quakeProperties);
+   // renderSWList(swList, listElement) {      
+   //    listElement.innerHTML = '';
+   //    // listElement.classList.add('listBorderTop');
+   //    document.getElementById('refreshPage').classList.remove('hide_item');
 
-   //    // for the provided quake make a list of each of the properties associated with it. 
-   //    // Then append the list to the provided element. Notice the first line of this method. 
-   //    // Object.entries() is a slick way to turn an object into an array so that we can iterate over it easier! 
-
-   //    newElement.innerHTML = '';
-   //    // newElement.classList.add('listBorderTop');
-   //    // let hd = document.createElement('h4');
-   //    let btn = document.createElement('button');
-   //    let liTitle = document.createElement('li'); 
-   //    let slideDiv = document.getElementById('slideDiv');
-
-   //    // hd.textContent = 'DETAILS';
-   //    btn.textContent = "Back to List";
-   //    btn.setAttribute('id','toggleView');
-   //    btn.setAttribute('onclick','toggleView();');
-
-   //    newElement.appendChild(btn);
-   //    // newElement.appendChild(hd);
-
-   //    // console.log('this is quakeProperties');
-   //    // console.log(quakeProperties);
-   //    // console.log(quakeProperties[25][1]);
-
-   //    liTitle.textContent = quakeProperties[25][1];
-   //    liTitle.classList.add('title_bold');
-   //    newElement.appendChild(liTitle); 
-
-   //    for (const [key, value] of quakeProperties) {
-   //       if (value) {
-   //          let newValue = 
-   //             ((key === 'time' || key === 'updated') 
-   //             ? new Date(value) : value);    
-
-   //          let li = document.createElement('li');              
-   //          li.textContent = `${key}: ${newValue}`;
-   //          newElement.appendChild(li); 
-   //       }
-   //    }                  
-   //    slideDiv.classList.add('open');
-   //    slideDiv.classList.remove('hide_item');
-   //    newElement.classList.remove('hide_item');
-   //    element.classList.add('hide_item');
+   //    swList.forEach(function (swChar) {
+   //       let li = document.createElement('li');
+   //       li.textContent = swChar.affiliations;
+   //       listElement.appendChild(li);
+   //    });
+   //    listElement.classList.add('full_height');
    // }
+
 }

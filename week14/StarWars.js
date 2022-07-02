@@ -1,8 +1,14 @@
-import {
-   getJSON
-} from './utilities.js';
+/*==========================================================
+ *   Course Code:     WDD330 - Web Frontend Development II *
+ *   Student Name:    A. Michael Sierra                    *
+ *   Description:     Project 2 - Star Wars Team App       *
+ *   Date:            June - July 2022                     *
+ ==========================================================*/
 
-// Quake Model
+ 
+import { getJSON } from './utilities.js';
+
+// Star Wars Model
 export default class StarWars {
    constructor() {
       this.baseUrl = 'https://akabab.github.io/starwars-api/api';
@@ -10,18 +16,20 @@ export default class StarWars {
       this._team = [];
    }
 
+
    async getStarWarsAllInfo() {
       const query = this.baseUrl + '/all.json';
       // console.log(query);
-      // use the getJSON function and the position provided to build out the correct URL to get the data we need.  
-      // Store it into variable, then return it
 
-      // fetch the data
+      // use the getJSON function to get the data we need and 
+      // store it into variable, then return it
       this._all = await getJSON(query);
       return this._all;
    }
 
-   async getStarWarsTeams() {      
+
+   async getStarWarsTeams() {
+      // build a list of unique teams/affiliations, then return it
       let uniqueTeam = [];
 
       this._all.forEach(function (swChar) {
@@ -39,35 +47,42 @@ export default class StarWars {
       this._team = uniqueTeam.sort();
       return this._team;
    }
-   
+
+
    getMembersByTeam(team) {
       // filter this._all for the records identified by id and return it
       let membersList = this._all.filter(function (item) {
          return item.affiliations.indexOf(team) > -1
       });
-      
+
       // console.log(membersList);
       return membersList;
    }
-   
+
+
    getMembersCount(team) {
+      // provide the count of members associated to the team
       let currentTeam = this.getMembersByTeam(team);
       return currentTeam.length;
    }
-   
-   getTeamWithMoreMembers() {
+
+
+   getTeamWithMoreMembers(teamCutoff) {
+      // filter out teams with count of members less than 
+      // the cut-off value
       let newTeam = this._team;
-      
+
       for (let i = 0; i < newTeam.length; i++) {
          let countMem = this.getMembersCount(newTeam[i]);
-         if (countMem < 3) { 
+         if (countMem < teamCutoff) {
             newTeam.splice(i, 1);
             i = i - 1;
          }
-      }      
+      }
       // console.log(newTeam);
       return newTeam;
    }
+
 
    getMemberById(id) {
       // filter this._all for the record identified by id and return it

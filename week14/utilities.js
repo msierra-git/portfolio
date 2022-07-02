@@ -1,4 +1,11 @@
+/*==========================================================
+ *   Course Code:     WDD330 - Web Frontend Development II *
+ *   Student Name:    A. Michael Sierra                    *
+ *   Description:     Project 2 - Star Wars Team App       *
+ *   Date:            June - July 2022                     *
+ ==========================================================*/
 
+ 
 export function getJSON(url) {
    return fetch(url)
       .then(function (response) {
@@ -10,28 +17,15 @@ export function getJSON(url) {
       })
       .catch(function (error) {
          console.log(error);
-      })
-   ;
+      });
 }
+
 
 export function toTitleCase(str) {
    return str.replace(
-     /\w\S*/g,
-     function(txt) {
-       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-     }
+      /\w\S*/g,
+      function (txt) {
+         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      }
    );
- }
- 
-// export const getLocation = function (options) {
-//    return new Promise(function (resolve, reject) {
-//       navigator.geolocation.getCurrentPosition(resolve, reject, options);
-//    });
-// };
-
-// export function getLocation(options) {
-//    // console.log('getLocation function');
-//    return new Promise(function (resolve, reject) {
-//       navigator.geolocation.getCurrentPosition(resolve, reject, options);
-//    });
-// }
+}
