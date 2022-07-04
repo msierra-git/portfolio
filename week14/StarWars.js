@@ -59,6 +59,17 @@ export default class StarWars {
       return membersList;
    }
 
+   
+   getMembersByArrayID(arrayID) {
+      // filter this._all for the records identified by id and return it
+      let membersList = this._all.filter(function (item) {
+         return arrayID.indexOf(item.id) > -1
+      });
+
+      // console.log(membersList);
+      return membersList;
+   }
+
 
    getMembersCount(team) {
       // provide the count of members associated to the team

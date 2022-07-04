@@ -129,7 +129,7 @@ main {
 .wikiLink,
 #refreshPage,
 #closeDetails,
-#btnFetch,
+#btnFetch, #btnLocal, 
 #btnPrev,
 #btnNext {
    margin-top: 10px;
@@ -142,6 +142,10 @@ main {
    border-radius: 5px;
    box-shadow: 1px 1px gray;
    /* cursor: pointer; */
+}
+
+#btnFetch {
+   margin-right: 10px;
 }
 
 #btnPrev,

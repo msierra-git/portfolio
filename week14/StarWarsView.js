@@ -12,7 +12,7 @@ import { toTitleCase } from './utilities.js';
 // Star Wars View handler
 export default class StarWarsView {
 
-   renderSWTeams(swList, listElement, curIndex, items) {
+   renderSWTeams(swList, listElement, curIndex, items, dataLocation) {
       // build a list of teams on the page from an array of unique teams. 
       // this will add the id of the record as a data- property to the li. 
       // ie. <li data-id="">      
@@ -27,6 +27,10 @@ export default class StarWarsView {
       // reset the div where the list of teams will be shown
       listElement.innerHTML = '';
 
+      // create title for the list of Teams based on data location
+      let listTitle = (listElement.parentNode.parentNode.children[0].children[0]);
+      listTitle.textContent = `Teams from ${dataLocation}`;
+
       // iterate on the array of unique teams/affiliations
       // and show as a button by adding the "listButton" class
       showList.forEach(function (swTeam, index) {
@@ -38,10 +42,16 @@ export default class StarWarsView {
       });
 
       // show navigation, record count, and refresh page buttons
-      // then hide the fetch button
+      // then hide the either fetch or local button
       document.getElementById('refreshPage').classList.remove('hide_item');
       document.getElementById('teamNavButtons').classList.remove('hide_item');
-      document.getElementById('btnFetch').classList.add('hide_item');
+      if (dataLocation === 'API') {
+         document.getElementById('btnFetch').classList.add('hide_item');
+         document.getElementById('btnLocal').classList.remove('hide_item');
+      } else {
+         document.getElementById('btnFetch').classList.remove('hide_item');
+         document.getElementById('btnLocal').classList.add('hide_item');
+      };
 
       // text to show user of record navigation
       let itemCount = document.getElementById('itemCount');
