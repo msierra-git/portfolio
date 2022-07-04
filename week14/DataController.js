@@ -10,7 +10,7 @@ import StarWars from './StarWars.js';
 import StarWarsView from './StarWarsView.js';
 
 
-// Star Wars controller
+// Star Wars Data controller
 export default class DataController {
    constructor(parent, team, members) {
       // refers to elements from html where data will be rendered

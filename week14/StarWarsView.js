@@ -133,7 +133,8 @@ export default class StarWarsView {
       // creating title of the list
       spanT.textContent = `Details of ${infoList.name}`;
       spanT.classList.add('memberTitle');
-      liTitle.setAttribute('style', 'white-space: nowrap;');   
+      liTitle.setAttribute('class', 'listMemberTitle');   
+      // liTitle.setAttribute('style', 'white-space: nowrap;');   
 
       // constructing the top html elements of the list
       listElement.appendChild(btn);
