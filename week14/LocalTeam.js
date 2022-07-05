@@ -38,11 +38,28 @@ export default class LocalTeam {
       return this.arrTeam.map(a => a.team).sort();
    }
 
-   // getLocalTeamNameByID(teamID) {
-   //    this.arrTeam.filter(obj => {
-   //       return obj.id == this._team[teamName]
-   //    });
-   // }
+
+   getLocalTeamNameByID(teamID) {
+      this.arrTeam.filter(obj => {
+         return obj.id == this._team[teamName]
+      });
+   }
+
+   updateTeamMembersList(arrayMember, memID, teamName) {
+      // update array list
+      const intID = parseInt(memID, 10);
+      const index = arrayMember.indexOf(intID);
+      (index > -1) ?
+         arrayMember.splice(index, 1) :
+         arrayMember.push(intID) ;
+
+      // update localStorage
+      let teamID = this.getLocalTeamIDByName(teamName);
+      this.updateLocalStorageByID(teamID, teamName, arrayMember);
+
+      // return new array
+      return arrayMember;
+   }
 
 
    getLocalTeamMembersByName(teamName) {
@@ -50,7 +67,16 @@ export default class LocalTeam {
       let tempTeamRec = this.arrTeam.filter(obj => {
          return obj.team == teamName
       });
-      return (tempTeamRec.length > 0) ? tempTeamRec[0].members: null;
+      return (tempTeamRec.length > 0) ? tempTeamRec[0].members : null;
+   }
+
+
+   getLocalTeamIDByName(teamName) {
+      // get the members allocated to this custom team from LS
+      let tempTeamRec = this.arrTeam.filter(obj => {
+         return obj.team == teamName
+      });
+      return (tempTeamRec.length > 0) ? tempTeamRec[0].id : null;
    }
 
 
@@ -78,8 +104,6 @@ export default class LocalTeam {
    removeLocalStorageTeam(teamArray, teamID) {
       this.removeLocalStorageByID(teamID);      
       let updatedArray = util.removeItemFromList(teamArray, teamID);
-      // console.log('updatedArray');
-      // console.log(updatedArray);
       return updatedArray;
    }
 
@@ -98,81 +122,18 @@ export default class LocalTeam {
 
    updateLocalStorageByID(recID, teamName, teamMembers) {
       //  Need to include updating of all fields inside
-      let curRec = JSON.parse(localStorage.getItem(recID));
+      let formatID = new Date(recID); 
+      let curRec = JSON.parse(localStorage.getItem(formatID));
+
       let updRec = {
          id: curRec.id,
          team: teamName,
          members: teamMembers
       };
-      setLocalStorageByID(recID, updRec);
+      this.setLocalStorageByID(formatID, updRec);
    }
 }
 
-// export function getLocalStorage(recID) {
-//    const entry = localStorage.getItem(recID);
-//    return JSON.parse(entry);
-// }
-
-// export function setLocalStorage(recID, recValue) {
-//    const entry = JSON.stringify(recValue);
-//    localStorage.setItem(recID, entry);
-// }
-
-
-// export function updateLocalStorage(recID, status) {
-//    //  Need to include updating of all fields inside
-//    let curRec = JSON.parse(localStorage.getItem(recID));
-//    let updRec = {
-//       id: curRec.id,
-//       content: curRec.content,
-//       completed: status
-//    };
-//    setLocalStorage(recID, updRec);
-// }
-
-
-// export function removeLocalStorage(recID) {
-//    localStorage.removeItem(recID);
-// }
-
-
-// export function showLocalStorage_toPage() {
-//    let recID = Object.keys(localStorage);
-//    let record = recID.length;
-
-//    while (record--) {
-//       let curRec = getLocalStorage(recID[record]);
-//       let cmp = setCmpArray(curRec.id, curRec.content, curRec.completed);
-//       showItem(cmp);
-//    }
-// }
-
-
-// export function showLocalStorage_toConsole() {
-//    let recValues = [];
-//    let recID = Object.keys(localStorage);
-//    let record = recID.length;
-//    while (record--) {
-//       // recValues.push(localStorage.getItem(recID[record]));         
-//       let curRec = getLocalStorage(recID[record]);
-//       let cmp = setTeamArray(curRec.id, curRec.team, curRec.members);
-//       recValues.push(cmp);
-//    }
-//    return recValues;
-// }
-
-// export function getLocalStorage_toArray() {
-//    let arrTeam = [];
-//    let recID = Object.keys(localStorage);
-//    let records = recID.length;
-//    while (records--) {
-//       // recValues.push(localStorage.getItem(recID[record]));         
-//       let curRec = getLocalStorage(recID[records]);
-//       let lsTeam = { id: curRec.id, team: curRec.team, members: curRec.members };   
-//       arrTeam.push(lsTeam);
-//    }
-//    return arrTeam;
-// }
 
 export function clearLocalStorage() {
    (localStorage.length > 0 ? localStorage.clear() : console.log("localStorage is empty"));

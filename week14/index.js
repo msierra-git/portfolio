@@ -62,14 +62,14 @@ document.getElementById("btnCreate").addEventListener("click", function() {
 
 // Local Custom Page - API Navigation Button - NEXT2
 document.getElementById("btnNext2").addEventListener("click", function() {     
-   if (swData.getMembers().length > teamIndex) { teamIndex = teamIndex + itemsOnPage }; 
+   if (swData.getMembers().length > teamIndex) { teamIndex = teamIndex + membersOnPage }; 
    swData.getSetOfMembers(teamIndex);
 }, false);
 
 
 // Local Custom Page - API Navigation Button - PREVIOUS
 document.getElementById("btnPrev2").addEventListener("click", function() {     
-   if (teamIndex > 0) { teamIndex = teamIndex - itemsOnPage }; 
+   if (teamIndex > 0) { teamIndex = teamIndex - membersOnPage }; 
    swData.getSetOfMembers(teamIndex);
 }, false);
 
@@ -81,6 +81,13 @@ function commonSettings() {
    swData.setTeamCutOff(numOfMembers);
    swData.setItemsOnPage(itemsOnPage);
 }
+
+
+// Button to add new custom team to localStorage
+document.getElementById("refreshPage").addEventListener("click", function() {
+   swData.restartSWApp();
+   // window.history.go(0);
+}, false);
 
 
 // // Manual Test Data for LS record creations
@@ -101,18 +108,16 @@ function commonSettings() {
 
 
 
-
-
 //  other codes for development process only
 function clearLocalStorage() {
    (localStorage.length > 0 ? localStorage.clear() : console.log("localStorage is empty"));
 }
 
-// console.log("Current LS data");
-// for (var i = 0; i < localStorage.length; i++){
-//    console.log(localStorage.getItem(localStorage.key(i)));
-// }
+console.log("Current LS data");
+for (var i = 0; i < localStorage.length; i++){
+   console.log(localStorage.getItem(localStorage.key(i)));
+}
 
 // clearLocalStorage(); // initialise localStorage
-// localStorage.removeItem('Mon Jul 04 2022 19:39:29 GMT+1000 (Australian Eastern Standard Time)');
-// console.log(localStorage);
+console.log(localStorage);
+// localStorage.removeItem('2022-07-04T15:39:54.859Z');

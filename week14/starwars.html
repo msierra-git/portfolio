@@ -25,7 +25,7 @@
         </h2>
         <hr><br>
         <div class="outputDiv row">
-            <div class="staticDiv column">
+            <div id="staticDiv" class="staticDiv column">
                 <div id="teamNavButtons" class="hide_item">
                     <h4 class="listTitle">Teams from API</h4>
                     <button id="btnPrev">&lt;&lt; Previous</button>
@@ -33,15 +33,14 @@
                     <button id="btnNext">Next &gt;&gt;</button><br>
                     <button id="btnManage" class="hide_item">Manage Custom Teams</button>
                 </div>
-                <div class="listDiv">
+                <div id="listDiv" class="listDiv hide_item">
                     <ul id="swList"></ul>
                 </div>
-                <div class="navDiv">
-                    <button id="refreshPage" class="hide_item" onclick="window.history.go(0);">Reset Page</button>
+                <div id="mainNavDiv" class="navDiv">
+                    <button id="refreshPage" class="hide_item">Reset Page</button>
                     <button id="btnFetch">Teams from API</button>
                     <button id="btnLocal">Custom Teams</button>
                 </div>
-
             </div>
             <div id="teamDiv" class="column">
                 <div class="teamDiv">

@@ -297,6 +297,15 @@ main {
    display: flex;
 }
 
+.listDiv {
+   min-height: 310px;
+}
+
+.localDiv {
+   max-height: 210px;
+   overflow-y: scroll;
+}
+
 /* sliding automation in showing hte member's details */
 .slideDiv {
    transition: width 1.0s;
@@ -362,10 +371,7 @@ main {
    color:  rgb(128, 128, 128);
 }
 
-.hide_item {
-   display: none;
-   visibility: hidden;
-}
+
 
 .aLink {
    color:  rgb(128, 128, 128);
@@ -381,6 +387,7 @@ main {
    background:  rgb(3, 164, 115);
    align-items: flex-start;
    height: 90%;
+   min-height: 500px;
    padding-left: 50px;
 }
 
@@ -488,6 +495,10 @@ main {
 }
 /* end of two columns page */
 
+.hide_item {
+   display: none;
+   visibility: hidden;
+}
 
 @media screen and (max-width: 870px) {
    #btnPrev,

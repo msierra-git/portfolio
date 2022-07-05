@@ -37,6 +37,7 @@ export default class DataController {
       this.teamCutoff = 0;
       this.dataLocation = dataLocation;
       this.curCustomTeam = '';
+      this.curCustomTeamMembers = [];
    }
 
 
@@ -181,13 +182,15 @@ export default class DataController {
          }, false);
       });
 
-      // edit team members button
+      // edit local team members button
       document.querySelectorAll('.btnMem').forEach(item => {
          item.addEventListener('click', event => {
             this.curCustomTeam = event.target.previousSibling.innerHTML;
             // let selID = event.target.dataset.id;
-            // renderSWEntireList(memList, listElement, teamName)
-            // this.swDataView.renderSWEntireList(this._all, listElement, selLabel, 0);
+            // console.log(selID);
+            // console.log(this._ls);
+            this.curCustomTeamMembers =
+               this.swLocal.getLocalTeamMembersByName(this.curCustomTeam);
             this.getSetOfMembers(0);
          }, false);
       });
@@ -195,9 +198,32 @@ export default class DataController {
 
 
    async getSetOfMembers(curIndex) {
-      let listElement = document.getElementById('apiTeamDetails');
       this.swDataView.renderSWEntireList(
-         this._all, listElement, this.curCustomTeam, curIndex, this.itemsOnPage);
+         this._all, this.curCustomTeam, this.curCustomTeamMembers,
+         curIndex, this.itemsOnPage);
+
+
+      // edit local team members button
+      document.querySelectorAll('.chkEdit').forEach(item => {
+         item.addEventListener('click', event => {
+            // this.curCustomTeam = event.target.previousSibling.innerHTML;
+            let selID = event.target.id;
+            console.log(selID);
+            // console.log(this._ls);
+            this.curCustomTeamMembers = 
+               this.swLocal.updateTeamMembersList(
+                  this.curCustomTeamMembers, selID, this.curCustomTeam);
+            console.log(this.curCustomTeamMembers);
+            this.getSetOfMembers(curIndex);
+         }, false);
+      });
+
+      // console.log(this.parent);
+      // console.log(this.parentElement);
+      // console.log(this.team);
+      // console.log(this.teamElement);
+      // console.log(this.members);
+      // console.log(this.membersElement);
    }
 
 
@@ -232,18 +258,26 @@ export default class DataController {
    }
 
 
+   restartSWApp() {
+      this.swDataView.resetPage();
+   }
+
+
    // class getter and setters
    getTeam() {
       return this._team;
    }
 
+
    getMembers() {
       return this._all;
    }
 
+
    setItemsOnPage(items) {
       this.itemsOnPage = items;
    }
+
 
    setTeamCutOff(numOfMembers) {
       this.teamCutoff = numOfMembers;

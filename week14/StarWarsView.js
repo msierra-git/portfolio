@@ -5,8 +5,10 @@
  *   Date:            June - July 2022                     *
  ==========================================================*/
 
- 
-import { toTitleCase } from './utilities.js';
+
+import {
+   toTitleCase
+} from './utilities.js';
 
 
 // Star Wars View handler
@@ -16,22 +18,26 @@ export default class StarWarsView {
       // build a list of teams on the page from an array of unique teams. 
       // this will add the id of the record as a data- property to the li. 
       // ie. <li data-id="">      
-      
+
       // beginning of the array
-      if (!curIndex) { curIndex = 0; };
-      
+      if (!curIndex) {
+         curIndex = 0;
+      };
+
       // get nemuber of records from the list based on the value of "items" variable.
       let showList = swList.slice(curIndex, curIndex + items);
       // console.log(showList);
-      
+
       // reset the div where the list of teams will be shown
-      listElement.innerHTML = '';      
+      // console.log(listElement);
+      listElement.innerHTML = '';
       listElement.classList.remove('hide_item');
-      
+      listElement.parentNode.classList.remove('hide_item');
+
       // create title for the list of Teams based on data location
       let listTitle = (listElement.parentNode.parentNode.children[0].children[0]);
       listTitle.textContent = `Teams from ${dataLocation}`;
-      
+
       // iterate on the array of unique teams/affiliations
       // and show as a button by adding the "listButton" class
       showList.forEach(function (swTeam, index) {
@@ -41,7 +47,7 @@ export default class StarWarsView {
          li.textContent = swTeam;
          listElement.appendChild(li);
       });
-      
+
       // show navigation, record count, and refresh page buttons
       // then hide the either fetch or local button
       document.getElementById('refreshPage').classList.remove('hide_item');
@@ -56,14 +62,14 @@ export default class StarWarsView {
          document.getElementById('btnManage').classList.remove('hide_item');
          document.getElementById('btnLocal').classList.add('hide_item');
       };
-      
+
       // text to show user of record navigation
       let itemCount = document.getElementById('itemCount');
-      
+
       itemCount.textContent = (swList.length === 0) ?
-      `No teams found on ${dataLocation}...`:
-      `${curIndex+1} of ${swList.length}`;
-      
+         `No teams found on ${dataLocation}...` :
+         `${curIndex+1} of ${swList.length}`;
+
       // hide previous button if page is at the beginning of the array
       // otherwise show previous button for navigation of list
       if (curIndex === 0) {
@@ -71,7 +77,7 @@ export default class StarWarsView {
       } else {
          document.getElementById('btnPrev').classList.remove('hide_item');
       };
-      
+
       // hide next button if page is at the end of the array
       // otherwise show next button for navigation of list
       if ((curIndex + items + 1) > swList.length) {
@@ -128,7 +134,7 @@ export default class StarWarsView {
          img.setAttribute('alt', 'Image of ' + swMember.name);
          img.setAttribute('class', 'listImage');
          spn.textContent = swMember.name;
-         
+
          // constructing the html elements to show details
          teamDetailsEl.appendChild(li);
          li.appendChild(img);
@@ -144,26 +150,26 @@ export default class StarWarsView {
       // reset the div where the details of the member will be shown
       listElement.innerHTML = '';
       let newArray = Object.entries(infoList);
-      let memDiv   = listElement.parentNode;
+      let memDiv = listElement.parentNode;
       let slideDiv = memDiv.parentNode;
-      let liTitle = document.createElement('li'); 
-      let memImg = document.createElement('img'); 
-      let spanT = document.createElement('span'); 
+      let liTitle = document.createElement('li');
+      let memImg = document.createElement('img');
+      let spanT = document.createElement('span');
       let btn = document.createElement('button');
 
       // creating the back button to view team list
       btn.textContent = "Back to List";
-      btn.setAttribute('id','closeSlide');   
+      btn.setAttribute('id', 'closeSlide');
 
       // grabbing image from URL provided by API
       memImg.setAttribute('src', infoList.image);
       memImg.setAttribute('alt', 'Image of ' + infoList.name);
-      memImg.setAttribute('class', 'memberImage');   
-      
+      memImg.setAttribute('class', 'memberImage');
+
       // creating title of the list
       spanT.textContent = `Details of ${infoList.name}`;
       spanT.classList.add('memberTitle');
-      liTitle.setAttribute('class', 'listMemberTitle');   
+      liTitle.setAttribute('class', 'listMemberTitle');
       // liTitle.setAttribute('style', 'white-space: nowrap;');   
 
       // constructing the top html elements of the list
@@ -174,28 +180,28 @@ export default class StarWarsView {
 
       // iterate through array then create html element to show details
       for (const [key, value] of newArray) {
-         if (value === true || 
-            (key !== 'id' && key !== 'image' && 
-             key !== 'name' && key !== 'wiki')) {
+         if (value === true ||
+            (key !== 'id' && key !== 'image' &&
+               key !== 'name' && key !== 'wiki')) {
             let newValue =
                ((typeof value === 'string' || value instanceof String) ?
                   toTitleCase(value) : value);
 
             // create li element and add to the parent el
-            let li = document.createElement('li');                
-            listElement.appendChild(li);  
+            let li = document.createElement('li');
+            listElement.appendChild(li);
 
             // create a span for the "key" data
             let spnKey = document.createElement('span');
             spnKey.setAttribute('class', 'listKey');
             spnKey.textContent = `${toTitleCase(key)}: `;
-            li.appendChild(spnKey);       
+            li.appendChild(spnKey);
 
             // create a span for the "value" data
             let spnVal = document.createElement('span');
             spnVal.setAttribute('class', 'listValue');
             spnVal.textContent = newValue;
-            li.appendChild(spnVal);          
+            li.appendChild(spnVal);
          }
       }
 
@@ -232,7 +238,7 @@ export default class StarWarsView {
 
       // hide list of team members on right column
       teamElement.classList.add('hide_item');
-      
+
       this.renderManageSWLSList(arrayLS, listElement, 0);
 
       // show sliding div with details of member
@@ -240,20 +246,20 @@ export default class StarWarsView {
       slideDiv.classList.add('open');
 
       document.getElementById('btnFetch').classList.add('hide_item');
-      document.getElementById('btnLocal').classList.remove('hide_item');     
+      document.getElementById('btnLocal').classList.remove('hide_item');
    }
 
-   
+
    renderManageSWLSList(arrayLS, listElement, curIndex) {
       // reset the div where the list of teams will be shown
-      listElement.innerHTML = '';      
+      listElement.innerHTML = '';
       listElement.classList.remove('hide_item');
-      
+
       arrayLS.forEach(function (lsTeam, index) {
-         let customItems   = listElement;
-         let customItem    = document.createElement('li');
-         let customLabel   = document.createElement('span');
-         let customButton  = document.createElement('button');
+         let customItems = listElement;
+         let customItem = document.createElement('li');
+         let customLabel = document.createElement('span');
+         let customButton = document.createElement('button');
          let customButton2 = document.createElement('button');
 
          // assign attributes and values to element
@@ -265,7 +271,7 @@ export default class StarWarsView {
          customButton2.className = 'btnMem';
          customButton2.setAttribute('data-id', lsTeam.id);
          customButton2.innerHTML = '>>';
-   
+
          // organise and append elements together
          customItem.appendChild(customButton);
          customButton.after(customLabel);
@@ -273,12 +279,12 @@ export default class StarWarsView {
          customItems.appendChild(customItem);
       });
    }
-   
+
 
    hideSWSlidingDiv(slideElement, teamElement) {
       // hide back the sliding div of member's details
       let ulDetails = slideElement;
-      let ulID = ulDetails.id; 
+      let ulID = ulDetails.id;
       let memDiv, slideDiv = '';
       // console.log(ulID);
 
@@ -297,89 +303,96 @@ export default class StarWarsView {
       slideDiv.classList.remove('open');
       slideDiv.classList.remove('slideDiv');
       ulDetails.classList.add('hide_item');
-      
+
       // reset the div to initial state so transition will run again
-      slideDiv.classList.add('slideDiv');  
-      
+      slideDiv.classList.add('slideDiv');
+
       // specific to manage local teams div
       if (ulID === 'localDetails') {
          slideDiv.classList.add('hide_item');
          memDiv.classList.add('hide_item');
          memDiv.children[2].classList.add('hide_item');
-      } ;
+      };
 
       // show list of team members on right column
       teamElement.classList.remove('hide_item');
    }
 
 
-   async renderSWEntireList(memList, listElement, teamName, curIndex, items) {   
- 
-         // beginning of the array
-         if (!curIndex) { curIndex = 0; };
+   async renderSWEntireList(memList, teamName, teamMembers, curIndex, items) {
 
-         // get nemuber of records from the list based on the value of "items" variable.
-         let showList = memList.slice(curIndex, curIndex + items);
+      // beginning of the array
+      if (!curIndex) {
+         curIndex = 0;
+      };
 
-         // build a list of all members including the name and image as found on API.
-         // console.log(listElement);
-         let teamDetailsEl = listElement;
-         let h4 = document.createElement('h4');
-         let spnMsg = document.createElement('span');
-   
-         // reset the div where the list of team members will be shown
-         teamDetailsEl.innerHTML = '';
-   
-         // show team members div container 
-         teamDetailsEl.classList.remove('hide_item');
-         // teamDetailsEl.parentNode.parentNode.classList.remove('hide_item');
-   
-         // creating title of the list
-         h4.textContent = `Members for ${teamName}`;
-         h4.setAttribute('class', 'listTitle');
-         spnMsg.setAttribute('class', 'listMsg');
-         spnMsg.textContent = 
-            '(Click on checkbox to add/remove members from custom team)';
-         teamDetailsEl.appendChild(h4);
-         teamDetailsEl.appendChild(spnMsg);
-   
-         // iterate on the array of unique teams/affiliations
-         showList.forEach(function (swMember) {
-            let li  = document.createElement('li');
-            let chk = document.createElement('input');
-            let img = document.createElement('img');
-            let spn = document.createElement('span');
-            
-            // assign attributes to elements
-            chk.type = 'checkbox';
-            chk.id   = swMember.id;
-            // li.setAttribute('data-id', swMember.id);
-            // spn.setAttribute('data-id', swMember.id);
-            // img.setAttribute('data-id', swMember.id);
-   
-            // image of person/character as found on the API
-            img.setAttribute('src', swMember.image);
-            img.setAttribute('alt', 'Image of ' + swMember.name);
-            img.setAttribute('class', 'listImage');
-            spn.textContent = swMember.name;
-            
-            // constructing the html elements to show details
-            teamDetailsEl.appendChild(li);
-            li.appendChild(chk);
-            li.appendChild(img);
-            li.appendChild(spn);
-         });
+      // get nemuber of records from the list based on the value of "items" variable.
+      let showList = memList.slice(curIndex, curIndex + items);
+
+      // build a list of all members including the name and image as found on API.
+      // console.log(listElement);
+
+      let teamDetailsEl = document.getElementById('apiTeamDetails');
+      let h4 = document.createElement('h4');
+      let spnMsg = document.createElement('span');
+
+      // reset the div where the list of team members will be shown
+      teamDetailsEl.innerHTML = '';
+
+      // show team members div container 
+      teamDetailsEl.classList.remove('hide_item');
+      // teamDetailsEl.parentNode.parentNode.classList.remove('hide_item');
+
+      // creating title of the list
+      h4.textContent = `Members for ${teamName}`;
+      h4.setAttribute('class', 'listTitle');
+      spnMsg.setAttribute('class', 'listMsg');
+      spnMsg.textContent =
+         '(Click on checkbox to add/remove members of custom team)';
+      teamDetailsEl.appendChild(h4);
+      teamDetailsEl.appendChild(spnMsg);
+
+      console.log(teamMembers);
+      // iterate on the array of unique teams/affiliations
+      showList.forEach(function (swMember) {
+         let li = document.createElement('li');
+         let chk = document.createElement('input');
+         let img = document.createElement('img');
+         let spn = document.createElement('span');
+
+         // assign attributes to elements
+         chk.type = 'checkbox';
+         chk.id = swMember.id;
+         chk.setAttribute('class', 'chkEdit');
+         chk.checked = (teamMembers.indexOf(swMember.id) > -1) ? true : false;
+
+         // li.setAttribute('data-id', swMember.id);
+         // spn.setAttribute('data-id', swMember.id);
+         // img.setAttribute('data-id', swMember.id);
+
+         // image of person/character as found on the API
+         img.setAttribute('src', swMember.image);
+         img.setAttribute('alt', 'Image of ' + swMember.name);
+         img.setAttribute('class', 'listImage');
+         spn.textContent = swMember.name;
+
+         // constructing the html elements to show details
+         teamDetailsEl.appendChild(li);
+         li.appendChild(chk);
+         li.appendChild(img);
+         li.appendChild(spn);
+      });
 
 
-         // show navigation, record count, and refresh page buttons
+      // show navigation, record count, and refresh page buttons
       document.getElementById('apiTeamNav').classList.remove('hide_item');
       // text to show user of record navigation
       let itemCount = document.getElementById('itemCount2');
-      
+
       itemCount.textContent = (memList.length === 0) ?
-      `No members found on API...`:
-      `${curIndex+1} of ${memList.length}`;
-      
+         `No members found on API...` :
+         `${curIndex+1} of ${memList.length}`;
+
       // hide previous button if page is at the beginning of the array
       // otherwise show previous button for navigation of list
       if (curIndex === 0) {
@@ -387,7 +400,7 @@ export default class StarWarsView {
       } else {
          document.getElementById('btnPrev2').classList.remove('hide_item');
       };
-      
+
       // hide next button if page is at the end of the array
       // otherwise show next button for navigation of list
       if ((curIndex + items + 1) > memList.length) {
@@ -395,6 +408,23 @@ export default class StarWarsView {
       } else {
          document.getElementById('btnNext2').classList.remove('hide_item');
       };
+   }
+
+   resetPage() {
+      // hide elements
+      document.getElementById('refreshPage').classList.add('hide_item');
+      document.getElementById('btnManage').classList.add('hide_item');
+      document.getElementById('swList').classList.add('hide_item');
+      document.getElementById('teamDetails').classList.add('hide_item');
+      document.getElementById('memberDetails').classList.add('hide_item');
+      document.getElementById('slideDiv2').classList.add('hide_item');
+      document.getElementById('teamNavButtons').classList.add('hide_item');
+      document.getElementById('listDiv').classList.add('hide_item');
+
+      // show elements
+      document.getElementById('btnFetch').classList.remove('hide_item');
+      document.getElementById('btnLocal').classList.remove('hide_item');
+      document.getElementById('staticDiv').classList.remove('hide_item');
    }
 
 }
