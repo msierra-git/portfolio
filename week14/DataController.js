@@ -5,11 +5,10 @@
  *   Date:            June - July 2022                     *
  ==========================================================*/
 
- 
+
 import LocalTeam from './LocalTeam.js';
 import StarWars from './StarWars.js';
 import StarWarsView from './StarWarsView.js';
-import * as util from './utilities.js'
 
 
 // Star Wars Data controller
@@ -57,32 +56,6 @@ export default class DataController {
       }
    }
 
-   async manageLSStarWarsInfo() {
-      // get the list of all star wars characters
-      this._all = await this.swData.getStarWarsAllInfo();
-
-      // get list of star wars teams from LS
-      this._ls = this.swLocal.getLocalTeamAllInfo();
-      this._team = this.swLocal.getLocalTeamNames(); 
-      
-      // console.log(this.parentElement);
-      // console.log(this.teamElement);
-      // console.log(this.membersElement);
-
-      // renderManageSWTeams(arrayLS, manageDiv, listElement, teamElement)
-      let sortedLS = util.sortObjectList(this._ls);
-      this.swDataView.renderManageSWTeams(
-         sortedLS, this.parentElement, 
-         this.parentElement.children[1].children[0],
-         this.teamElement);    
-         
-      // event on close button on manage custom teams page
-      // document.getElementById('closeSlide2').addEventListener('click', () => {
-      //    this.swDataView.hideSWSlidingDiv(
-      //       this.parentElement.children[1].children[0], this.teamElement);   
-      // }, false);
-   }
-
 
    async getStarWarsInfo() {
       // this method provides the glue between the api-data model and view. 
@@ -122,7 +95,7 @@ export default class DataController {
 
       // get list of star wars teams from LS
       this._ls = this.swLocal.getLocalTeamAllInfo();
-      this._team = this.swLocal.getLocalTeamNames();      
+      this._team = this.swLocal.getLocalTeamNames();
 
       // render list to html
       this.getSetOfTeams(0);
@@ -144,20 +117,20 @@ export default class DataController {
       let teamMembers = [];
       if (this.dataLocation === 'API') {
          teamMembers = this.swData.getMembersByTeam(this._team[teamID]);
-      } 
-      
+      }
+
       if (this.dataLocation === 'Local Storage') {
          // test in getting the name instead of an ID
          // console.log(this._team[teamID]);         
 
          // get the members allocated to this custom team from LS
-         let membersID  = this.swLocal.getLocalTeamMembersByName(this._team[teamID]);      
+         let membersID = this.swLocal.getLocalTeamMembersByName(this._team[teamID]);
 
          // get the records from API based on member IDs from LS                  
          teamMembers = (membersID) ? this.swData.getMembersByArrayID(membersID) : teamMembers = [];
       }
-      
-      this.swDataView.renderSWTeamMembers(teamMembers, this.teamElement, this._team[teamID]);      
+
+      this.swDataView.renderSWTeamMembers(teamMembers, this.teamElement, this._team[teamID]);
 
       // event on clicking a member from the list
       this.teamElement.addEventListener('click', e => {
@@ -173,24 +146,82 @@ export default class DataController {
 
       // event on close button on member details page
       document.getElementById('closeSlide').addEventListener('click', () => {
-         this.swDataView.hideSWSlidingDiv(this.membersElement, this.teamElement);   
+         this.swDataView.hideSWSlidingDiv(this.membersElement, this.teamElement);
       }, false);
    }
 
 
+
+   async manageLSStarWarsInfo() {
+      // get the list of all star wars characters
+      this._all = await this.swData.getStarWarsAllInfo();
+
+      // get list of star wars teams from LS
+      this._ls = this.swLocal.getLocalTeamAllInfo();
+      this._team = this.swLocal.getLocalTeamNames();
+
+      let ulLocalTeams = this.parentElement.children[1].children[0];
+      this.showLSStarWarsList(
+         this._ls, this.parentElement, ulLocalTeams, this.teamElement);
+   }
+
+
+   showLSStarWarsList(arrayTeams, parentElmnt, ulElmnt, teamElmnt) {
+      // Refresh list of custom teams on manage div
+      // renderManageSWTeams(arrayLS, manageDiv, listElement, teamElement)
+      this.swDataView.renderManageSWTeams(arrayTeams, parentElmnt, ulElmnt, teamElmnt);
+
+      document.querySelectorAll('.btnDel').forEach(item => {
+         item.addEventListener('click', event => {
+            let selLabel = event.target.nextSibling;
+            let selID = event.target.dataset.id;
+            this.removeLSStarWarsTeam(selID, selLabel);
+         })
+      })
+   }
+
+
+   addLSStarWarsTeam(txtInput) {
+      let newTeam = this.swLocal.addLocalStorageNewTeam(txtInput);
+      console.log(newTeam);
+      if (newTeam) {
+         // add the new entry into ls array
+         this._ls.push(newTeam);
+
+         let ulLocalTeams = this.parentElement.children[1].children[0];
+         this.showLSStarWarsList(
+            this._ls, this.parentElement, ulLocalTeams, this.teamElement);
+      }
+   }
+
+
+   removeLSStarWarsTeam(teamID, teamLabel) {
+      let confirmDelete = confirm("Do you really want to delete the team: '" +
+         teamLabel.innerHTML +
+         "' and all its members?");
+
+      if (confirmDelete) {
+         let newTeam = this.swLocal.removeLocalStorageTeam(this._ls, teamID);
+         // remove the team entry from ls array
+         this._ls = newTeam;
+
+         let ulLocalTeams = this.parentElement.children[1].children[0];
+         this.showLSStarWarsList(
+            this._ls, this.parentElement, ulLocalTeams, this.teamElement);
+      }
+   }
+
+
    // class getter and setters
-   getTeam() { return this._team; }
+   getTeam() {
+      return this._team;
+   }
 
-   setItemsOnPage(items) { this.itemsOnPage = items; }
+   setItemsOnPage(items) {
+      this.itemsOnPage = items;
+   }
 
-   setTeamCutOff(numOfMembers) { this.teamCutoff = numOfMembers; }
-
-   addNewLSTeam() {
-      let newID = util.getCustomTimeStamp(0);
-      let newName = util.getCurrentEntry('FORM', 'txtTeamName');
-      let arrValue = util.setEntrytoArray(newID, newName, []);
-      (newName) ? 
-         swLocal.setLocalStorageByID(newID, arrValue) :
-         console.log('Error! Empty textbox.');
+   setTeamCutOff(numOfMembers) {
+      this.teamCutoff = numOfMembers;
    }
 }

@@ -5,7 +5,7 @@
  *   Date:            June - July 2022                     *
  ==========================================================*/
 
-// import {setCmpArray, showItem} from './utilities.js';
+import * as util from './utilities.js';
 
 // Local Team Model (using localStorage)
 export default class LocalTeam {
@@ -27,7 +27,7 @@ export default class LocalTeam {
          // console.log(tempTeam);
          this.arrTeam.push(tempTeam);
       }
-      // console.log(this.arrTeam);
+      this.arrTeam = util.sortObjectList(this.arrTeam);
       return this.arrTeam;
    }
 
@@ -58,6 +58,30 @@ export default class LocalTeam {
    }
 
 
+   addLocalStorageNewTeam(txtInput) {
+      let newID = util.getCustomTimeStamp(0);
+      let newName = util.getCurrentEntry('FORM', txtInput);
+      let arrValue = util.setEntrytoArray(newID, newName, []);
+      if (newName) { 
+         this.setLocalStorageByID(newID, arrValue) 
+      } else {
+         arrValue = newName;
+         alert('Input Textbox is Empty! Please enter a custom name!');
+         console.log('Error! Empty textbox.');
+      };
+      return arrValue;
+   }
+
+
+   removeLocalStorageTeam(teamArray, teamID) {
+      this.removeLocalStorageByID(teamID);      
+      let updatedArray = util.removeItemFromList(teamArray, teamID);
+      // console.log('updatedArray');
+      // console.log(updatedArray);
+      return updatedArray;
+   }
+
+
    setLocalStorageByID(recID, recValue) {
       const entry = JSON.stringify(recValue);
       localStorage.setItem(recID, entry);
@@ -65,7 +89,8 @@ export default class LocalTeam {
 
 
    removeLocalStorageByID(recID) {
-      localStorage.removeItem(recID);
+      let formatID = new Date(recID);      
+      localStorage.removeItem(formatID);
    }
 
 

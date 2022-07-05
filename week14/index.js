@@ -7,7 +7,6 @@
 
 
 import DataController from './DataController.js';
-import * as util from './utilities.js'
 
 let swData = "";
 let teamIndex = 0;
@@ -55,17 +54,7 @@ document.getElementById("btnManage").addEventListener("click", function() {
 
 // Button to add new custom team to localStorage
 document.getElementById("btnCreate").addEventListener("click", function() {
-   // enterLSTeam(1, [2, 4, 6, 8]);
-   // let newID = util.getCustomTimeStamp(0);
-   // let newName = util.getCurrentEntry('FORM', 'txtTeamName');
-   // let arrValue = util.setEntrytoArray(newID, newName, []);
-   // (newName) ? 
-   //    swData.swLocal.setLocalStorageByID(newID, arrValue) :
-   //    enterLSTeam(2, [3, 6, 9]);
-
-   
-   swData.addNewLSTeam();
-
+   swData.addLSStarWarsTeam('txtTeamName');
 }, false);
 
 
@@ -78,21 +67,21 @@ function commonSettings() {
 }
 
 
-// Manual Test Data for LS record creations
-function enterLSTeam(testVer, arrMembers) {
-   let newID = util.getCustomTimeStamp(testVer);
-   let newEntry = `Custom Manual ${testVer}`;
+// // Manual Test Data for LS record creations
+// function enterLSTeam(testVer, arrMembers) {
+//    let newID = util.getCustomTimeStamp(testVer);
+//    let newEntry = `Custom Manual ${testVer}`;
    
-   let arrTeam = {
-      id: newID,
-      team: newEntry,
-      members: arrMembers
-   };
+//    let arrTeam = {
+//       id: newID,
+//       team: newEntry,
+//       members: arrMembers
+//    };
    
-   // let testTeamList = [];    
-   // testTeamList.push(arrTeam);
-   swData.swLocal.setLocalStorageByID(newID, arrTeam);
-}
+//    // let testTeamList = [];    
+//    // testTeamList.push(arrTeam);
+//    swData.swLocal.setLocalStorageByID(newID, arrTeam);
+// }
 
 
 
@@ -103,10 +92,10 @@ function clearLocalStorage() {
    (localStorage.length > 0 ? localStorage.clear() : console.log("localStorage is empty"));
 }
 
-console.log("Current LS data");
-for (var i = 0; i < localStorage.length; i++){
-   console.log(localStorage.getItem(localStorage.key(i)));
-}
+// console.log("Current LS data");
+// for (var i = 0; i < localStorage.length; i++){
+//    console.log(localStorage.getItem(localStorage.key(i)));
+// }
 
 // clearLocalStorage(); // initialise localStorage
 // localStorage.removeItem('Mon Jul 04 2022 19:39:29 GMT+1000 (Australian Eastern Standard Time)');

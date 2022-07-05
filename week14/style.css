@@ -213,13 +213,6 @@ main {
    width: 88%;
 }
 
-#localDetails li {   
-   padding: 5px 10px;
-}
-.btnDel {
-   color: #F2F2F2;
-}
-
 #teamDetails li {
    background: linear-gradient(to right,
          rgb(35, 36, 36),
@@ -359,8 +352,7 @@ main {
    padding-right: 30px;
 }
 
-.listKey {
-   /* color: #000000; */
+.listKey {   
    color: rgba(5, 84, 136, 0.90);
 }
 
@@ -392,15 +384,28 @@ main {
 
 #slideDiv2 .listTitle {
    color: #000000;
+   padding: 0px;
+}
+
+#localDetails li {   
+   padding: 0;
+   width: 350px;
 }
 
 #txtTeamName {
    text-align: left;
    padding-left: 10px;
-   width: 20rem;
-   height: 22px;
-   margin: 12px 5px;
+   width: 275px;
+   height: 25px;
+   margin: 12px 5px 0 40px ;
    border-radius: 5px;
+
+}
+
+.btnDel {
+   color: #F2F2F2;
+   margin-left: 10px;
+   margin-bottom: 10px;
 }
 
 @media screen and (max-width: 870px) {

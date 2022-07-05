@@ -32,15 +32,13 @@ export default class StarWarsView {
       document.getElementById('btnLocal').classList.remove('hide_item');     
    }
 
+   
    renderManageSWLSList(arrayLS, listElement, curIndex) {
       // reset the div where the list of teams will be shown
       listElement.innerHTML = '';      
       listElement.classList.remove('hide_item');
       
       arrayLS.forEach(function (lsTeam, index) {
-         console.log(listElement);
-         console.log(lsTeam.team);
-
          let customItems  = listElement;
          let customItem   = document.createElement('li');
          let customLabel  = document.createElement('label');
@@ -56,47 +54,9 @@ export default class StarWarsView {
          customItem.appendChild(customButton);
          customButton.after(customLabel);
          customItems.appendChild(customItem);
-
-         // let li = document.createElement('li');
-         // let btnDel = document.createElement('button');
-         // btnDel.textContent = '-';
-         // btnDel.setAttribute('class','btnDel');
-         // btnDel.setAttribute('data-id', lsTeam.id);
-         // console.log(lsTeam.team);
-         // li.setAttribute('data-id', lsTeam.id);
-         // // li.setAttribute('class', 'listNormal');
-         // li.textContent = lsTeam.team;
-         // listElement.appendChild(li);
-         // li.appendChild(btnDel);
       });
    }
    
-   renderManageSWLSItem(listE, arrLsTeam) {
-      console.log(arrLsTeam);
-      // create list elements with checkbox, label and button
-      // let customItems  = listElement;
-      // let customItem   = document.createElement('li');
-      // let customLabel  = document.createElement('label');
-      // let customButton = document.createElement('button');
-   
-      // assign attributes and values to element
-      // customLabel.innerHTML = lsTeam.team;
-      // customButton.className = 'btnDel';
-      // customButton.setAttribute('data-id', lsTeam.id);
-      // customButton.innerHTML = 'X';
-   
-      // organise and append elements together
-      // customItem.appendChild(todoCheck);
-      // todoCheck.after(customLabel);
-      // customLabel.after(customButton);
-      // customItems.appendChild(customItem);
-   
-      // add listener to current item's checkbox
-      // bindItemCheckboxListener(customItem);
-   
-      // add listener to current item's "x" or delete button
-      // bindItemButtonListener(customItem);
-   }
 
    renderSWTeams(swList, listElement, curIndex, items, dataLocation) {
       // build a list of teams on the page from an array of unique teams. 
@@ -171,7 +131,7 @@ export default class StarWarsView {
       listElement.parentNode.parentNode.nextElementSibling.classList.add('hide_item');
 
       // hide other div elements
-      console.log(listElement);
+      // console.log(listElement);
       let manageDiv = listElement.parentNode.parentNode.parentNode.children[3];
       manageDiv.classList.add('hide_item');
    }
@@ -180,7 +140,7 @@ export default class StarWarsView {
    renderSWTeamMembers(memList, listElement, teamName) {
       // build a list of team members including the name and image as found on API.
       // will add the id of the person/character record as a data- property to the li. 
-      console.log(listElement);
+      // console.log(listElement);
       let teamDetailsEl = listElement;
       let h4 = document.createElement('h4');
 
@@ -303,8 +263,8 @@ export default class StarWarsView {
       teamElement.classList.add('hide_item');
 
       // show sliding div with details of member
+      // console.log(listElement);      
       listElement.classList.remove('hide_item');
-      console.log(listElement);      
       slideDiv.classList.add('open');
    }
 
@@ -314,7 +274,7 @@ export default class StarWarsView {
       let ulDetails = slideElement;
       let ulID = ulDetails.id; 
       let memDiv, slideDiv = '';
-      console.log(ulID);
+      // console.log(ulID);
 
       if (ulID === 'memberDetails') {
          memDiv = ulDetails.parentNode;
