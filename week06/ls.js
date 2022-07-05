@@ -51,10 +51,12 @@ export function showLocalStorage_toConsole() {
    let recID = Object.keys(localStorage);
    let record = recID.length;
    while (record--) {
-      // recValues.push(localStorage.getItem(recID[record]));         
+      // recValues.push(localStorage.getItem(recID[record]));       
       let curRec = getLocalStorage(recID[record]);
-      let todo = setToDoArray(curRec.id, curRec.content, curRec.completed);   
-      recValues.push(todo);
+      if (curRec.content) {
+         let todo = setToDoArray(curRec.id, curRec.content, curRec.completed);   
+         recValues.push(todo);
+      };
    }
    return recValues;
 }

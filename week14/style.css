@@ -388,8 +388,20 @@ main {
 }
 
 #localDetails li {   
-   padding: 0;
+   padding: 5px;
+   height: 35px;
    width: 350px;
+   /* background: red; */
+}
+
+.teamLabel {   
+   display: inline-flex;
+   width: 260px;
+   /* background: red; */
+}
+
+#localDiv ul, #localInputDiv {
+   padding-left: 0px;
 }
 
 #txtTeamName {
@@ -397,15 +409,21 @@ main {
    padding-left: 10px;
    width: 275px;
    height: 25px;
-   margin: 12px 5px 0 40px ;
+   margin: 12px 5px 10px 5px ;
    border-radius: 5px;
-
 }
 
-.btnDel {
+.btnDel, .btnMem {
+   height: 25px;
    color: #F2F2F2;
-   margin-left: 10px;
-   margin-bottom: 10px;
+   border-radius: 5px;
+   margin: 5px 10px;
+}
+
+.btnMem {
+   width: 30px;
+   margin-right: 0;
+   background-color: rgb(121, 117, 117);
 }
 
 @media screen and (max-width: 870px) {

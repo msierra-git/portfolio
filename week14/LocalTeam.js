@@ -19,13 +19,15 @@ export default class LocalTeam {
       let records = this.recID.length;
       while (records--) {
          let curRec = this.getLocalStorageByID(this.recID[records]);
-         let tempTeam = {
-            id: curRec.id,
-            team: curRec.team,
-            members: curRec.members
+         if (curRec.team) {
+            let tempTeam = {
+               id: curRec.id,
+               team: curRec.team,
+               members: curRec.members 
+            };         
+            // console.log(tempTeam);
+            this.arrTeam.push(tempTeam);
          };
-         // console.log(tempTeam);
-         this.arrTeam.push(tempTeam);
       }
       this.arrTeam = util.sortObjectList(this.arrTeam);
       return this.arrTeam;

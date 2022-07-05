@@ -12,52 +12,6 @@ import { toTitleCase } from './utilities.js';
 // Star Wars View handler
 export default class StarWarsView {
 
-   renderManageSWTeams(arrayLS, manageDiv, listElement, teamElement) {
-      // show all divs for this feature
-      let slideDiv = manageDiv.parentNode;
-      slideDiv.classList.remove('hide_item');
-      manageDiv.classList.remove('hide_item');
-      manageDiv.children[2].classList.remove('hide_item');
-
-      // hide list of team members on right column
-      teamElement.classList.add('hide_item');
-      
-      this.renderManageSWLSList(arrayLS, listElement, 0);
-
-      // show sliding div with details of member
-      listElement.classList.remove('hide_item');
-      slideDiv.classList.add('open');
-
-      document.getElementById('btnFetch').classList.add('hide_item');
-      document.getElementById('btnLocal').classList.remove('hide_item');     
-   }
-
-   
-   renderManageSWLSList(arrayLS, listElement, curIndex) {
-      // reset the div where the list of teams will be shown
-      listElement.innerHTML = '';      
-      listElement.classList.remove('hide_item');
-      
-      arrayLS.forEach(function (lsTeam, index) {
-         let customItems  = listElement;
-         let customItem   = document.createElement('li');
-         let customLabel  = document.createElement('label');
-         let customButton = document.createElement('button');
-
-         // assign attributes and values to element
-         customLabel.innerHTML = lsTeam.team;
-         customButton.className = 'btnDel';
-         customButton.setAttribute('data-id', lsTeam.id);
-         customButton.innerHTML = 'X';
-   
-         // organise and append elements together
-         customItem.appendChild(customButton);
-         customButton.after(customLabel);
-         customItems.appendChild(customItem);
-      });
-   }
-   
-
    renderSWTeams(swList, listElement, curIndex, items, dataLocation) {
       // build a list of teams on the page from an array of unique teams. 
       // this will add the id of the record as a data- property to the li. 
@@ -268,6 +222,58 @@ export default class StarWarsView {
       slideDiv.classList.add('open');
    }
 
+
+   renderManageSWTeams(arrayLS, manageDiv, listElement, teamElement) {
+      // show all divs for this feature
+      let slideDiv = manageDiv.parentNode;
+      slideDiv.classList.remove('hide_item');
+      manageDiv.classList.remove('hide_item');
+      manageDiv.children[2].classList.remove('hide_item');
+
+      // hide list of team members on right column
+      teamElement.classList.add('hide_item');
+      
+      this.renderManageSWLSList(arrayLS, listElement, 0);
+
+      // show sliding div with details of member
+      listElement.classList.remove('hide_item');
+      slideDiv.classList.add('open');
+
+      document.getElementById('btnFetch').classList.add('hide_item');
+      document.getElementById('btnLocal').classList.remove('hide_item');     
+   }
+
+   
+   renderManageSWLSList(arrayLS, listElement, curIndex) {
+      // reset the div where the list of teams will be shown
+      listElement.innerHTML = '';      
+      listElement.classList.remove('hide_item');
+      
+      arrayLS.forEach(function (lsTeam, index) {
+         let customItems   = listElement;
+         let customItem    = document.createElement('li');
+         let customLabel   = document.createElement('span');
+         let customButton  = document.createElement('button');
+         let customButton2 = document.createElement('button');
+
+         // assign attributes and values to element
+         customLabel.innerHTML = lsTeam.team;
+         customLabel.className = 'teamLabel';
+         customButton.className = 'btnDel';
+         customButton.setAttribute('data-id', lsTeam.id);
+         customButton.innerHTML = 'X';
+         customButton2.className = 'btnMem';
+         customButton2.setAttribute('data-id', lsTeam.id);
+         customButton2.innerHTML = '>>';
+   
+         // organise and append elements together
+         customItem.appendChild(customButton);
+         customButton.after(customLabel);
+         customLabel.after(customButton2);
+         customItems.appendChild(customItem);
+      });
+   }
+   
 
    hideSWSlidingDiv(slideElement, teamElement) {
       // hide back the sliding div of member's details

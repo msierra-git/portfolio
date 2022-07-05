@@ -92,10 +92,10 @@ function clearLocalStorage() {
    (localStorage.length > 0 ? localStorage.clear() : console.log("localStorage is empty"));
 }
 
-// console.log("Current LS data");
-// for (var i = 0; i < localStorage.length; i++){
-//    console.log(localStorage.getItem(localStorage.key(i)));
-// }
+console.log("Current LS data");
+for (var i = 0; i < localStorage.length; i++){
+   console.log(localStorage.getItem(localStorage.key(i)));
+}
 
 // clearLocalStorage(); // initialise localStorage
 // localStorage.removeItem('Mon Jul 04 2022 19:39:29 GMT+1000 (Australian Eastern Standard Time)');
