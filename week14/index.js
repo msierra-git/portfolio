@@ -7,8 +7,7 @@
 
 
 import DataController from './DataController.js';
-import * as ls from './ls.js';
-import * as ut from './utilities.js'
+import * as util from './utilities.js'
 
 let swData = "";
 let teamIndex = 0;
@@ -20,10 +19,7 @@ const numOfMembers = 3;
 document.getElementById("btnFetch").addEventListener("click", function() {   
    console.log("API process started...");
    swData = new DataController("#swList","#teamDetails","#memberDetails","API");
-   swData.init();
-   teamIndex = 0;
-   swData.setTeamCutOff(numOfMembers);
-   swData.setItemsOnPage(itemsOnPage);
+   commonSettings()
 }, false);
 
 
@@ -31,67 +27,87 @@ document.getElementById("btnFetch").addEventListener("click", function() {
 document.getElementById("btnLocal").addEventListener("click", function() {   
    console.log("Local storage process started...");
    swData = new DataController("#swList","#teamDetails","#memberDetails","Local Storage");
-   swData.init();
-   teamIndex = 0;
-   swData.setTeamCutOff(numOfMembers);
-   swData.setItemsOnPage(itemsOnPage);
+   commonSettings();
 }, false);
 
 
+// Data Navigation Button - NEXT
 document.getElementById("btnNext").addEventListener("click", function() {     
    if (swData.getTeam().length > teamIndex) { teamIndex = teamIndex + itemsOnPage }; 
    swData.getSetOfTeams(teamIndex);
 }, false);
 
 
+// Data Navigation Button - PREVIOUS
 document.getElementById("btnPrev").addEventListener("click", function() {     
    if (teamIndex > 0) { teamIndex = teamIndex - itemsOnPage }; 
    swData.getSetOfTeams(teamIndex);
 }, false);
 
 
+// Button to show the management of custom teams
+document.getElementById("btnManage").addEventListener("click", function() {
+   console.log("Manage local team process started...");
+   swData = new DataController("#manageLocalDiv","#teamDetails","#memberDetails","Manage LS");
+   commonSettings();
+}, false);
 
 
+// Button to add new custom team to localStorage
+document.getElementById("btnCreate").addEventListener("click", function() {
+   // enterLSTeam(1, [2, 4, 6, 8]);
+   // let newID = util.getCustomTimeStamp(0);
+   // let newName = util.getCurrentEntry('FORM', 'txtTeamName');
+   // let arrValue = util.setEntrytoArray(newID, newName, []);
+   // (newName) ? 
+   //    swData.swLocal.setLocalStorageByID(newID, arrValue) :
+   //    enterLSTeam(2, [3, 6, 9]);
 
-function sampleLSTeam() {
-   let testTeamList = []; 
-   // ls.clearLocalStorage(); // initialise localStorage
-   let testVer = 7;
-   let newId = getCustomTimeStamp(testVer);
-   let newEntry = 'Custom 8';
-   let newMembers = [40, 30, 20, 19, 22];
    
-   let testTeam = {
-      id: newId,
+   swData.addNewLSTeam();
+
+}, false);
+
+
+// Common functions that are called on more than one buttons
+function commonSettings() {
+   swData.init();
+   teamIndex = 0;
+   swData.setTeamCutOff(numOfMembers);
+   swData.setItemsOnPage(itemsOnPage);
+}
+
+
+// Manual Test Data for LS record creations
+function enterLSTeam(testVer, arrMembers) {
+   let newID = util.getCustomTimeStamp(testVer);
+   let newEntry = `Custom Manual ${testVer}`;
+   
+   let arrTeam = {
+      id: newID,
       team: newEntry,
-      members: newMembers
+      members: arrMembers
    };
-   testTeamList.push(testTeam );
-   ls.setLocalStorage(newId, testTeam);
-   console.log(ls.getLocalStorage(newId));
+   
+   // let testTeamList = [];    
+   // testTeamList.push(arrTeam);
+   swData.swLocal.setLocalStorageByID(newID, arrTeam);
 }
 
-function getCustomTimeStamp(sec) {
-   let custom = new Date();
-   custom.setSeconds(custom.getSeconds() + sec);
-   custom.toLocaleTimeString("en-us");
-   return custom;
+
+
+
+
+//  other codes for development process only
+function clearLocalStorage() {
+   (localStorage.length > 0 ? localStorage.clear() : console.log("localStorage is empty"));
 }
 
-function getCurrentEntry(type) {
-   if (type.toUpperCase() === 'FORM') {
-      return ($('#txt_entryItem').val().length != 0 ?
-         $('#txt_entryItem').val() :
-         console.log("Input text field is empty!"));
-   } else {
-      return (type);
-   }
-}
-
+console.log("Current LS data");
 for (var i = 0; i < localStorage.length; i++){
    console.log(localStorage.getItem(localStorage.key(i)));
 }
 
-// sampleLSTeam();
+// clearLocalStorage(); // initialise localStorage
 // localStorage.removeItem('Mon Jul 04 2022 19:39:29 GMT+1000 (Australian Eastern Standard Time)');
 // console.log(localStorage);

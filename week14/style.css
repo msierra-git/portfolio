@@ -124,14 +124,13 @@ main {
    color: rgba(255, 255, 255, 1);
 }
 
-/* --> end of link to GitHub Button */
+/* --> end of list Button style */
 
-.wikiLink,
-#refreshPage,
-#closeDetails,
+.wikiLink, #btnManage,
+#refreshPage, #closeSlide,
 #btnFetch, #btnLocal, 
-#btnPrev,
-#btnNext {
+#btnPrev, #btnNext,
+#btnCreate {
    margin-top: 10px;
    margin-bottom: 10px;
    width: 200px;
@@ -144,6 +143,29 @@ main {
    /* cursor: pointer; */
 }
 
+.wikiLink:hover, #closeSlide:hover,
+#btnFetch:hover, #btnLocal:hover, 
+#btnPrev:hover, #btnNext:hover,
+#btnCreate:hover {
+   background-color: rgb(49, 162, 238);
+}
+
+#btnCreate {
+   width: 50px;
+   font-size: 1.2em;
+}
+
+#btnManage {
+   width: 315px;
+   padding: 0 20px;
+   background-color: rgb(3, 164, 115);
+   color: #000000;
+}
+
+#btnManage:hover {
+   background-color: rgb(33, 251, 186);
+}
+
 #btnFetch {
    margin-right: 10px;
 }
@@ -154,9 +176,14 @@ main {
    width: 120px;
 }
 
-#refreshPage {
+#refreshPage, .btnDel {
    margin: 10px 10px 0 40px;
    background-color: brown;
+}
+
+#refreshPage:hover,
+.btnDel:hover {
+   background-color: rgb(250, 139, 139);
 }
 
 .wikiLink {
@@ -173,7 +200,8 @@ main {
 }
 
 #teamDetails li,
-#memberDetails li {
+#memberDetails li,
+#localDetails li {
    display: block;
    background-color: #F2F2F2;
    list-style-type: none;
@@ -183,6 +211,13 @@ main {
    border-radius: 5px;
    padding-left: 60px;
    width: 88%;
+}
+
+#localDetails li {   
+   padding: 5px 10px;
+}
+.btnDel {
+   color: #F2F2F2;
 }
 
 #teamDetails li {
@@ -231,6 +266,9 @@ main {
    border-bottom: 3px solid rgb(128, 128, 128);
 }
 
+#manageLocalDiv {
+   text-align: left;
+}
 /* team members images */
 .listImage {
    width: 40px;
@@ -345,10 +383,30 @@ main {
    text-decoration: underline;
 }
 
+#slideDiv2 {
+   background:  rgb(3, 164, 115);
+   align-items: flex-start;
+   height: 90%;
+   padding-left: 50px;
+}
+
+#slideDiv2 .listTitle {
+   color: #000000;
+}
+
+#txtTeamName {
+   text-align: left;
+   padding-left: 10px;
+   width: 20rem;
+   height: 22px;
+   margin: 12px 5px;
+   border-radius: 5px;
+}
+
 @media screen and (max-width: 870px) {
    #btnPrev,
    #btnNext,
-   #refreshPage {
+   #refreshPage, #btnManage {
     width: max-content;
    }
 }

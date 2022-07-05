@@ -16,12 +16,12 @@
 <body>
     <header class="projHeader">
         <h1>STAR WARS TEAMS</h1>
-        <a href="https://github.com/msierra-git/portfolio" class="btn"  target="_blank">View on GitHub</a>
-    </header>    
+        <a href="https://github.com/msierra-git/portfolio" class="btn" target="_blank">View on GitHub</a>
+    </header>
     <main>
         <h2 class="pageDesc">
-            Star Wars Teams is an application which gets data from API, 
-            and uses localStorage for any custom teams created by user.
+            Star Wars Teams is an application which gets data from API,
+            and from localStorage for custom teams created by user.
         </h2>
         <hr><br>
         <div class="outputDiv row">
@@ -30,21 +30,21 @@
                     <h4 class="listTitle">Teams from API</h4>
                     <button id="btnPrev">&lt;&lt; Previous</button>
                     <span id="itemCount"></span>
-                    <button id="btnNext">Next &gt;&gt;</button>
+                    <button id="btnNext">Next &gt;&gt;</button><br>
+                    <button id="btnManage" class="hide_item">Manage Custom Teams</button>
                 </div>
                 <div class="listDiv">
                     <ul id="swList"></ul>
                 </div>
                 <div class="navDiv">
-                    <button 
-                        id="refreshPage" class="hide_item" 
-                        onclick="window.history.go(0);">Reset Page</button>
+                    <button id="refreshPage" class="hide_item" onclick="window.history.go(0);">Reset Page</button>
                     <button id="btnFetch">Teams from API</button>
                     <button id="btnLocal">Custom Teams</button>
                 </div>
+
             </div>
             <div id="teamDiv" class="column">
-                <div class="teamDiv">                    
+                <div class="teamDiv">
                     <ul id="teamDetails"></ul>
                 </div>
             </div>
@@ -53,10 +53,24 @@
                     <ul id="memberDetails"></ul>
                 </div>
             </div>
+            <div id="slideDiv2" class="slideDiv hide_item">
+                <div id="manageLocalDiv">
+                    <h4 class="listTitle">Manage Custom Teams</h4>
+                    <div id="localDiv">
+                        <ul id="localDetails"></ul>
+                    </div>
+                    <div id="localInputDiv">
+                        <input type="text" placeholder="Enter Custom Team Name" id="txtTeamName">
+                        <button type="button" id="btnCreate">+</button>
+                    </div>
+                    <span id="char_count"></span>
+                </div>
+            </div>
         </div>
 
         <script type="module" src="./index.js"></script>
-        <br><hr>
+        <br>
+        <hr>
         <!-- Footer -->
         <footer class="myfooter">
             <span id="f_title">Author:</span>

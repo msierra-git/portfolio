@@ -6,9 +6,10 @@
  ==========================================================*/
 
  
+import LocalTeam from './LocalTeam.js';
 import StarWars from './StarWars.js';
 import StarWarsView from './StarWarsView.js';
-import * as ls from './ls.js';
+import * as util from './utilities.js'
 
 
 // Star Wars Data controller
@@ -25,6 +26,7 @@ export default class DataController {
       // instantiate two classes needed to connect model and view
       this.swData = new StarWars();
       this.swDataView = new StarWarsView();
+      this.swLocal = new LocalTeam();
 
       // arrays where data are stored
       this._all = [];
@@ -47,14 +49,43 @@ export default class DataController {
       if (this.dataLocation === 'API') {
          await this.getStarWarsInfo();
       }
-      else {
+      if (this.dataLocation === 'Local Storage') {
          await this.getLSStarWarsInfo();
       }
+      if (this.dataLocation === 'Manage LS') {
+         await this.manageLSStarWarsInfo();
+      }
+   }
+
+   async manageLSStarWarsInfo() {
+      // get the list of all star wars characters
+      this._all = await this.swData.getStarWarsAllInfo();
+
+      // get list of star wars teams from LS
+      this._ls = this.swLocal.getLocalTeamAllInfo();
+      this._team = this.swLocal.getLocalTeamNames(); 
+      
+      // console.log(this.parentElement);
+      // console.log(this.teamElement);
+      // console.log(this.membersElement);
+
+      // renderManageSWTeams(arrayLS, manageDiv, listElement, teamElement)
+      let sortedLS = util.sortObjectList(this._ls);
+      this.swDataView.renderManageSWTeams(
+         sortedLS, this.parentElement, 
+         this.parentElement.children[1].children[0],
+         this.teamElement);    
+         
+      // event on close button on manage custom teams page
+      // document.getElementById('closeSlide2').addEventListener('click', () => {
+      //    this.swDataView.hideSWSlidingDiv(
+      //       this.parentElement.children[1].children[0], this.teamElement);   
+      // }, false);
    }
 
 
    async getStarWarsInfo() {
-      // this method provides the glue between the model and view. 
+      // this method provides the glue between the api-data model and view. 
       // it first goes out and requests the appropriate data from the model, 
       // then it passes it to the view to be rendered.
 
@@ -79,7 +110,7 @@ export default class DataController {
 
 
    async getLSStarWarsInfo() {
-      // this method provides the glue between the model and view. 
+      // this method provides the glue between the localstorage model and view. 
       // it first goes out and requests the appropriate data from the model, 
       // then it passes it to the view to be rendered.
 
@@ -90,8 +121,8 @@ export default class DataController {
       this._all = await this.swData.getStarWarsAllInfo();
 
       // get list of star wars teams from LS
-      this._ls = ls.getLocalStorage_toArray();
-      this._team = this._ls.map( a => a.team).sort();      
+      this._ls = this.swLocal.getLocalTeamAllInfo();
+      this._team = this.swLocal.getLocalTeamNames();      
 
       // render list to html
       this.getSetOfTeams(0);
@@ -104,28 +135,26 @@ export default class DataController {
 
 
    async getSetOfTeams(curIndex) {
-      console.log(this.dataLocation);
       this.swDataView.renderSWTeams(
          this._team, this.parentElement, curIndex, this.itemsOnPage, this.dataLocation);
    }
 
 
    async getTeamMembers(teamID) {
-      let teamMembers
+      let teamMembers = [];
       if (this.dataLocation === 'API') {
          teamMembers = this.swData.getMembersByTeam(this._team[teamID]);
       } 
       
       if (this.dataLocation === 'Local Storage') {
-         // get corresponding team record from LS
-         let lsTeamRec = this._ls.filter(obj => {
-            return obj.team == this._team[teamID] });
+         // test in getting the name instead of an ID
+         // console.log(this._team[teamID]);         
 
          // get the members allocated to this custom team from LS
-         let membersID  = lsTeamRec[0].members;      
+         let membersID  = this.swLocal.getLocalTeamMembersByName(this._team[teamID]);      
 
-         // get the records from API based on member IDs from LS         
-         teamMembers = this.swData.getMembersByArrayID(membersID);
+         // get the records from API based on member IDs from LS                  
+         teamMembers = (membersID) ? this.swData.getMembersByArrayID(membersID) : teamMembers = [];
       }
       
       this.swDataView.renderSWTeamMembers(teamMembers, this.teamElement, this._team[teamID]);      
@@ -143,8 +172,8 @@ export default class DataController {
       // console.log(member);
 
       // event on close button on member details page
-      document.getElementById('closeDetails').addEventListener('click', () => {
-         this.swDataView.hideSWMemberDetails(this.membersElement, this.teamElement);   
+      document.getElementById('closeSlide').addEventListener('click', () => {
+         this.swDataView.hideSWSlidingDiv(this.membersElement, this.teamElement);   
       }, false);
    }
 
@@ -156,4 +185,12 @@ export default class DataController {
 
    setTeamCutOff(numOfMembers) { this.teamCutoff = numOfMembers; }
 
+   addNewLSTeam() {
+      let newID = util.getCustomTimeStamp(0);
+      let newName = util.getCurrentEntry('FORM', 'txtTeamName');
+      let arrValue = util.setEntrytoArray(newID, newName, []);
+      (newName) ? 
+         swLocal.setLocalStorageByID(newID, arrValue) :
+         console.log('Error! Empty textbox.');
+   }
 }
