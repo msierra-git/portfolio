@@ -96,8 +96,8 @@ main {
    display: table;
    clear: both;
 }
-
 /* end of two columns page */
+
 
 /* --> list Team buttons */
 .listButton {
@@ -201,7 +201,8 @@ main {
 
 #teamDetails li,
 #memberDetails li,
-#localDetails li {
+#localDetails li,
+#apiTeamDetails li {
    display: block;
    background-color: #F2F2F2;
    list-style-type: none;
@@ -245,23 +246,24 @@ main {
 }
 
 #teamDetails li img,
-#memberDetails li img {
+#memberDetails li img,
+#apiTeamDetails li img {
    vertical-align: middle;
 }
 
 #teamDetails li:first-of-type,
-#memberDetails li:first-of-type {
+#memberDetails li:first-of-type,
+#apiTeamDetails li:first-of-type {
    border-top: 3px solid rgb(128, 128, 128);
 }
 
 #teamDetails li:last-of-type,
-#memberDetails li:last-of-type {
+#memberDetails li:last-of-type,
+#apiTeamDetails li:last-of-type {
    border-bottom: 3px solid rgb(128, 128, 128);
 }
 
-#manageLocalDiv {
-   text-align: left;
-}
+
 /* team members images */
 .listImage {
    width: 40px;
@@ -390,13 +392,15 @@ main {
 #localDetails li {   
    padding: 5px;
    height: 35px;
-   width: 350px;
+   width: 100%;
+   max-width: 350px;
    /* background: red; */
 }
 
 .teamLabel {   
    display: inline-flex;
-   width: 260px;
+   width: 75%;
+   max-width: 260px;
    /* background: red; */
 }
 
@@ -407,7 +411,8 @@ main {
 #txtTeamName {
    text-align: left;
    padding-left: 10px;
-   width: 275px;
+   width: 75%;
+   max-width: 275px;
    height: 25px;
    margin: 12px 5px 10px 5px ;
    border-radius: 5px;
@@ -417,7 +422,7 @@ main {
    height: 25px;
    color: #F2F2F2;
    border-radius: 5px;
-   margin: 5px 10px;
+   margin: 5px 0.70em;
 }
 
 .btnMem {
@@ -426,11 +431,73 @@ main {
    background-color: rgb(121, 117, 117);
 }
 
+#manageLocalDiv {
+   text-align: left;
+}
+
+
+/* #apiTeamDiv {
+   margin-top: 100px;
+} */
+#apiTeamDetails .listTitle {
+   font-size: 1.3em;
+   margin-bottom: 10px;
+}
+
+#apiTeamDetails .listMsg {
+   display: inline-flex;
+   color: #d5d3d3;
+   font-family: 'Times New Roman', Times, serif;
+   font-size: 1.2em;
+   text-align: center;
+   font-style: italic;
+   margin-bottom: 10px;
+   margin-right: 1em;
+}
+
+#apiTeamDetails li {
+   padding: 10px;
+}
+
+#apiTeamDetails li img {
+   height: 30px;
+   width: auto;
+   margin-left: 20px;
+}
+
+/* #apiTeamDetails li input {
+   height: 20px;
+} */
+
+
+/* two columns under row ... */
+.row2 {
+   display: inline;
+}
+
+.column2 {
+   float: left;
+   width: 50%;
+}
+
+/* --> Clear floats after the columns */
+.row2:after {
+   content: "";
+   display: table;
+   clear: both;
+}
+/* end of two columns page */
+
+
 @media screen and (max-width: 870px) {
    #btnPrev,
    #btnNext,
    #refreshPage, #btnManage {
     width: max-content;
+   }
+
+   .teamLabel {   
+      width: 70%;
    }
 }
 
@@ -454,11 +521,28 @@ main {
    #memberDetails {
       padding: auto;
    }   
+
+   .teamLabel {   
+      width: 65%;
+   }
 }
 
 @media screen and (max-width: 700px) {
    .listButton {
       width: 300px;
+   }
+}
+
+@media screen and (max-width: 620px) {
+   .column2 {
+      width: 100%;
+   }
+   .teamLabel {   
+      width: 75%;
+   }
+   #apiTeamDetails {
+      display: none;
+      visibility: hidden;
    }
 }
 

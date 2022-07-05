@@ -12,6 +12,7 @@ let swData = "";
 let teamIndex = 0;
 const itemsOnPage = 5;
 const numOfMembers = 3;
+const membersOnPage = 6;
 
 
 // Button to get teams from API
@@ -49,12 +50,27 @@ document.getElementById("btnManage").addEventListener("click", function() {
    console.log("Manage local team process started...");
    swData = new DataController("#manageLocalDiv","#teamDetails","#memberDetails","Manage LS");
    commonSettings();
+   swData.setItemsOnPage(membersOnPage);
 }, false);
 
 
 // Button to add new custom team to localStorage
 document.getElementById("btnCreate").addEventListener("click", function() {
    swData.addLSStarWarsTeam('txtTeamName');
+}, false);
+
+
+// Local Custom Page - API Navigation Button - NEXT2
+document.getElementById("btnNext2").addEventListener("click", function() {     
+   if (swData.getMembers().length > teamIndex) { teamIndex = teamIndex + itemsOnPage }; 
+   swData.getSetOfMembers(teamIndex);
+}, false);
+
+
+// Local Custom Page - API Navigation Button - PREVIOUS
+document.getElementById("btnPrev2").addEventListener("click", function() {     
+   if (teamIndex > 0) { teamIndex = teamIndex - itemsOnPage }; 
+   swData.getSetOfMembers(teamIndex);
 }, false);
 
 
@@ -92,10 +108,10 @@ function clearLocalStorage() {
    (localStorage.length > 0 ? localStorage.clear() : console.log("localStorage is empty"));
 }
 
-console.log("Current LS data");
-for (var i = 0; i < localStorage.length; i++){
-   console.log(localStorage.getItem(localStorage.key(i)));
-}
+// console.log("Current LS data");
+// for (var i = 0; i < localStorage.length; i++){
+//    console.log(localStorage.getItem(localStorage.key(i)));
+// }
 
 // clearLocalStorage(); // initialise localStorage
 // localStorage.removeItem('Mon Jul 04 2022 19:39:29 GMT+1000 (Australian Eastern Standard Time)');

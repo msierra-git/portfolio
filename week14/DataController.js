@@ -36,6 +36,7 @@ export default class DataController {
       this.itemsOnPage = 0;
       this.teamCutoff = 0;
       this.dataLocation = dataLocation;
+      this.curCustomTeam = '';
    }
 
 
@@ -171,13 +172,32 @@ export default class DataController {
       // renderManageSWTeams(arrayLS, manageDiv, listElement, teamElement)
       this.swDataView.renderManageSWTeams(arrayTeams, parentElmnt, ulElmnt, teamElmnt);
 
+      // delete custom team button
       document.querySelectorAll('.btnDel').forEach(item => {
          item.addEventListener('click', event => {
             let selLabel = event.target.nextSibling;
             let selID = event.target.dataset.id;
             this.removeLSStarWarsTeam(selID, selLabel);
-         })
-      })
+         }, false);
+      });
+
+      // edit team members button
+      document.querySelectorAll('.btnMem').forEach(item => {
+         item.addEventListener('click', event => {
+            this.curCustomTeam = event.target.previousSibling.innerHTML;
+            // let selID = event.target.dataset.id;
+            // renderSWEntireList(memList, listElement, teamName)
+            // this.swDataView.renderSWEntireList(this._all, listElement, selLabel, 0);
+            this.getSetOfMembers(0);
+         }, false);
+      });
+   }
+
+
+   async getSetOfMembers(curIndex) {
+      let listElement = document.getElementById('apiTeamDetails');
+      this.swDataView.renderSWEntireList(
+         this._all, listElement, this.curCustomTeam, curIndex, this.itemsOnPage);
    }
 
 
@@ -215,6 +235,10 @@ export default class DataController {
    // class getter and setters
    getTeam() {
       return this._team;
+   }
+
+   getMembers() {
+      return this._all;
    }
 
    setItemsOnPage(items) {

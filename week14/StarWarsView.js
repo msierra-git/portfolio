@@ -313,17 +313,88 @@ export default class StarWarsView {
    }
 
 
-   // renderSWList(swList, listElement) {      
-   //    listElement.innerHTML = '';
-   //    // listElement.classList.add('listBorderTop');
-   //    document.getElementById('refreshPage').classList.remove('hide_item');
+   async renderSWEntireList(memList, listElement, teamName, curIndex, items) {   
+ 
+         // beginning of the array
+         if (!curIndex) { curIndex = 0; };
 
-   //    swList.forEach(function (swChar) {
-   //       let li = document.createElement('li');
-   //       li.textContent = swChar.affiliations;
-   //       listElement.appendChild(li);
-   //    });
-   //    listElement.classList.add('full_height');
-   // }
+         // get nemuber of records from the list based on the value of "items" variable.
+         let showList = memList.slice(curIndex, curIndex + items);
+
+         // build a list of all members including the name and image as found on API.
+         // console.log(listElement);
+         let teamDetailsEl = listElement;
+         let h4 = document.createElement('h4');
+         let spnMsg = document.createElement('span');
+   
+         // reset the div where the list of team members will be shown
+         teamDetailsEl.innerHTML = '';
+   
+         // show team members div container 
+         teamDetailsEl.classList.remove('hide_item');
+         // teamDetailsEl.parentNode.parentNode.classList.remove('hide_item');
+   
+         // creating title of the list
+         h4.textContent = `Members for ${teamName}`;
+         h4.setAttribute('class', 'listTitle');
+         spnMsg.setAttribute('class', 'listMsg');
+         spnMsg.textContent = 
+            '(Click on checkbox to add/remove members from custom team)';
+         teamDetailsEl.appendChild(h4);
+         teamDetailsEl.appendChild(spnMsg);
+   
+         // iterate on the array of unique teams/affiliations
+         showList.forEach(function (swMember) {
+            let li  = document.createElement('li');
+            let chk = document.createElement('input');
+            let img = document.createElement('img');
+            let spn = document.createElement('span');
+            
+            // assign attributes to elements
+            chk.type = 'checkbox';
+            chk.id   = swMember.id;
+            // li.setAttribute('data-id', swMember.id);
+            // spn.setAttribute('data-id', swMember.id);
+            // img.setAttribute('data-id', swMember.id);
+   
+            // image of person/character as found on the API
+            img.setAttribute('src', swMember.image);
+            img.setAttribute('alt', 'Image of ' + swMember.name);
+            img.setAttribute('class', 'listImage');
+            spn.textContent = swMember.name;
+            
+            // constructing the html elements to show details
+            teamDetailsEl.appendChild(li);
+            li.appendChild(chk);
+            li.appendChild(img);
+            li.appendChild(spn);
+         });
+
+
+         // show navigation, record count, and refresh page buttons
+      document.getElementById('apiTeamNav').classList.remove('hide_item');
+      // text to show user of record navigation
+      let itemCount = document.getElementById('itemCount2');
+      
+      itemCount.textContent = (memList.length === 0) ?
+      `No members found on API...`:
+      `${curIndex+1} of ${memList.length}`;
+      
+      // hide previous button if page is at the beginning of the array
+      // otherwise show previous button for navigation of list
+      if (curIndex === 0) {
+         document.getElementById('btnPrev2').classList.add('hide_item');
+      } else {
+         document.getElementById('btnPrev2').classList.remove('hide_item');
+      };
+      
+      // hide next button if page is at the end of the array
+      // otherwise show next button for navigation of list
+      if ((curIndex + items + 1) > memList.length) {
+         document.getElementById('btnNext2').classList.add('hide_item');
+      } else {
+         document.getElementById('btnNext2').classList.remove('hide_item');
+      };
+   }
 
 }
