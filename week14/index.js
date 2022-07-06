@@ -8,7 +8,7 @@
 
 import DataController from './DataController.js';
 
-let swDataController = "";
+let swDataControl = "";
 let teamIndex = 0;
 const itemsOnPage = 5;
 const numOfMembers = 3;
@@ -18,7 +18,7 @@ const membersOnPage = 7;
 // Button to get teams from API
 document.getElementById("btnFetch").addEventListener("click", function() {   
    console.log("API process started...");
-   swDataController = 
+   swDataControl = 
       new DataController("#swList","#teamDetails","#memberDetails","API");
    commonSettings()
 }, false);
@@ -27,7 +27,7 @@ document.getElementById("btnFetch").addEventListener("click", function() {
 // Button to get teams from LocalStorage
 document.getElementById("btnLocal").addEventListener("click", function() {   
    console.log("Local storage process started...");
-   swDataController = 
+   swDataControl = 
       new DataController("#swList","#teamDetails","#memberDetails","Local Storage");
    commonSettings();
 }, false);
@@ -35,52 +35,52 @@ document.getElementById("btnLocal").addEventListener("click", function() {
 
 // Data Navigation Button - NEXT
 document.getElementById("btnNext").addEventListener("click", function() {     
-   if (swData.getTeam().length > teamIndex) { teamIndex = teamIndex + itemsOnPage }; 
-   swDataController.getSetOfTeams(teamIndex);
+   if (swDataControl.getTeam().length > teamIndex) { teamIndex = teamIndex + itemsOnPage }; 
+   swDataControl.getSetOfTeams(teamIndex);
 }, false);
 
 
 // Data Navigation Button - PREVIOUS
 document.getElementById("btnPrev").addEventListener("click", function() {     
    if (teamIndex > 0) { teamIndex = teamIndex - itemsOnPage }; 
-   swDataController.getSetOfTeams(teamIndex);
+   swDataControl.getSetOfTeams(teamIndex);
 }, false);
 
 
 // Button to show the management of custom teams
 document.getElementById("btnManage").addEventListener("click", function() {
    console.log("Manage local team process started...");
-   swDataController = 
+   swDataControl = 
       new DataController("#manageLocalDiv","#teamDetails","#memberDetails","Manage LS");
    commonSettings();
-   swDataController.setItemsOnPage(membersOnPage);
+   swDataControl.setItemsOnPage(membersOnPage);
 }, false);
 
 
 // Button to add new custom team to localStorage
 document.getElementById("btnCreate").addEventListener("click", function() {
-   swDataController.addLSStarWarsTeam('txtTeamName');
-   swDataController.swDataView.refreshManageTeamDiv();
+   swDataControl.addLSStarWarsTeam('txtTeamName');
+   swDataControl.swDataView.refreshManageTeamDiv();
 }, false);
 
 
 // Local Custom Page - API Navigation Button - NEXT2
 document.getElementById("btnNext2").addEventListener("click", function() {    
    let curRecords = document.getElementById("itemCount2").innerText;
-   if (curRecords.includes('1 of')) { teamIndex = 0; }; 
-   if (swDataController.getMembers().length > teamIndex) { 
+   if (curRecords.indexOf('1 of', 0) == 0) { teamIndex = 0; }; 
+   if (swDataControl.getMembers().length > teamIndex) { 
       teamIndex = teamIndex + membersOnPage 
    }; 
-   swDataController.getSetOfMembers(teamIndex);
+   swDataControl.getSetOfMembers(teamIndex);
 }, false);
 
 
 // Local Custom Page - API Navigation Button - PREVIOUS
 document.getElementById("btnPrev2").addEventListener("click", function() {   
    let curRecords = document.getElementById("itemCount2").innerText;
-   if (curRecords.includes('1 of')) { teamIndex = 0; };  
+   if (curRecords.indexOf('1 of', 0) == 0) { teamIndex = 0; }; 
    if (teamIndex > 0) { teamIndex = teamIndex - membersOnPage };
-   swDataController.getSetOfMembers(teamIndex);
+   swDataControl.getSetOfMembers(teamIndex);
 }, false);
 
 
@@ -94,16 +94,16 @@ document.getElementById("btnPrev2").addEventListener("click", function() {
 
 // Common functions that are called on more than one buttons
 function commonSettings() {
-   swDataController.init();
+   swDataControl.init();
    teamIndex = 0;
-   swDataController.setTeamCutOff(numOfMembers);
-   swDataController.setItemsOnPage(itemsOnPage);
+   swDataControl.setTeamCutOff(numOfMembers);
+   swDataControl.setItemsOnPage(itemsOnPage);
 }
 
 
 // Button to add new custom team to localStorage
 document.getElementById("refreshPage").addEventListener("click", function() {
-   swDataController.restartSWApp();
+   swDataControl.restartSWApp();
    // window.history.go(0);
 }, false);
 
