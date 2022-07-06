@@ -130,6 +130,7 @@ main {
 #refreshPage, #closeSlide,
 #btnFetch, #btnLocal, 
 #btnPrev, #btnNext,
+#btnPrev2, #btnNext2,
 #btnCreate {
    margin-top: 10px;
    margin-bottom: 10px;
@@ -146,6 +147,7 @@ main {
 .wikiLink:hover, #closeSlide:hover,
 #btnFetch:hover, #btnLocal:hover, 
 #btnPrev:hover, #btnNext:hover,
+#btnPrev2:hover, #btnNext2:hover,
 #btnCreate:hover {
    background-color: rgb(49, 162, 238);
 }
@@ -170,8 +172,8 @@ main {
    margin-right: 10px;
 }
 
-#btnPrev,
-#btnNext,
+#btnPrev, #btnNext,
+#btnPrev2, #btnNext2,
 #refreshPage {
    width: 120px;
 }
@@ -262,7 +264,6 @@ main {
 #apiTeamDetails li:last-of-type {
    border-bottom: 3px solid rgb(128, 128, 128);
 }
-
 
 /* team members images */
 .listImage {
@@ -371,8 +372,6 @@ main {
    color:  rgb(128, 128, 128);
 }
 
-
-
 .aLink {
    color:  rgb(128, 128, 128);
    text-decoration: none;
@@ -387,7 +386,8 @@ main {
    background:  rgb(3, 164, 115);
    align-items: flex-start;
    height: 90%;
-   min-height: 500px;
+   /* min-height: 500px; */
+   max-height: 550px;
    padding-left: 50px;
 }
 
@@ -402,6 +402,12 @@ main {
    width: 100%;
    max-width: 350px;
    /* background: red; */
+}
+
+#apiTeamDetails li:hover,
+#localDetails li:hover {   
+   background: #000000;
+   color: rgb(255, 255, 0);
 }
 
 .teamLabel {   
@@ -438,14 +444,32 @@ main {
    background-color: rgb(121, 117, 117);
 }
 
+.chkEdit {
+   zoom: 1.3;
+  transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+  -o-transform: scale(1.3);
+  -moz-transform: scale(1.3);
+  transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+}
 #manageLocalDiv {
    text-align: left;
 }
 
-
 /* #apiTeamDiv {
-   margin-top: 100px;
+   padding-bottom: 100px;
 } */
+
+#apiTeamNav {
+   padding-left: 40px;
+   margin-top: -20px;
+}
+
 #apiTeamDetails .listTitle {
    font-size: 1.3em;
    margin-bottom: 10px;
@@ -458,12 +482,12 @@ main {
    font-size: 1.2em;
    text-align: center;
    font-style: italic;
-   margin-bottom: 10px;
+   margin-bottom: 5px;
    margin-right: 1em;
 }
 
 #apiTeamDetails li {
-   padding: 10px;
+   padding: 7px;
 }
 
 #apiTeamDetails li img {
@@ -472,10 +496,12 @@ main {
    margin-left: 20px;
 }
 
+#itemCount2 {
+   color: #F2F2F2;
+}
 /* #apiTeamDetails li input {
    height: 20px;
 } */
-
 
 /* two columns under row ... */
 .row2 {
@@ -500,9 +526,9 @@ main {
    visibility: hidden;
 }
 
-@media screen and (max-width: 870px) {
-   #btnPrev,
-   #btnNext,
+@media screen and (max-width: 900px) {
+   #btnPrev, #btnNext,
+   #btnPrev2, #btnNext2,
    #refreshPage, #btnManage {
     width: max-content;
    }

@@ -75,9 +75,6 @@ export function sortObjectList(arrList) {
 
 
 export function removeItemFromList(arrayLS, teamID) {
-   // console.log('Removing item from List');
-   // console.log(arrayLS);
-   // console.log(teamID);
    const remainingItem = arrayLS.filter((item) => {
       return !(item.id === teamID) ;
    });

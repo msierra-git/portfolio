@@ -42,8 +42,8 @@ export default class DataController {
 
 
    async init() {
-      // use this as a place to grab the element identified by this.parent, 
-      // do the initial call of this.getSetTeam()
+      // use this as a place to grab the element identified by  
+      // this.parent, do the initial call of this.getSetTeam()
       this.parentElement = document.querySelector(this.parent);
       this.teamElement = document.querySelector(this.team);
       this.membersElement = document.querySelector(this.members);
@@ -77,7 +77,8 @@ export default class DataController {
       // render list to html
       this.getSetOfTeams(0);
 
-      // add a listener to the new list of star wars team to allow drill down in to the details
+      // add a listener to the new list of star wars team 
+      // to allow drill down in to the details
       this.parentElement.addEventListener('click', e => {
          this.getTeamMembers(e.target.dataset.id);
       }, false);
@@ -102,7 +103,8 @@ export default class DataController {
       // render list to html
       this.getSetOfTeams(0);
 
-      // add a listener to the new list of star wars team to allow drill down in to the details
+      // add a listener to the new list of star wars team 
+      // to allow drill down in to the details
       this.parentElement.addEventListener('click', e => {
          this.getTeamMembers(e.target.dataset.id);
       }, false);
@@ -111,7 +113,8 @@ export default class DataController {
 
    async getSetOfTeams(curIndex) {
       this.swDataView.renderSWTeams(
-         this._team, this.parentElement, curIndex, this.itemsOnPage, this.dataLocation);
+         this._team, this.parentElement, curIndex, 
+         this.itemsOnPage, this.dataLocation);
    }
 
 
@@ -126,13 +129,16 @@ export default class DataController {
          // console.log(this._team[teamID]);         
 
          // get the members allocated to this custom team from LS
-         let membersID = this.swLocal.getLocalTeamMembersByName(this._team[teamID]);
+         let membersID = 
+         this.swLocal.getLocalTeamMembersByName(this._team[teamID]);
 
          // get the records from API based on member IDs from LS                  
-         teamMembers = (membersID) ? this.swData.getMembersByArrayID(membersID) : teamMembers = [];
+         teamMembers = (membersID) ? 
+         this.swData.getMembersByArrayID(membersID) : teamMembers = [];
       }
 
-      this.swDataView.renderSWTeamMembers(teamMembers, this.teamElement, this._team[teamID]);
+      this.swDataView.renderSWTeamMembers(
+         teamMembers, this.teamElement, this._team[teamID]);
 
       // event on clicking a member from the list
       this.teamElement.addEventListener('click', e => {
@@ -143,12 +149,15 @@ export default class DataController {
 
    async getMemberDetails(memID) {
       const member = this.swData.getMemberById(memID);
-      this.swDataView.renderSWMemberDetails(member, this.membersElement, this.teamElement);
+      this.swDataView.renderSWMemberDetails(
+         member, this.membersElement, this.teamElement);
       // console.log(member);
 
       // event on close button on member details page
-      document.getElementById('closeSlide').addEventListener('click', () => {
-         this.swDataView.hideSWSlidingDiv(this.membersElement, this.teamElement);
+      document.getElementById('closeSlide')
+         .addEventListener('click', () => {
+            this.swDataView.hideSWSlidingDiv(
+               this.membersElement, this.teamElement);
       }, false);
    }
 
@@ -162,35 +171,39 @@ export default class DataController {
       this._ls = this.swLocal.getLocalTeamAllInfo();
       this._team = this.swLocal.getLocalTeamNames();
 
-      let ulLocalTeams = this.parentElement.children[1].children[0];
+      let ulLocalTeams = 
+         this.parentElement.children[1].children[0];
       this.showLSStarWarsList(
-         this._ls, this.parentElement, ulLocalTeams, this.teamElement);
+         this._ls, this.parentElement, 
+         ulLocalTeams, this.teamElement);
    }
 
 
    showLSStarWarsList(arrayTeams, parentElmnt, ulElmnt, teamElmnt) {
       // Refresh list of custom teams on manage div
-      // renderManageSWTeams(arrayLS, manageDiv, listElement, teamElement)
-      this.swDataView.renderManageSWTeams(arrayTeams, parentElmnt, ulElmnt, teamElmnt);
-
+      // renderManageSWTeams(
+      //       arrayLS, manageDiv, listElement, teamElement)
+      this.swDataView.renderManageSWTeams(
+         arrayTeams, parentElmnt, ulElmnt, teamElmnt);
+         
       // delete custom team button
       document.querySelectorAll('.btnDel').forEach(item => {
          item.addEventListener('click', event => {
             let selLabel = event.target.nextSibling;
             let selID = event.target.dataset.id;
             this.removeLSStarWarsTeam(selID, selLabel);
+            this.swDataView.refreshManageTeamDiv();
          }, false);
       });
 
       // edit local team members button
       document.querySelectorAll('.btnMem').forEach(item => {
          item.addEventListener('click', event => {
-            this.curCustomTeam = event.target.previousSibling.innerHTML;
-            // let selID = event.target.dataset.id;
-            // console.log(selID);
-            // console.log(this._ls);
+            this.curCustomTeam = 
+               event.target.previousSibling.innerHTML;
             this.curCustomTeamMembers =
-               this.swLocal.getLocalTeamMembersByName(this.curCustomTeam);
+               this.swLocal.getLocalTeamMembersByName(
+                  this.curCustomTeam);
             this.getSetOfMembers(0);
          }, false);
       });
@@ -199,25 +212,27 @@ export default class DataController {
 
    async getSetOfMembers(curIndex) {
       this.swDataView.renderSWEntireList(
-         this._all, this.curCustomTeam, this.curCustomTeamMembers,
+         this._all, this.curCustomTeam, 
+         this.curCustomTeamMembers,
          curIndex, this.itemsOnPage);
 
 
       // edit local team members button
       document.querySelectorAll('.chkEdit').forEach(item => {
          item.addEventListener('click', event => {
-            // this.curCustomTeam = event.target.previousSibling.innerHTML;
             let selID = event.target.id;
-            console.log(selID);
+            // console.log(selID);
             // console.log(this._ls);
             this.curCustomTeamMembers = 
                this.swLocal.updateTeamMembersList(
-                  this.curCustomTeamMembers, selID, this.curCustomTeam);
-            console.log(this.curCustomTeamMembers);
+                  this.curCustomTeamMembers, 
+                  selID, this.curCustomTeam);
+            // console.log(this.curCustomTeamMembers);
             this.getSetOfMembers(curIndex);
          }, false);
       });
 
+      return (curIndex === 0) ? 'reset' : 'continue';
       // console.log(this.parent);
       // console.log(this.parentElement);
       // console.log(this.team);
@@ -229,31 +244,38 @@ export default class DataController {
 
    addLSStarWarsTeam(txtInput) {
       let newTeam = this.swLocal.addLocalStorageNewTeam(txtInput);
-      console.log(newTeam);
+      // console.log(newTeam);
       if (newTeam) {
          // add the new entry into ls array
          this._ls.push(newTeam);
+         // console.log(this._ls);
 
-         let ulLocalTeams = this.parentElement.children[1].children[0];
+         let ulLocalTeams = 
+            this.parentElement.children[1].children[0];
          this.showLSStarWarsList(
-            this._ls, this.parentElement, ulLocalTeams, this.teamElement);
-      }
+            this._ls, this.parentElement, 
+            ulLocalTeams, this.teamElement);
+      } 
    }
 
 
    removeLSStarWarsTeam(teamID, teamLabel) {
-      let confirmDelete = confirm("Do you really want to delete the team: '" +
-         teamLabel.innerHTML +
+      let confirmDelete = confirm(
+         "Do you really want to delete the team: '" +
+            teamLabel.innerHTML +
          "' and all its members?");
 
       if (confirmDelete) {
-         let newTeam = this.swLocal.removeLocalStorageTeam(this._ls, teamID);
+         let newTeam = 
+            this.swLocal.removeLocalStorageTeam(this._ls, teamID);
          // remove the team entry from ls array
          this._ls = newTeam;
 
-         let ulLocalTeams = this.parentElement.children[1].children[0];
+         let ulLocalTeams = 
+            this.parentElement.children[1].children[0];
          this.showLSStarWarsList(
-            this._ls, this.parentElement, ulLocalTeams, this.teamElement);
+            this._ls, this.parentElement, 
+            ulLocalTeams, this.teamElement);
       }
    }
 

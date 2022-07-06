@@ -6,9 +6,7 @@
  ==========================================================*/
 
 
-import {
-   toTitleCase
-} from './utilities.js';
+import { toTitleCase } from './utilities.js';
 
 
 // Star Wars View handler
@@ -234,6 +232,7 @@ export default class StarWarsView {
       let slideDiv = manageDiv.parentNode;
       slideDiv.classList.remove('hide_item');
       manageDiv.classList.remove('hide_item');
+      slideDiv.children[1].classList.remove('hide_item');
       manageDiv.children[2].classList.remove('hide_item');
 
       // hide list of team members on right column
@@ -251,7 +250,7 @@ export default class StarWarsView {
 
 
    renderManageSWLSList(arrayLS, listElement, curIndex) {
-      // reset the div where the list of teams will be shown
+      // reset the div where the list of custom teams will be shown
       listElement.innerHTML = '';
       listElement.classList.remove('hide_item');
 
@@ -278,6 +277,94 @@ export default class StarWarsView {
          customLabel.after(customButton2);
          customItems.appendChild(customItem);
       });
+   }
+
+   
+   async renderSWEntireList(memList, teamName, teamMembers, curIndex, items) {
+      
+      // beginning of the array
+      if (!curIndex) {
+         curIndex = 0;
+      };
+
+      // get nemuber of records from the list based on the value of "items" variable.
+      let showList = memList.slice(curIndex, curIndex + items);
+
+      // build a list of all members including the name and image as found on API.
+      // console.log(listElement);
+
+      let teamDetailsEl = document.getElementById('apiTeamDetails');
+      let h4 = document.createElement('h4');
+      let spnMsg = document.createElement('span');
+
+      // reset the div where the list of team members will be shown
+      teamDetailsEl.innerHTML = '';
+
+      // show team members div container 
+      teamDetailsEl.classList.remove('hide_item');
+      teamDetailsEl.parentNode.classList.remove('hide_item');
+
+      let countMem = (teamMembers) ? teamMembers.length : 0 ;
+      // creating title of the list
+      h4.textContent = `[${countMem}] Members for ${teamName}`;
+      h4.setAttribute('class', 'listTitle');
+      spnMsg.setAttribute('class', 'listMsg');
+      spnMsg.textContent =
+         '(Click on checkbox to add/remove members of custom team)';
+      teamDetailsEl.appendChild(h4);
+      teamDetailsEl.appendChild(spnMsg);
+
+      // console.log(teamMembers);
+      // iterate on the array of unique teams/affiliations
+      showList.forEach(function (swMember) {
+         let li = document.createElement('li');
+         let chk = document.createElement('input');
+         let img = document.createElement('img');
+         let spn = document.createElement('span');
+
+         // assign attributes to elements
+         chk.type = 'checkbox';
+         chk.id = swMember.id;
+         chk.setAttribute('class', 'chkEdit');
+         chk.checked = (teamMembers.indexOf(swMember.id) > -1) ? true : false;
+
+         // image of person/character as found on the API
+         img.setAttribute('src', swMember.image);
+         img.setAttribute('alt', 'Image of ' + swMember.name);
+         img.setAttribute('class', 'listImage');
+         spn.textContent = swMember.name;
+
+         // constructing the html elements to show details
+         teamDetailsEl.appendChild(li);
+         li.appendChild(chk);
+         li.appendChild(img);
+         li.appendChild(spn);
+      });
+
+      // show navigation, record count, and refresh page buttons
+      document.getElementById('apiTeamNav').classList.remove('hide_item');
+      // text to show user of record navigation
+      let itemCount = document.getElementById('itemCount2');
+
+      itemCount.textContent = (memList.length === 0) ?
+         `No members found on API...` :
+         `${curIndex+1} of ${memList.length}`;
+
+      // hide previous button if page is at the beginning of the array
+      // otherwise show previous button for navigation of list
+      if (curIndex === 0) {
+         document.getElementById('btnPrev2').classList.add('hide_item');
+      } else {
+         document.getElementById('btnPrev2').classList.remove('hide_item');
+      };
+
+      // hide next button if page is at the end of the array
+      // otherwise show next button for navigation of list
+      if ((curIndex + items + 1) > memList.length) {
+         document.getElementById('btnNext2').classList.add('hide_item');
+      } else {
+         document.getElementById('btnNext2').classList.remove('hide_item');
+      };
    }
 
 
@@ -319,95 +406,19 @@ export default class StarWarsView {
    }
 
 
-   async renderSWEntireList(memList, teamName, teamMembers, curIndex, items) {
+   resetAPITeamDiv() {
+      document.getElementById('apiTeamDetails').innerHTML = '';
+      document.getElementById('apiTeamDiv').classList.add('hide_item');
+   }
 
-      // beginning of the array
-      if (!curIndex) {
-         curIndex = 0;
-      };
+   refreshManageTeamDiv() {
+      let inputBox = document.getElementById('txtTeamName');
+      document.getElementById('apiTeamDiv').classList.add('hide_item');
+      document.getElementById('apiTeamDetails').innerHTML = '';
+      document.getElementById('apiTeamDiv').classList.add('hide_item');
 
-      // get nemuber of records from the list based on the value of "items" variable.
-      let showList = memList.slice(curIndex, curIndex + items);
-
-      // build a list of all members including the name and image as found on API.
-      // console.log(listElement);
-
-      let teamDetailsEl = document.getElementById('apiTeamDetails');
-      let h4 = document.createElement('h4');
-      let spnMsg = document.createElement('span');
-
-      // reset the div where the list of team members will be shown
-      teamDetailsEl.innerHTML = '';
-
-      // show team members div container 
-      teamDetailsEl.classList.remove('hide_item');
-      // teamDetailsEl.parentNode.parentNode.classList.remove('hide_item');
-
-      // creating title of the list
-      h4.textContent = `Members for ${teamName}`;
-      h4.setAttribute('class', 'listTitle');
-      spnMsg.setAttribute('class', 'listMsg');
-      spnMsg.textContent =
-         '(Click on checkbox to add/remove members of custom team)';
-      teamDetailsEl.appendChild(h4);
-      teamDetailsEl.appendChild(spnMsg);
-
-      console.log(teamMembers);
-      // iterate on the array of unique teams/affiliations
-      showList.forEach(function (swMember) {
-         let li = document.createElement('li');
-         let chk = document.createElement('input');
-         let img = document.createElement('img');
-         let spn = document.createElement('span');
-
-         // assign attributes to elements
-         chk.type = 'checkbox';
-         chk.id = swMember.id;
-         chk.setAttribute('class', 'chkEdit');
-         chk.checked = (teamMembers.indexOf(swMember.id) > -1) ? true : false;
-
-         // li.setAttribute('data-id', swMember.id);
-         // spn.setAttribute('data-id', swMember.id);
-         // img.setAttribute('data-id', swMember.id);
-
-         // image of person/character as found on the API
-         img.setAttribute('src', swMember.image);
-         img.setAttribute('alt', 'Image of ' + swMember.name);
-         img.setAttribute('class', 'listImage');
-         spn.textContent = swMember.name;
-
-         // constructing the html elements to show details
-         teamDetailsEl.appendChild(li);
-         li.appendChild(chk);
-         li.appendChild(img);
-         li.appendChild(spn);
-      });
-
-
-      // show navigation, record count, and refresh page buttons
-      document.getElementById('apiTeamNav').classList.remove('hide_item');
-      // text to show user of record navigation
-      let itemCount = document.getElementById('itemCount2');
-
-      itemCount.textContent = (memList.length === 0) ?
-         `No members found on API...` :
-         `${curIndex+1} of ${memList.length}`;
-
-      // hide previous button if page is at the beginning of the array
-      // otherwise show previous button for navigation of list
-      if (curIndex === 0) {
-         document.getElementById('btnPrev2').classList.add('hide_item');
-      } else {
-         document.getElementById('btnPrev2').classList.remove('hide_item');
-      };
-
-      // hide next button if page is at the end of the array
-      // otherwise show next button for navigation of list
-      if ((curIndex + items + 1) > memList.length) {
-         document.getElementById('btnNext2').classList.add('hide_item');
-      } else {
-         document.getElementById('btnNext2').classList.remove('hide_item');
-      };
+      inputBox.value = '';
+      inputBox.focus();
    }
 
    resetPage() {

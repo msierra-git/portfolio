@@ -89,7 +89,7 @@ export default class LocalTeam {
    addLocalStorageNewTeam(txtInput) {
       let newID = util.getCustomTimeStamp(0);
       let newName = util.getCurrentEntry('FORM', txtInput);
-      let arrValue = util.setEntrytoArray(newID, newName, []);
+      let arrValue = util.setEntrytoArray(Date(newID), newName, []);
       if (newName) { 
          this.setLocalStorageByID(newID, arrValue) 
       } else {
