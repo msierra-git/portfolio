@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Star Wars Teams</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="projHeader">
+        <h1>STAR WARS TEAMS</h1>
+        <a href="https://github.com/msierra-git/portfolio" class="btn" target="_blank">View on GitHub</a>
+    </header>
+    <main>
+        <h2 class="pageDesc">
+            Star Wars Teams is an application which gets data from API,
+            and from localStorage for custom teams created by user.
+        </h2>
+        <hr><br>
+        <div class="outputDiv row">
+            <div id="staticDiv" class="staticDiv column">
+                <div id="teamNavButtons" class="hide_item">
+                    <h4 class="listTitle">Teams from API</h4>
+                    <button id="btnPrev">&lt;&lt; Previous</button>
+                    <span id="itemCount"></span>
+                    <button id="btnNext">Next &gt;&gt;</button><br>
+                    <button id="btnManage" class="hide_item">Manage Custom Teams</button>
+                </div>
+                <div id="listDiv" class="listDiv hide_item">
+                    <ul id="swList"></ul>
+                </div>
+                <div id="mainNavDiv" class="navDiv">
+                    <button id="refreshPage" class="hide_item">Reset Page</button>
+                    <button id="btnFetch">Teams from API</button>
+                    <button id="btnLocal">Custom Teams</button>
+                </div>
+            </div>
+            <div id="teamDiv" class="column">
+                <div class="teamDiv">
+                    <ul id="teamDetails"></ul>
+                </div>
+            </div>
+            <div id="slideDiv" class="slideDiv">
+                <div class="memberDiv">
+                    <ul id="memberDetails"></ul>
+                </div>
+            </div>
+            <div id="slideDiv2" class="slideDiv hide_item row2">
+                <div id="manageLocalDiv" class="column2">
+                    <h4 class="listTitle">Manage Custom Teams</h4>
+                    <div id="localDiv">
+                        <ul id="localDetails"></ul>
+                    </div>
+                    <div id="localInputDiv">
+                        <input type="text" placeholder="Enter Custom Team Name" id="txtTeamName">
+                        <button type="button" id="btnCreate">+</button>
+                    </div>
+                    <span id="char_count"></span>
+                </div>
+                <div id="apiTeamDiv" class="column2">
+                    <ul id="apiTeamDetails"></ul>
+                    <div id="apiTeamNav" class="hide_item">
+                        <button id="btnPrev2">&lt;&lt; Previous</button>
+                        <span id="itemCount2"></span>
+                        <button id="btnNext2">Next &gt;&gt;</button><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="./index.js"></script>
+        <br>
+        <hr>
+        <!-- Footer -->
+        <footer class="myfooter">
+            <span id="f_title">Author:</span>
+            <span id="f_name">A. Michael Sierra</span>
+            <span id="f_desc">(WDD 330 Portfolio of Work)</span>
+        </footer>
+    </main>
+
+    <div class="mainlink">
+        <a href="../index.html" class="aLink">[ BACK to TABLE of CONTENTS ]</a>
+    </div>
+
+</body>
+
+</html>
