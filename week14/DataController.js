@@ -35,6 +35,8 @@ export default class DataController {
       // other properties to control data and page rendering
       this.itemsOnPage = 0;
       this.teamCutoff = 0;
+      this.localItemsOnPage = 0;
+      this.localTeamCutoff = 0;
       this.dataLocation = dataLocation;
       this.curCustomTeam = '';
       this.curCustomTeamMembers = [];
@@ -111,10 +113,17 @@ export default class DataController {
    }
 
 
-   async getSetOfTeams(curIndex) {
-      this.swDataView.renderSWTeams(
-         this._team, this.parentElement, curIndex, 
-         this.itemsOnPage, this.dataLocation);
+   async getSetOfTeams(curIndex, isLocal) {
+      if (isLocal) {         
+         let ulLocalTeams = this.parentElement.children[2].children[0];         
+         this.showLSStarWarsList(
+            this._ls, this.parentElement,
+            ulLocalTeams, this.teamElement, curIndex);
+      } else {
+         this.swDataView.renderSWTeams(
+            this._team, this.parentElement, curIndex,
+            this.itemsOnPage, this.dataLocation);
+      }
    }
 
 
@@ -129,12 +138,12 @@ export default class DataController {
          // console.log(this._team[teamID]);         
 
          // get the members allocated to this custom team from LS
-         let membersID = 
-         this.swLocal.getLocalTeamMembersByName(this._team[teamID]);
+         let membersID =
+            this.swLocal.getLocalTeamMembersByName(this._team[teamID]);
 
          // get the records from API based on member IDs from LS                  
-         teamMembers = (membersID) ? 
-         this.swData.getMembersByArrayID(membersID) : teamMembers = [];
+         teamMembers = (membersID) ?
+            this.swData.getMembersByArrayID(membersID) : teamMembers = [];
       }
 
       this.swDataView.renderSWTeamMembers(
@@ -158,7 +167,7 @@ export default class DataController {
          .addEventListener('click', () => {
             this.swDataView.hideSWSlidingDiv(
                this.membersElement, this.teamElement);
-      }, false);
+         }, false);
    }
 
 
@@ -171,21 +180,21 @@ export default class DataController {
       this._ls = this.swLocal.getLocalTeamAllInfo();
       this._team = this.swLocal.getLocalTeamNames();
 
-      let ulLocalTeams = 
-         this.parentElement.children[1].children[0];
+      let ulLocalTeams =
+         this.parentElement.children[2].children[0];
       this.showLSStarWarsList(
-         this._ls, this.parentElement, 
+         this._ls, this.parentElement,
          ulLocalTeams, this.teamElement);
    }
 
 
-   showLSStarWarsList(arrayTeams, parentElmnt, ulElmnt, teamElmnt) {
+   showLSStarWarsList(arrayTeams, parentElmnt, ulElmnt, teamElmnt, curIndex) {
       // Refresh list of custom teams on manage div
       // renderManageSWTeams(
       //       arrayLS, manageDiv, listElement, teamElement)
       this.swDataView.renderManageSWTeams(
-         arrayTeams, parentElmnt, ulElmnt, teamElmnt);
-         
+         arrayTeams, parentElmnt, ulElmnt, teamElmnt, curIndex, this.localItemsOnPage);
+
       // delete custom team button
       document.querySelectorAll('.btnDel').forEach(item => {
          item.addEventListener('click', event => {
@@ -199,7 +208,7 @@ export default class DataController {
       // edit local team members button
       document.querySelectorAll('.btnMem').forEach(item => {
          item.addEventListener('click', event => {
-            this.curCustomTeam = 
+            this.curCustomTeam =
                event.target.previousSibling.innerHTML;
             this.curCustomTeamMembers =
                this.swLocal.getLocalTeamMembersByName(
@@ -212,7 +221,7 @@ export default class DataController {
 
    async getSetOfMembers(curIndex) {
       this.swDataView.renderSWEntireList(
-         this._all, this.curCustomTeam, 
+         this._all, this.curCustomTeam,
          this.curCustomTeamMembers,
          curIndex, this.itemsOnPage);
 
@@ -223,9 +232,9 @@ export default class DataController {
             let selID = event.target.id;
             // console.log(selID);
             // console.log(this._ls);
-            this.curCustomTeamMembers = 
+            this.curCustomTeamMembers =
                this.swLocal.updateTeamMembersList(
-                  this.curCustomTeamMembers, 
+                  this.curCustomTeamMembers,
                   selID, this.curCustomTeam);
             // console.log(this.curCustomTeamMembers);
             this.getSetOfMembers(curIndex);
@@ -233,12 +242,6 @@ export default class DataController {
       });
 
       return (curIndex === 0) ? 'reset' : 'continue';
-      // console.log(this.parent);
-      // console.log(this.parentElement);
-      // console.log(this.team);
-      // console.log(this.teamElement);
-      // console.log(this.members);
-      // console.log(this.membersElement);
    }
 
 
@@ -247,7 +250,7 @@ export default class DataController {
       // alert if entry exist, otherwise add new team to LS
       let checkEntry = this.swLocal.checkEntryforLSDuplicate(txtInput);
       // console.log(checkEntry);
-      
+
       if (checkEntry === 'exist') {
          alert('Team name already exist! Please enter a unique entry.');
          return checkEntry;
@@ -259,11 +262,10 @@ export default class DataController {
             this._ls.push(newTeam);
             // console.log(this._ls);
 
-            let ulLocalTeams = 
-               this.parentElement.children[1].children[0];
+            let ulLocalTeams = this.parentElement.children[2].children[0];
             this.showLSStarWarsList(
-               this._ls, this.parentElement, 
-               ulLocalTeams, this.teamElement);
+               this._ls, this.parentElement,
+               ulLocalTeams, this.teamElement, 0);
             return 'added';
          } else {
             alert('Error in adding entry to localStorage');
@@ -276,20 +278,18 @@ export default class DataController {
    removeLSStarWarsTeam(teamID, teamLabel) {
       let confirmDelete = confirm(
          "Do you really want to delete the team: '" +
-            teamLabel.innerHTML +
-         "' and all its members?");
+         teamLabel.innerHTML + "' and all its members?");
 
       if (confirmDelete) {
-         let newTeam = 
+         let newTeam =
             this.swLocal.removeLocalStorageTeam(this._ls, teamID);
          // remove the team entry from ls array
          this._ls = newTeam;
-
-         let ulLocalTeams = 
-            this.parentElement.children[1].children[0];
+         
+         let ulLocalTeams = this.parentElement.children[2].children[0];
          this.showLSStarWarsList(
-            this._ls, this.parentElement, 
-            ulLocalTeams, this.teamElement);
+            this._ls, this.parentElement,
+            ulLocalTeams, this.teamElement, 0);
       }
    }
 
@@ -305,17 +305,22 @@ export default class DataController {
    }
 
 
+   getLocalTeam() {
+      return this._ls;
+   }
+
+
    getMembers() {
       return this._all;
    }
 
 
-   setItemsOnPage(items) {
-      this.itemsOnPage = items;
+   setItemsOnPage(items, isLocal) {
+      (isLocal) ? this.localItemsOnPage = items: this.itemsOnPage = items;
    }
 
 
-   setTeamCutOff(numOfMembers) {
-      this.teamCutoff = numOfMembers;
+   setTeamCutOff(numOfMembers, isLocal) {
+      (isLocal) ? this.localTeamCutoff = numOfMembers: this.teamCutoff = numOfMembers;
    }
 }

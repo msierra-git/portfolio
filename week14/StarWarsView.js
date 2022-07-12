@@ -63,10 +63,11 @@ export default class StarWarsView {
 
       // text to show user of record navigation
       let itemCount = document.getElementById('itemCount');
+      let toRecord = (swList.length < curIndex+items) ? swList.length : curIndex+items;
 
       itemCount.textContent = (swList.length === 0) ?
          `No teams found on ${dataLocation}...` :
-         `${curIndex+1} of ${swList.length}`;
+         `${curIndex+1}-${toRecord} of ${swList.length}`;
 
       // hide previous button if page is at the beginning of the array
       // otherwise show previous button for navigation of list
@@ -227,25 +228,64 @@ export default class StarWarsView {
    }
 
 
-   renderManageSWTeams(arrayLS, manageDiv, listElement, teamElement) {
+   renderManageSWTeams(arrayLS, manageDiv, listElement, teamElement, curIndex, items) {
       // show all divs for this feature
       let slideDiv = manageDiv.parentNode;
       slideDiv.classList.remove('hide_item');
       manageDiv.classList.remove('hide_item');
       slideDiv.children[1].classList.remove('hide_item');
+      manageDiv.children[1].classList.remove('hide_item');
       manageDiv.children[2].classList.remove('hide_item');
+      // console.log(manageDiv);
 
       // hide list of team members on right column
       teamElement.classList.add('hide_item');
 
-      this.renderManageSWLSList(arrayLS, listElement, 0);
+      // beginning of the array
+      if (!curIndex) {
+         curIndex = 0;
+      };
 
+      // get number of records from the list based on the value of "items" variable.
+      let showList = arrayLS.slice(curIndex, curIndex + items);
+
+      // call function to show
+      this.renderManageSWLSList(showList, listElement, 0);
+      
       // show sliding div with details of member
       listElement.classList.remove('hide_item');
       slideDiv.classList.add('open');
 
       document.getElementById('btnFetch').classList.add('hide_item');
       document.getElementById('btnLocal').classList.remove('hide_item');
+
+      // text to show user of record navigation
+      let itemCount = document.getElementById('itemCountTeam');
+      let toRecord = (arrayLS.length < curIndex+items) ? arrayLS.length : curIndex+items;
+
+      itemCount.textContent = (arrayLS.length === 0) ?
+         `No members found on API...` :
+         `${curIndex+1}-${toRecord} of ${arrayLS.length}`;
+
+      // hide previous button if page is at the beginning of the array
+      // otherwise show previous button for navigation of list
+      if (curIndex === 0) {
+         document.getElementById('btnPrevTeam').classList.add('hide_item');
+      } else {
+         document.getElementById('btnPrevTeam').classList.remove('hide_item');
+      };
+
+      // hide next button if page is at the end of the array
+      // otherwise show next button for navigation of list
+      if ((curIndex + items + 1) > arrayLS.length) {
+         document.getElementById('btnNextTeam').classList.add('hide_item');
+      } else {
+         document.getElementById('btnNextTeam').classList.remove('hide_item');
+      };
+
+      // hide API Members List when Previous or Next button is clicked
+      // console.log(manageDiv.nextElementSibling);
+      manageDiv.nextElementSibling.classList.add('hide_item');
    }
 
 
@@ -253,7 +293,9 @@ export default class StarWarsView {
       // reset the div where the list of custom teams will be shown
       listElement.innerHTML = '';
       listElement.classList.remove('hide_item');
-
+      
+      // console.log("calling renderManageSWLSList");
+      // console.log(arrayLS);
       arrayLS.forEach(function (lsTeam, index) {
          let customItems = listElement;
          let customItem = document.createElement('li');
@@ -345,10 +387,11 @@ export default class StarWarsView {
       document.getElementById('apiTeamNav').classList.remove('hide_item');
       // text to show user of record navigation
       let itemCount = document.getElementById('itemCount2');
+      let toRecord = (memList.length < curIndex+items) ? memList.length : curIndex+items;
 
       itemCount.textContent = (memList.length === 0) ?
          `No members found on API...` :
-         `${curIndex+1} of ${memList.length}`;
+         `${curIndex+1}-${toRecord} of ${memList.length}`;
 
       // hide previous button if page is at the beginning of the array
       // otherwise show previous button for navigation of list
@@ -410,6 +453,7 @@ export default class StarWarsView {
       document.getElementById('apiTeamDetails').innerHTML = '';
       document.getElementById('apiTeamDiv').classList.add('hide_item');
    }
+
 
    refreshManageTeamDiv() {
       let inputBox = document.getElementById('txtTeamName');

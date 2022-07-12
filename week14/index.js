@@ -10,9 +10,11 @@ import DataController from './DataController.js';
 
 let swDataControl = "";
 let teamIndex = 0;
+let localTeamIndex = 0;
 const itemsOnPage = 5;
 const numOfMembers = 3;
 const membersOnPage = 7;
+const localTeamOnPage = 6;
 
 
 // Button to get teams from API
@@ -78,14 +80,35 @@ function addNewStarWarsTeamtoLS() {
    }
    if (actionResult === 'added') {
       swDataControl.swDataView.refreshManageTeamDiv();
+      console.log(actionResult);
    }
 }
 
 
-// Local Custom Page - API Navigation Button - NEXT2
+// Local Team Custom Page - API Navigation Button - NEXT2
+document.getElementById("btnNextTeam").addEventListener("click", function() {    
+   let curRecords = document.getElementById("itemCountTeam").innerText;
+   if (curRecords.indexOf('1-', 0) == 0) { localTeamIndex = 0; }; 
+   if (swDataControl.getLocalTeam().length > localTeamIndex) { 
+      localTeamIndex = localTeamIndex + localTeamOnPage 
+   }; 
+   swDataControl.getSetOfTeams(localTeamIndex, true);
+}, false);
+
+
+// Local Team Custom Page - API Navigation Button - PREVIOUS
+document.getElementById("btnPrevTeam").addEventListener("click", function() {   
+   let curRecords = document.getElementById("itemCountTeam").innerText;
+   if (curRecords.indexOf('1-', 0) == 0) { localTeamIndex = 0; }; 
+   if (localTeamIndex > 0) { localTeamIndex = localTeamIndex - localTeamOnPage };
+   swDataControl.getSetOfTeams(localTeamIndex, true);
+}, false);
+
+
+// Local Members Custom Page - API Navigation Button - NEXT2
 document.getElementById("btnNext2").addEventListener("click", function() {    
    let curRecords = document.getElementById("itemCount2").innerText;
-   if (curRecords.indexOf('1 of', 0) == 0) { teamIndex = 0; }; 
+   if (curRecords.indexOf('1-', 0) == 0) { teamIndex = 0; }; 
    if (swDataControl.getMembers().length > teamIndex) { 
       teamIndex = teamIndex + membersOnPage 
    }; 
@@ -93,10 +116,10 @@ document.getElementById("btnNext2").addEventListener("click", function() {
 }, false);
 
 
-// Local Custom Page - API Navigation Button - PREVIOUS
+// Local Members Custom Page - API Navigation Button - PREVIOUS
 document.getElementById("btnPrev2").addEventListener("click", function() {   
    let curRecords = document.getElementById("itemCount2").innerText;
-   if (curRecords.indexOf('1 of', 0) == 0) { teamIndex = 0; }; 
+   if (curRecords.indexOf('1-', 0) == 0) { teamIndex = 0; }; 
    if (teamIndex > 0) { teamIndex = teamIndex - membersOnPage };
    swDataControl.getSetOfMembers(teamIndex);
 }, false);
@@ -108,6 +131,7 @@ function commonSettings() {
    teamIndex = 0;
    swDataControl.setTeamCutOff(numOfMembers);
    swDataControl.setItemsOnPage(itemsOnPage);
+   swDataControl.setItemsOnPage(localTeamOnPage, true);
 }
 
 
@@ -124,7 +148,6 @@ document.getElementById("refreshPage").addEventListener("click", function() {
 //    if (curRecords.includes('1 of')) { teamIndex = 0; };
 //    swDataController.getSetOfMembers(curIndex);
 // }
-
 
 //  other test codes for development process only
 // function clearLocalStorage() {

@@ -22,8 +22,8 @@ function createMenu2() {
       ["Week 09 Experience - Window and API", "week09/index.html"],
       ["Week 10 Experience - Validating Forms and Using Fetch", "week10/index.html"],
       ["Week 11 Experience - Working on Project", "week11/index.html"],
-      ["Week 12 Experience - Continue in Project Coding ", "week12/index.html"],
-      ["Week 13 Experience - (TBA) ", "week13/index.html"],
+      ["Week 12 Experience - Continue in Project Coding", "week12/index.html"],
+      ["Week 13 Experience - Finishing Project 2", "week13/index.html"],
       ["Week 14 Experience - Final - Star Wars Team - Project", "week14/starwars.html"]
    ];
    const menuLinks = document.getElementById('ol');    // assign <ol> to variable
