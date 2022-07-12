@@ -14,7 +14,7 @@ let localTeamIndex = 0;
 const itemsOnPage = 5;
 const numOfMembers = 3;
 const membersOnPage = 7;
-const localTeamOnPage = 6;
+const localTeamOnPage = 5;
 
 
 // Button to get teams from API
