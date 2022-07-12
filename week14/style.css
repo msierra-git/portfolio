@@ -113,7 +113,7 @@ main {
    padding: 0.75rem 1rem;
    text-decoration: none;
    font-size: 1.0em;
-   width: 280px;
+   width: 310px;
    box-shadow: 2px 2px black;
 }
 
@@ -131,10 +131,11 @@ main {
 #btnFetch, #btnLocal, 
 #btnPrev, #btnNext,
 #btnPrev2, #btnNext2,
+#btnPrevTeam, #btnNextTeam,
 #btnCreate {
    margin-top: 10px;
    margin-bottom: 10px;
-   width: 200px;
+   width: 215px;
    height: 30px;
    font-size: 1em;
    color: #F2F2F2;
@@ -148,6 +149,7 @@ main {
 #btnFetch:hover, #btnLocal:hover, 
 #btnPrev:hover, #btnNext:hover,
 #btnPrev2:hover, #btnNext2:hover,
+#btnPrevTeam:hover, #btnNextTeam:hover,
 #btnCreate:hover {
    background-color: rgb(49, 162, 238);
 }
@@ -158,7 +160,10 @@ main {
 }
 
 #btnManage {
-   width: 315px;
+   width: 345
+   
+   
+   px;
    padding: 0 20px;
    background-color: rgb(3, 164, 115);
    color: #000000;
@@ -174,8 +179,15 @@ main {
 
 #btnPrev, #btnNext,
 #btnPrev2, #btnNext2,
+#btnPrevTeam, #btnNextTeam,
 #refreshPage {
    width: 120px;
+}
+
+
+#btnPrevTeam, #btnNextTeam {
+   padding-bottom: 0;
+   margin-bottom: -10px;
 }
 
 #refreshPage, .btnDel {
@@ -496,7 +508,7 @@ main {
    margin-left: 20px;
 }
 
-#itemCount2 {
+#itemCount2, #itemCountTeam {
    color: #F2F2F2;
 }
 /* #apiTeamDetails li input {
@@ -529,6 +541,7 @@ main {
 @media screen and (max-width: 900px) {
    #btnPrev, #btnNext,
    #btnPrev2, #btnNext2,
+   #btnPrevTeam, #btnNextTeam,
    #refreshPage, #btnManage {
     width: max-content;
    }
