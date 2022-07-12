@@ -139,7 +139,6 @@ export default class StarWarsView {
          li.appendChild(img);
          li.appendChild(spn);
       });
-
    }
 
 
@@ -481,5 +480,4 @@ export default class StarWarsView {
       document.getElementById('btnLocal').classList.remove('hide_item');
       document.getElementById('staticDiv').classList.remove('hide_item');
    }
-
 }

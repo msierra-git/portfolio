@@ -160,10 +160,7 @@ main {
 }
 
 #btnManage {
-   width: 345
-   
-   
-   px;
+   width: 345px;
    padding: 0 20px;
    background-color: rgb(3, 164, 115);
    color: #000000;
@@ -183,7 +180,6 @@ main {
 #refreshPage {
    width: 120px;
 }
-
 
 #btnPrevTeam, #btnNextTeam {
    padding-bottom: 0;
@@ -296,7 +292,6 @@ main {
 #teamNavButtons {
    margin-left: 40px;
 }
-
 
 .outputDiv {
    width: 100%;
@@ -469,6 +464,7 @@ main {
   -o-transform-origin: 0 0;
   -moz-transform-origin: 0 0;
 }
+
 #manageLocalDiv {
    text-align: left;
 }
@@ -511,6 +507,7 @@ main {
 #itemCount2, #itemCountTeam {
    color: #F2F2F2;
 }
+
 /* #apiTeamDetails li input {
    height: 20px;
 } */
@@ -545,7 +542,6 @@ main {
    #refreshPage, #btnManage {
     width: max-content;
    }
-
    .teamLabel {   
       width: 70%;
    }
@@ -571,7 +567,6 @@ main {
    #memberDetails {
       padding: auto;
    }   
-
    .teamLabel {   
       width: 65%;
    }

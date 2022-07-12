@@ -45,6 +45,7 @@ export default class LocalTeam {
       });
    }
 
+   
    updateTeamMembersList(arrayMember, memID, teamName) {
       // update array list
       const intID = parseInt(memID, 10);
