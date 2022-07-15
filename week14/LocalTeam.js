@@ -7,7 +7,7 @@
 
 import * as util from './utilities.js';
 
-// Local Team Model (using localStorage)
+// Local Team Model (Star Wars team coming from localStorage)
 export default class LocalTeam {
    constructor() {
       this.arrTeam = [];

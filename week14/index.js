@@ -17,6 +17,16 @@ const membersOnPage = 7;
 const localTeamOnPage = 5;
 
 
+// Common functions that are called on more than one buttons
+function commonSettings() {
+   swDataControl.init();
+   teamIndex = 0;
+   swDataControl.setTeamCutOff(numOfMembers);
+   swDataControl.setItemsOnPage(itemsOnPage);
+   swDataControl.setItemsOnPage(localTeamOnPage, true);
+}
+
+
 // Button to get teams from API
 document.getElementById("btnFetch").addEventListener("click", function() {   
    console.log("API process started...");
@@ -123,16 +133,6 @@ document.getElementById("btnPrev2").addEventListener("click", function() {
    if (teamIndex > 0) { teamIndex = teamIndex - membersOnPage };
    swDataControl.getSetOfMembers(teamIndex);
 }, false);
-
-
-// Common functions that are called on more than one buttons
-function commonSettings() {
-   swDataControl.init();
-   teamIndex = 0;
-   swDataControl.setTeamCutOff(numOfMembers);
-   swDataControl.setItemsOnPage(itemsOnPage);
-   swDataControl.setItemsOnPage(localTeamOnPage, true);
-}
 
 
 // Button to add new custom team to localStorage
