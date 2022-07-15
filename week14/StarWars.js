@@ -8,7 +8,7 @@
  
 import { getJSON } from './utilities.js';
 
-// Star Wars Model coming from external API
+// Star Wars Model
 export default class StarWars {
    constructor() {
       this.baseUrl = 'https://akabab.github.io/starwars-api/api';
